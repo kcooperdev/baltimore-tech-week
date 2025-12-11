@@ -12,7 +12,7 @@ const speakers = [
     title: "Chief AI Officer",
     company: "TechVision Labs",
     bio: "Leading researcher in machine learning and neural networks with 15+ years of experience. Former Google AI researcher.",
-    image: "https://i.pravatar.cc/300?img=1",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=SarahChen",
     topics: ["Artificial Intelligence", "Machine Learning", "Neural Networks"],
     social: {
       twitter: "@sarahchenai",
@@ -26,7 +26,7 @@ const speakers = [
     title: "Founder & CEO",
     company: "RoboTech Solutions",
     bio: "Serial entrepreneur building the next generation of autonomous systems. Y Combinator alum.",
-    image: "https://i.pravatar.cc/300?img=12",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=MichaelRodriguez",
     topics: ["Robotics", "Autonomous Systems", "Entrepreneurship"],
     social: {
       twitter: "@mrodriguez",
@@ -40,7 +40,7 @@ const speakers = [
     title: "Research Director",
     company: "Johns Hopkins University",
     bio: "Pioneering work in CRISPR gene editing and personalized medicine. Published 100+ papers in top journals.",
-    image: "https://i.pravatar.cc/300?img=5",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=EmilyWatson",
     topics: ["Biotechnology", "Gene Editing", "Personalized Medicine"],
     social: {
       twitter: "@emilywatsonbio",
@@ -54,7 +54,7 @@ const speakers = [
     title: "VP of Engineering",
     company: "CloudScale Technologies",
     bio: "Engineering leader scaling teams from startup to IPO. Passionate advocate for diversity in tech.",
-    image: "https://i.pravatar.cc/300?img=9",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=JenniferMartinez",
     topics: ["Engineering Leadership", "Cloud Computing", "Diversity & Inclusion"],
     social: {
       twitter: "@jenmartinez",
@@ -68,7 +68,7 @@ const speakers = [
     title: "Blockchain Architect",
     company: "Decentralized Systems",
     bio: "Building decentralized infrastructure for the next web. Ethereum core contributor.",
-    image: "https://i.pravatar.cc/300?img=15",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=DavidLee",
     topics: ["Blockchain", "Web3", "Cryptocurrency"],
     social: {
       twitter: "@davidleebtc",
@@ -82,7 +82,7 @@ const speakers = [
     title: "Senior Research Scientist",
     company: "MIT CSAIL",
     bio: "Expert in computer vision and deep learning. Inventor of breakthrough image recognition algorithms.",
-    image: "https://i.pravatar.cc/300?img=20",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=JamesPark",
     topics: ["Computer Vision", "Deep Learning", "Image Recognition"],
     social: {
       twitter: "@jamesparkai",
@@ -96,7 +96,7 @@ const speakers = [
     title: "Chief Product Officer",
     company: "InnovateNow",
     bio: "Product strategist with track record of launching successful B2B SaaS platforms. Former Amazon PM.",
-    image: "https://i.pravatar.cc/300?img=33",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=RachelKim",
     topics: ["Product Strategy", "SaaS", "User Experience"],
     social: {
       twitter: "@rachelkim",
@@ -110,7 +110,7 @@ const speakers = [
     title: "Co-Founder",
     company: "BioInnovate Labs",
     bio: "Transforming drug discovery with AI-powered platforms. Raised $50M+ in Series B funding.",
-    image: "https://i.pravatar.cc/300?img=47",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=RobertKim",
     topics: ["Biotech", "Drug Discovery", "AI in Healthcare"],
     social: {
       twitter: "@robertkimbio",
@@ -124,7 +124,7 @@ const speakers = [
     title: "Senior Developer Advocate",
     company: "Ethereum Foundation",
     bio: "Educating developers on Web3 technologies. Host of popular blockchain podcast with 100K+ listeners.",
-    image: "https://i.pravatar.cc/300?img=51",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=AlexChen",
     topics: ["Web3", "Developer Relations", "Smart Contracts"],
     social: {
       twitter: "@alexchenweb3",
@@ -138,7 +138,7 @@ const speakers = [
     title: "Chief Data Officer",
     company: "DataDriven Inc",
     bio: "Data science leader helping Fortune 500 companies leverage AI. Former Netflix data scientist.",
-    image: "https://i.pravatar.cc/300?img=68",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=AmandaFoster",
     topics: ["Data Science", "Big Data", "Analytics"],
     social: {
       twitter: "@amandafoster",
@@ -152,7 +152,7 @@ const speakers = [
     title: "Principal Investigator",
     company: "NIH National Cancer Institute",
     bio: "Leading cancer research using computational biology. Recipient of prestigious research awards.",
-    image: "https://i.pravatar.cc/300?img=27",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=LisaThompson",
     topics: ["Computational Biology", "Cancer Research", "Bioinformatics"],
     social: {
       twitter: "@lisathompson",
@@ -166,7 +166,7 @@ const speakers = [
     title: "CTO",
     company: "SecureNet Systems",
     bio: "Cybersecurity expert protecting critical infrastructure. Former NSA security researcher.",
-    image: "https://i.pravatar.cc/300?img=32",
+    image: "https://api.dicebear.com/7.x/avataaars/svg?seed=MarcusJohnson",
     topics: ["Cybersecurity", "Infrastructure Security", "Threat Intelligence"],
     social: {
       twitter: "@marcusjohnson",
