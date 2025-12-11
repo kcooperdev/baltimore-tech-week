@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
@@ -24,8 +25,15 @@ export function Navigation() {
       <div className="container flex h-16 items-center justify-between gap-2 sm:gap-4">
         <Link href="/" className="flex-shrink-0 min-w-0" onClick={() => setMobileMenuOpen(false)}>
           <div className="flex items-center gap-2 cursor-pointer group">
-            <div className="h-8 w-8 bg-primary/20 border border-primary flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors flex-shrink-0">
-              <span className="font-mono font-bold">B</span>
+            <div className="h-8 w-8 border border-primary flex items-center justify-center group-hover:border-primary/80 transition-colors flex-shrink-0 relative overflow-hidden">
+              <Image
+                src="/logo.svg"
+                alt="Baltimore Tech Week Logo"
+                width={32}
+                height={32}
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="font-mono font-bold tracking-tighter text-xs sm:text-sm md:text-base lg:text-xl truncate">
               <span className="hidden sm:inline">BALTIMORE</span><span className="text-primary">_TECH_WEEK</span>
