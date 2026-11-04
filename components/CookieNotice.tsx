@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Cookie } from "lucide-react";
+import { Laptop } from "lucide-react";
 
 const KEY = "btw-privacy";
 
@@ -70,7 +70,7 @@ export function CookieNotice() {
     <div className={open ? "cookie-layer is-open" : "cookie-layer"}>
       {open ? <button type="button" className="cookie-backdrop" aria-label="Close preferences" onClick={() => setOpen(false)} /> : null}
       <aside className="cookie-notice" role="dialog" aria-labelledby="cookie-title" aria-modal={open || undefined}>
-        <Cookie size={28} strokeWidth={1.75} aria-hidden="true" />
+        <Laptop size={28} strokeWidth={1.75} aria-hidden="true" />
         <div>
           <h2 id="cookie-title">{open ? "Cookie preferences" : "Cookie Notice"}</h2>
           {open ? (
