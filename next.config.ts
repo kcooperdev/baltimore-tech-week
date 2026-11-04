@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
       { source: "/speakers", destination: "/speak", permanent: true },
       { source: "/about", destination: "/schedule", permanent: true },
       { source: "/the-week", destination: "/schedule", permanent: true },
+      { source: "/volunteer", destination: "/get-involved", permanent: true },
     ];
   },
   async headers() {

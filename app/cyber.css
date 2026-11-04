@@ -648,6 +648,11 @@
     margin: 0 auto;
     align-items: stretch;
   }
+
+  .packs-single {
+    grid-template-columns: 1fr;
+    max-width: 26rem;
+  }
 }
 
 .split > * {

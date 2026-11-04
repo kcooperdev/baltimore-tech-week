@@ -10,7 +10,6 @@ const paths = [
   "/speak",
   "/sponsors",
   "/host",
-  "/volunteer",
   "/ambassador",
   "/get-involved",
   "/conduct",

@@ -34,7 +34,7 @@ export default async function Home({
             <p className="week-lede">{site.positioning}</p>
             <div className="week-actions">
               <Link className="week-btn" href="/tickets">
-                Get a pass · {formatPrice(generalAdmission.windows[0].price)}
+                Get a pass · {formatPrice(generalAdmission.price)}
               </Link>
               <Link className="week-btn week-btn-ghost" href="/schedule">
                 Schedule

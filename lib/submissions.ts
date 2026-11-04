@@ -100,28 +100,6 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   return forward("/api/speakers", payload);
 }
 
-const volunteerRoles: Record<string, string> = {
-  "Check-in": "check-in",
-  "Set up": "set-up",
-  Breakdown: "breakdown",
-};
-
-export async function saveVolunteer(body: Record<string, unknown>) {
-  const roles = list(body.roles).map((role) => volunteerRoles[role] ?? role);
-  const days = datesFor(body.day);
-  if (roles.length === 0) throw new SubmitError("Pick at least one role");
-  const payload = {
-    name: text(body.name, "Name", 120),
-    email: email(body.email),
-    phone: text(body.phone, "Phone", 40, false),
-    roles,
-    availableDates: days,
-    preferredNeighborhood: "4MLK / Westside",
-    notes: text(body.help, "How you want to help", 600, false),
-  };
-  return forward("/api/volunteers", payload);
-}
-
 export async function saveVenue(body: Record<string, unknown>) {
   const cost = text(body.cost, "Cost", 40);
   const costType = cost === "Paid" ? "Standard" : cost === "Not sure" ? "Low-Cost" : "Free";

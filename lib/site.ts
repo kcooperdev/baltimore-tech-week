@@ -235,12 +235,11 @@ export const hq = {
 };
 
 export const waysIn: { href: string; title: string; text: string }[] = [
-  { href: "/tickets", title: "Attend", text: "Get the pass. From $29. Checkout opens later." },
+  { href: "/tickets", title: "Attend", text: "Get the pass. $49. Checkout opens later." },
   { href: "/speak", title: "Speak", text: "Teach what you know. Applying is not a booking." },
   { href: "/sponsors", title: "Sponsor", text: "Be where your people already want to be." },
   { href: "/expo#exhibit", title: "Exhibit", text: "A table at HQ. We list you after the space is real." },
   { href: "/host", title: "Host", text: "Your event, your room. We send people if we accept it." },
-  { href: "/volunteer", title: "Volunteer", text: "Help people find the room. No quota." },
   { href: "/ambassador", title: "Ambassador", text: "Tell the rooms you are already in." },
 ];
 
@@ -255,7 +254,6 @@ export const nav = {
     { href: "/sponsors", label: "Sponsor" },
     { href: "/expo#exhibit", label: "Exhibit" },
     { href: "/host", label: "Host an Event" },
-    { href: "/volunteer", label: "Volunteer" },
     { href: "/ambassador", label: "Ambassador" },
   ],
 };
@@ -299,42 +297,9 @@ export type SponsorPackage = {
  */
 export const sponsorPackages: SponsorPackage[] = [];
 
-export type TicketWindow = {
-  id: string;
-  name: string;
-  price: number;
-};
-
 export const generalAdmission = {
   name: "General Admission",
-  windows: [
-    { id: "early", name: "Early Bird", price: 29 },
-    { id: "general", name: "General Admission", price: 49 },
-    { id: "late", name: "Late Registration", price: 69 },
-  ] satisfies TicketWindow[],
-  access: [
-    "Three-day Baltimore Tech Week admission",
-    "Expo",
-    "Main programming",
-    "Talks",
-    "Workshops",
-    "Networking areas",
-    "Eligible partner experiences, where a pass applies",
-  ],
-};
-
-export const vip = {
-  name: "VIP",
-  price: 99,
-  access: [
-    "Everything included in General Admission",
-    "Priority entry",
-    "Preferred or reserved seating, where seating is reserved",
-    "VIP check-in",
-    "VIP networking experience",
-    "A limited Baltimore Tech Week item",
-    "A possible food or drink benefit, if one is confirmed",
-  ],
+  price: 49,
 };
 
 export const partnerFilters = [
@@ -462,4 +427,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK. Passes from $29.";
+  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK. Passes are $49.";

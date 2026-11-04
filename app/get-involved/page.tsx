@@ -4,7 +4,7 @@ import { pageMeta, waysIn } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Get Involved",
-  "Attend, speak, sponsor, exhibit, host, volunteer, or tell people about Baltimore Tech Week 2027.",
+  "Attend, speak, sponsor, exhibit, host, or tell people about Baltimore Tech Week 2027.",
 );
 
 export default function GetInvolvedPage() {
