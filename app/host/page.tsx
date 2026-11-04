@@ -1,22 +1,21 @@
 import { ApplyForm } from "@/components/ApplyForm";
-import { PageHeader } from "@/components/PageHeader";
 import { pageMeta, pillars } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Host an Event",
-  "Propose a Baltimore Tech Week partner event. If it is accepted, Tech Week lists it. Tech Week does not produce or fund it.",
+  "Propose a partner event for Baltimore Tech Week, April 28–30, 2027. If it is accepted, Tech Week lists it.",
 );
 
 export default function HostPage() {
   return (
     <main className="plain-page">
-      <PageHeader
-        eyebrow="Partner events"
-        title="Host"
-        lede="You run the night. If we accept it, we list it and point people to you."
-      />
-      <div className="plain-body">
-        <div className="week-wrap apply-wrap">
+      <div className="page-top">
+        <div className="week-wrap split">
+          <header id="main">
+            <p className="week-kicker">Partner events</p>
+            <h1>Host</h1>
+            <p className="plain-lede">You run the night. If we accept it, we list it and point people to you.</p>
+          </header>
           <ApplyForm
             endpoint="/api/venues"
             submitLabel="Submit"

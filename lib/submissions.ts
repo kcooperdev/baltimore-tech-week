@@ -32,7 +32,7 @@ function list(value: unknown) {
   return one ? [one] : [];
 }
 
-/** The existing database stores the 2027 week by these dates. The public site still says exact dates are coming soon. */
+/** The existing database stores the week as April 28–30, 2027. */
 function datesFor(value: unknown) {
   const map: Record<string, string> = {
     wednesday: "2027-04-28",

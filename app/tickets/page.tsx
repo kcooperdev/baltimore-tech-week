@@ -1,24 +1,20 @@
 import { ApplyForm } from "@/components/ApplyForm";
-import { PageHeader } from "@/components/PageHeader";
 import { formatPrice, generalAdmission, pageMeta, site, vip } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  "Baltimore Tech Week 2027 tickets. General Admission is $29, $49, or $69. VIP is $99. Checkout is not open yet.",
+  "Baltimore Tech Week tickets, April 28–30, 2027. General Admission is $29, $49, or $69. VIP is $99. Checkout is not open yet.",
 );
 
 export default function TicketsPage() {
   return (
     <main className="plain-page">
-      <PageHeader
-        eyebrow={`${site.when} · ${site.year}`}
-        title="Tickets"
-        lede="The early pass is $29. Checkout is not open yet. Leave your email and we will write when it is."
-      />
-
-      <div className="plain-body">
+      <div className="page-top">
         <div className="week-wrap split">
-          <div>
+          <header id="main">
+            <p className="week-kicker">{site.dates}</p>
+            <h1>Tickets</h1>
+            <p className="plain-lede">The early pass is $29. Checkout is not open yet. Leave your email and we will write when it is.</p>
             <p className="week-kicker">General Admission</p>
             <ul className="price-ladder">
               {generalAdmission.windows.map((window) => (
@@ -29,12 +25,9 @@ export default function TicketsPage() {
               ))}
             </ul>
             <p className="week-lede">All three days at 4MLK. Partner nights are separate.</p>
-
-            <p className="week-kicker" style={{ marginTop: "2rem" }}>
-              VIP · {formatPrice(vip.price)}
-            </p>
+            <p className="week-kicker">VIP · {formatPrice(vip.price)}</p>
             <p className="week-lede">Same three days, with priority entry and a VIP check-in.</p>
-          </div>
+          </header>
           <ApplyForm
             id="notify"
             endpoint="/api/tickets"

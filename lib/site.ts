@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Editable content for Baltimore Tech Week 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
- * Keep dates as Wednesday–Friday until the exact 2027 dates are locked.
+ * The week is Wednesday, April 28 through Friday, April 30, 2027.
  * Set phase to "live" during the week to turn the homepage into the attendee view.
  */
 
@@ -15,8 +15,8 @@ export const site = {
   email: "team@bmoretechweek.com",
   phase: "preview" as "preview" | "live",
   liveDay: "wednesday" as DayId,
+  dates: "April 28–30, 2027",
   when: "Wednesday–Friday",
-  datesNote: "Exact dates coming soon",
   where: "Baltimore, Maryland",
   tagline: "CONNECT. BUILD. OPPORTUNITY.",
   promise: "Be in the room.",
@@ -480,4 +480,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week 2027 is three days, Wednesday through Friday, at 4MLK by day and around the city at night. Passes from $29. Exact dates coming soon.";
+  "Be in the room. Baltimore Tech Week is April 28–30, 2027, Wednesday through Friday, at 4MLK by day and around the city at night. Passes from $29.";

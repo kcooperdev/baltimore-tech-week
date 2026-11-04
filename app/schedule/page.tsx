@@ -13,7 +13,7 @@ export default function SchedulePage() {
   return (
     <main className="plain-page">
       <PageHeader
-        eyebrow={`${site.when} · ${site.year} · ${site.datesNote}`}
+        eyebrow={`${site.dates} · ${site.when}`}
         title="How the week goes"
         lede="Three days. The building by day. The city after. Names of talks show up when someone is booked."
       />

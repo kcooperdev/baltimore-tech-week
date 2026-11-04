@@ -1,22 +1,21 @@
 import { ApplyForm } from "@/components/ApplyForm";
-import { PageHeader } from "@/components/PageHeader";
 import { pageMeta, pillars, speakerFormats } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Speak",
-  "Apply to speak at Baltimore Tech Week 2027. Applying does not reserve a slot.",
+  "Apply to speak at Baltimore Tech Week, April 28–30, 2027. Applying does not reserve a slot.",
 );
 
 export default function SpeakPage() {
   return (
     <main className="plain-page">
-      <PageHeader
-        eyebrow="Get involved"
-        title="Speak"
-        lede="If you are building it, hiring for it, or teaching it here, tell us. A form is not a slot."
-      />
-      <div className="plain-body">
-        <div className="week-wrap apply-wrap">
+      <div className="page-top">
+        <div className="week-wrap split">
+          <header id="main">
+            <p className="week-kicker">Get involved</p>
+            <h1>Speak</h1>
+            <p className="plain-lede">If you are building it, hiring for it, or teaching it here, tell us. A form is not a slot.</p>
+          </header>
           <ApplyForm
             endpoint="/api/speakers"
             submitLabel="Submit"

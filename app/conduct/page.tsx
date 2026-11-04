@@ -10,15 +10,13 @@ export default function ConductPage() {
   return (
     <main className="plain-page">
       <PageHeader eyebrow="Community" title="Be decent" lede="You don't need a tech title to be here." />
-      <div className="editorial-flow">
-        <section className="band-paper">
-          <div className="week-wrap narrow-copy">
+      <div className="plain-body">
+        <div className="week-wrap narrow-copy">
             <p>Harassment is not part of the week. That includes 4MLK and official partner events.</p>
             <p>
               If something is off, tell an organizer or email <a href={`mailto:${site.email}`}>{site.email}</a>.
             </p>
-          </div>
-        </section>
+        </div>
       </div>
     </main>
   );

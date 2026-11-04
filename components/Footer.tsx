@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { hq, nav, site } from "@/lib/site";
+import { hq, site } from "@/lib/site";
 
 export function Footer() {
   return (
@@ -12,21 +12,13 @@ export function Footer() {
             <span>Tech Week</span>
           </span>
         </Link>
-        <nav className="harbor-footer-nav" aria-label="Footer">
-          {nav.primary.map((item) => (
-            <Link key={item.href} href={item.href} className="harbor-footer-link">
-              {item.label}
-            </Link>
-          ))}
-          <Link href="/get-involved" className="harbor-footer-link">
-            Get Involved
-          </Link>
-        </nav>
         <div className="harbor-footer-meta">
           <div>
             <p>{site.idea}</p>
             <p>
-              {site.when} · {site.year} · {site.datesNote}
+              {site.dates}
+              <br />
+              {site.when}
             </p>
           </div>
           <div>

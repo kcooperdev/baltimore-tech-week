@@ -11,9 +11,8 @@ export default function GetInvolvedPage() {
   return (
     <main className="plain-page">
       <PageHeader eyebrow="Pick one" title="Get involved" lede="Pick a way in. A person writes back." />
-      <div className="editorial-flow">
-        <section className="band-paper">
-          <div className="week-wrap">
+      <div className="plain-body">
+        <div className="week-wrap">
             <ul className="path-list">
               {waysIn.map((way) => (
                 <li key={way.href}>
@@ -24,8 +23,7 @@ export default function GetInvolvedPage() {
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
+        </div>
       </div>
     </main>
   );

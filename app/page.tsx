@@ -26,7 +26,7 @@ export default async function Home({
         <section className="band-paper" aria-labelledby="week-promise">
           <div className="week-wrap">
             <p className="week-kicker">
-              {site.when} · {site.year} · {site.datesNote}
+              {site.dates} · {site.when}
             </p>
             <h2 id="week-promise" className="week-title">
               {site.promise}

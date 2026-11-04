@@ -48,9 +48,6 @@ export function Topbar({
 
   return (
     <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone={scene ? "night" : "dark"} inert={inertBar ? true : undefined}>
-      <Link href="/" className="topbar-mark" aria-label="Baltimore Tech Week">
-        <span className="btw-mark" />
-      </Link>
       <button
         type="button"
         className="topbar-burger"
@@ -63,6 +60,11 @@ export function Topbar({
         </svg>
       </button>
       <nav className="topbar-links topbar-desktop" aria-label="Primary">
+        <span className="topbar-corner-item">
+          <Link className="harbor-link" href="/" aria-current={pathname === "/" ? "page" : undefined}>
+            Home
+          </Link>
+        </span>
         {nav.primary.map((item) => (
           <span key={item.href} className="topbar-corner-item">
             <Link className="harbor-link" href={item.href} aria-current={isCurrent(pathname, item.href) ? "page" : undefined}>
@@ -98,15 +100,12 @@ export function Topbar({
         <div className="topbar-drawer-layer">
           <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
           <div className="topbar-drawer" role="dialog" aria-label="Menu">
-            <p className="topbar-drawer-brand">
-              <span className="btw-mark" />
+            <Link href="/" className="topbar-drawer-brand" onClick={() => setOpen(false)}>
               Baltimore
               <br />
               <span>Tech</span> Week
-            </p>
-            <p className="topbar-drawer-meta">
-              {site.when} · {site.year}
-            </p>
+            </Link>
+            <p className="topbar-drawer-meta">{site.dates}</p>
             {nav.primary.map((item) => (
               <Link
                 key={item.href}

@@ -148,9 +148,7 @@ export function HarborScene() {
             </span>
           </h1>
           <p className="night-meta">
-            <time dateTime="2027">
-              {site.when} · {site.year}
-            </time>
+            <time dateTime="2027-04-28/2027-04-30">{site.dates}</time>
           </p>
         </main>
       </div>
