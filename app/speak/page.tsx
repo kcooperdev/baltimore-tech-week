@@ -7,6 +7,12 @@ export const metadata = pageMeta(
   "Apply to speak at Baltimore Tech Week 2027. Talks, panels, workshops, fireside conversations, and demonstrations across Connect, Build, and Opportunity.",
 );
 
+const panel = {
+  wednesday: "day-panel day-panel-compact day-panel-connect",
+  thursday: "day-panel day-panel-compact day-panel-build",
+  friday: "day-panel day-panel-compact day-panel-opportunity",
+} as const;
+
 export default function SpeakPage() {
   return (
     <main>
@@ -16,43 +22,35 @@ export default function SpeakPage() {
         lede="We want people who are building, hiring, teaching, and organizing in Baltimore. Applying does not mean you are booked. Every application is read. We follow up when there is a fit."
       />
 
-      <section className="border-b border-border">
-        <div className="container grid gap-10 py-14 md:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight">Formats</h2>
-            <ul className="mt-4 space-y-2">
+      <div className="editorial-flow">
+        <section className="band-paper">
+          <div className="week-wrap">
+            <p className="week-kicker">Formats</p>
+            <ul className="hold-list">
               {speakerFormats.map((format) => (
-                <li key={format} className="border-t border-border py-2">
-                  {format}
-                </li>
+                <li key={format}>{format}</li>
               ))}
             </ul>
-          </div>
-          <div>
-            <h2 className="font-display text-3xl font-semibold tracking-tight">Themes</h2>
-            <ul className="mt-4 space-y-4">
+            <div className="day-panels">
               {pillars.map((pillar) => (
-                <li key={pillar.id}>
-                  <p className="font-display text-xl font-semibold">{pillar.name}</p>
-                  <p className="text-sm text-muted-foreground">
-                    {pillar.day} · {pillar.question}
-                  </p>
-                </li>
+                <article key={pillar.id} className={panel[pillar.id]}>
+                  <div>
+                    <p className="day-panel-day">{pillar.day}</p>
+                    <h3>{pillar.name}</h3>
+                    <p>{pillar.question}</p>
+                  </div>
+                </article>
               ))}
-            </ul>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <div className="container grid gap-10 py-16 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Apply to Speak</h2>
-            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              The lineup is not announced yet. Don&apos;t wait on a speaker list that isn&apos;t real.
-            </p>
-          </div>
-          <div className="md:col-span-8">
+        <section className="band-ink">
+          <div className="week-wrap split">
+            <div>
+              <h2 className="week-title">Apply to Speak</h2>
+              <p className="week-lede">The lineup is not announced yet. Don&apos;t wait on a speaker list that isn&apos;t real.</p>
+            </div>
             <InquiryForm
               subject="Baltimore Tech Week speaker application"
               submitLabel="Apply to Speak"
@@ -84,8 +82,8 @@ export default function SpeakPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

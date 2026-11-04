@@ -15,74 +15,60 @@ export default function SponsorsPage() {
         title="Sponsor Baltimore Tech Week"
         lede="Sponsors back a three-day citywide week: a headquarters, an expo, and programming that moves through Baltimore. This is not a set of themed nights to put a logo on."
       >
-        <a
-          href="#sponsor-form"
-          className="inline-flex h-12 items-center bg-accent px-5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground"
-        >
+        <a className="week-btn" href="#sponsor-form">
           Sponsor Baltimore Tech Week
         </a>
-        <a
-          href="#sponsor-form"
-          className="inline-flex h-12 items-center border border-border px-5 font-mono text-xs uppercase tracking-[0.14em]"
-        >
+        <a className="week-btn week-btn-ghost" href="#sponsor-form">
           Book a Sponsor Call
         </a>
       </PageHeader>
 
-      <section className="border-b border-border">
-        <div className="container py-16 md:py-20">
-          <h2 className="font-display text-3xl font-semibold tracking-tight">Where sponsors show up</h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {sponsorSurfaces.map((surface) => (
-              <li key={surface.title} className="border border-border p-5">
-                <h3 className="font-display text-xl font-semibold tracking-tight">{surface.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{surface.text}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section className="border-b border-border">
-        <div className="container py-16 md:py-20">
-          <h2 className="font-display text-3xl font-semibold tracking-tight">Packages</h2>
-          {sponsorPackages.length === 0 ? (
-            <div className="mt-6 border border-dashed border-border px-6 py-12">
-              <p className="font-display text-2xl font-semibold tracking-tight">Packages are being set for the three-day week.</p>
-              <p className="mt-3 max-w-2xl text-muted-foreground">
-                Prices and benefits will be published here once they are approved. Until then, book a call and tell us what you actually want to do.
-              </p>
-            </div>
-          ) : (
-            <ul className="mt-6 grid gap-4 md:grid-cols-2">
-              {sponsorPackages.map((pkg) => (
-                <li key={pkg.id} className="border border-border p-6">
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-display text-2xl font-semibold">{pkg.name}</h3>
-                    {pkg.price ? <p className="font-display text-2xl">{pkg.price}</p> : null}
-                  </div>
-                  <p className="mt-3 text-muted-foreground">{pkg.summary}</p>
-                  <ul className="mt-4 space-y-2 text-sm">
-                    {pkg.includes.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+      <div className="editorial-flow">
+        <section className="band-ink">
+          <div className="week-wrap split">
+            <h2 className="week-title">Where sponsors show up</h2>
+            <ul className="hold-list">
+              {sponsorSurfaces.map((surface) => (
+                <li key={surface.title}>
+                  <strong>{surface.title}</strong>
+                  <span style={{ display: "block", opacity: 0.8 }}>{surface.text}</span>
                 </li>
               ))}
             </ul>
-          )}
-          <p className="mt-10 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-            Sponsor roster coming soon
-          </p>
-        </div>
-      </section>
-
-      <section>
-        <div className="container grid gap-10 py-16 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Tell us what you want to back.</h2>
           </div>
-          <div className="md:col-span-8">
+        </section>
+
+        <section className="band-paper">
+          <div className="week-wrap">
+            <p className="week-kicker">Packages</p>
+            {sponsorPackages.length === 0 ? (
+              <>
+                <h2 className="week-title week-title-wide">Packages are being set for the three-day week.</h2>
+                <p className="week-lede">
+                  Prices and benefits will be published here once they are approved. Until then, book a call and tell us what you actually want to do.
+                </p>
+              </>
+            ) : (
+              <ul className="venue-grid">
+                {sponsorPackages.map((pkg) => (
+                  <li key={pkg.id} className="venue-card">
+                    <h3>{pkg.name}</h3>
+                    {pkg.price ? <p>{pkg.price}</p> : null}
+                    <p>{pkg.summary}</p>
+                    <p>{pkg.includes.join(" · ")}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="week-kicker" style={{ marginTop: "2.5rem" }}>
+              Sponsor roster coming soon
+            </p>
+          </div>
+        </section>
+
+        <section className="band-build">
+          <div className="week-wrap split">
+            <h2 className="week-title week-title-wide">Tell us what you want to back.</h2>
             <InquiryForm
               id="sponsor-form"
               subject="Baltimore Tech Week sponsorship"
@@ -107,8 +93,8 @@ export default function SponsorsPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

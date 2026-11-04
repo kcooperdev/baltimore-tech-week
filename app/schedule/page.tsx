@@ -7,6 +7,12 @@ export const metadata = pageMeta(
   "The Baltimore Tech Week 2027 schedule: Wednesday Connect, Thursday Build, and Friday Opportunity. Programming will be posted as it is confirmed.",
 );
 
+const band = {
+  wednesday: "band-connect",
+  thursday: "band-build",
+  friday: "band-opportunity",
+} as const;
+
 export default function SchedulePage() {
   return (
     <main>
@@ -15,112 +21,95 @@ export default function SchedulePage() {
         title="Three days. One city."
         lede="Wednesday is for meeting people. Thursday is for making things. Friday is for what happens next. Sessions land here when they are real."
       >
-        <Link href="/tickets" className="inline-flex h-12 items-center bg-accent px-5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground">
+        <Link className="week-btn" href="/tickets">
           Get Tickets
         </Link>
       </PageHeader>
 
-      {site.phase === "live" ? (
-        <div className="border-b border-border bg-card">
-          <div className="container flex flex-wrap items-center justify-between gap-3 py-4">
-            <p className="font-display text-lg font-semibold">
-              Today is {pillars.find((pillar) => pillar.id === site.liveDay)?.day}.
-            </p>
-            <a href={`#${site.liveDay}`} className="text-sm underline underline-offset-4">
-              View today&apos;s schedule
-            </a>
-          </div>
-        </div>
-      ) : null}
-
-      <section className="border-b border-border">
-        <div className="container py-10">
-          <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-            Shape of each day · not a timetable
-          </p>
-          <dl className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {rhythm.map((block) => (
-              <div key={block.label}>
-                <dt className="font-display text-lg font-semibold">{block.label}</dt>
-                <dd className="mt-1 text-sm text-muted-foreground">{block.text}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-      </section>
-
-      {pillars.map((pillar) => {
-        const items = schedule.filter((item) => item.day === pillar.id);
-        return (
-          <section key={pillar.id} id={pillar.id} className="scroll-mt-24 border-b border-border">
-            <div className="container py-14 md:py-16">
-              <div className="flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <p className="eyebrow">
-                    {pillar.day} · {pillar.question}
-                  </p>
-                  <h2 className="mt-2 font-display text-5xl font-semibold tracking-tight">{pillar.name}</h2>
-                  <p className="mt-3 max-w-xl text-muted-foreground">{pillar.tagline}</p>
-                </div>
-                <Link href={`/the-week#${pillar.id}`} className="text-sm underline underline-offset-4">
-                  About this day
-                </Link>
-              </div>
-
-              {items.length === 0 ? (
-                <div className="mt-8 border border-dashed border-border px-6 py-10">
-                  <p className="font-display text-2xl font-semibold tracking-tight">More programming coming soon.</p>
-                  <p className="mt-2 max-w-xl text-muted-foreground">
-                    Schedule coming soon. Confirmed sessions will list a time, title, description, speakers, venue, category, and whether you need to register.
-                  </p>
-                </div>
-              ) : (
-                <ul className="mt-8 divide-y divide-border border-y border-border">
-                  {items.map((item) => (
-                    <li key={item.id} className="grid gap-3 py-6 md:grid-cols-12">
-                      <p className="font-mono text-sm md:col-span-2">{item.time}</p>
-                      <div className="md:col-span-7">
-                        <div className="flex flex-wrap gap-2">
-                          <span
-                            className={`px-2 py-0.5 font-mono text-[0.62rem] uppercase tracking-[0.14em] ${
-                              item.place === "hq"
-                                ? "bg-primary text-primary-foreground"
-                                : "bg-accent text-accent-foreground"
-                            }`}
-                          >
-                            {item.place === "hq" ? "Tech Week HQ" : "Partner event"}
-                          </span>
-                          <span className="font-mono text-[0.62rem] uppercase tracking-[0.14em] text-muted-foreground">
-                            {item.category}
-                          </span>
-                        </div>
-                        <h3 className="mt-3 font-display text-2xl font-semibold tracking-tight">{item.title}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.description}</p>
-                        {item.speakers.length > 0 ? (
-                          <p className="mt-2 text-sm">{item.speakers.join(", ")}</p>
-                        ) : null}
-                      </div>
-                      <div className="text-sm md:col-span-3">
-                        <p>{item.venue}</p>
-                        <p className="mt-2 text-muted-foreground">{item.registration}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
+      <div className="editorial-flow">
+        {site.phase === "live" ? (
+          <section className="band-ink">
+            <div className="week-wrap" style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: "1rem" }}>
+              <p className="week-title" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)" }}>
+                Today is {pillars.find((pillar) => pillar.id === site.liveDay)?.day}.
+              </p>
+              <a className="week-btn" href={`#${site.liveDay}`}>
+                View today&apos;s schedule
+              </a>
             </div>
           </section>
-        );
-      })}
+        ) : null}
 
-      <section>
-        <div className="container flex flex-col gap-4 py-14 md:flex-row md:items-center md:justify-between">
-          <p className="font-display text-2xl font-semibold tracking-tight">{site.nightLine}</p>
-          <Link href="/around-baltimore" className="text-sm underline underline-offset-4">
-            Around Baltimore
-          </Link>
-        </div>
-      </section>
+        <section className="band-paper">
+          <div className="week-wrap">
+            <p className="week-kicker">Shape of each day · not a timetable</p>
+            <div className="rhythm">
+              {rhythm.map((block) => (
+                <div key={block.label}>
+                  <h3>{block.label}</h3>
+                  <p>{block.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {pillars.map((pillar) => {
+          const items = schedule.filter((item) => item.day === pillar.id);
+          return (
+            <section key={pillar.id} id={pillar.id} className={`${band[pillar.id]} scroll-mt-24`}>
+              <div className="week-wrap">
+                <p className="week-kicker">
+                  {pillar.day} · {pillar.question}
+                </p>
+                <h2 className="week-title">{pillar.name}</h2>
+                <p className="week-lede">{pillar.tagline}</p>
+                {items.length === 0 ? (
+                  <div style={{ marginTop: "2rem" }}>
+                    <p className="week-title" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}>
+                      More programming coming soon.
+                    </p>
+                    <p className="week-lede">
+                      Schedule coming soon. Confirmed sessions will list a time, title, description, speakers, venue, category, and whether you need to register.
+                    </p>
+                  </div>
+                ) : (
+                  <ul className="hold-list" style={{ marginTop: "2rem" }}>
+                    {items.map((item) => (
+                      <li key={item.id}>
+                        <p className="week-kicker">{item.time}</p>
+                        <h3 style={{ margin: "0.3rem 0 0", fontSize: "1.6rem" }}>{item.title}</h3>
+                        <p>
+                          {item.place === "hq" ? "Tech Week HQ" : "Partner event"} · {item.category}
+                        </p>
+                        <p>{item.description}</p>
+                        {item.speakers.length > 0 ? <p>{item.speakers.join(", ")}</p> : null}
+                        <p>
+                          {item.venue} · {item.registration}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                <div className="week-actions">
+                  <Link className="week-btn" href={`/the-week#${pillar.id}`}>
+                    About this day
+                  </Link>
+                </div>
+              </div>
+            </section>
+          );
+        })}
+
+        <section className="band-paper">
+          <div className="week-wrap split">
+            <p className="week-title week-title-wide">{site.nightLine}</p>
+            <Link className="week-btn" href="/around-baltimore">
+              Around Baltimore
+            </Link>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

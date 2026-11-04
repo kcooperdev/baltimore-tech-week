@@ -16,74 +16,72 @@ export default function TicketsPage() {
         lede="Two passes. General Admission and VIP. Checkout is not open yet. These are the planned prices, and inclusions can still change before they go on sale."
       />
 
-      <section className="border-b border-border">
-        <div className="container grid gap-4 py-14 md:grid-cols-2 md:py-16">
-          <article className="flex flex-col border border-border p-6 md:p-8">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-primary">General Admission</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight">{generalAdmission.name}</h2>
-            <ul className="mt-6 divide-y divide-border border-y border-border">
-              {generalAdmission.windows.map((window) => (
-                <li key={window.id} className="flex items-baseline justify-between py-3">
-                  <span>{window.name}</span>
-                  <span className="font-display text-3xl font-semibold">{formatPrice(window.price)}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-              Planned access
-            </p>
-            <ul className="mt-3 space-y-2 text-sm">
-              {generalAdmission.access.map((item) => (
-                <li key={item} className="border-t border-border pt-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </article>
+      <div className="editorial-flow">
+        <section className="band-ink">
+          <div className="week-wrap split">
+            <article>
+              <p className="week-kicker">General Admission</p>
+              <h2 className="week-title">{generalAdmission.name}</h2>
+              <ul className="price-ladder">
+                {generalAdmission.windows.map((window) => (
+                  <li key={window.id} className="price-row">
+                    <span>{window.name}</span>
+                    <strong>{formatPrice(window.price)}</strong>
+                  </li>
+                ))}
+              </ul>
+              <p className="week-kicker" style={{ marginTop: "2rem" }}>
+                Planned access
+              </p>
+              <ul className="access-list">
+                {generalAdmission.access.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+            <article className="vip-panel">
+              <p className="week-kicker" style={{ color: "#16120c99" }}>
+                VIP
+              </p>
+              <h2 className="week-title">{vip.name}</h2>
+              <p className="vip-price">{formatPrice(vip.price)}</p>
+              <p className="week-lede" style={{ color: "#16120cc7" }}>
+                One price. One pass. No extra premium tiers.
+              </p>
+              <p className="week-kicker" style={{ color: "#16120c99", marginTop: "1.5rem" }}>
+                Planned benefits
+              </p>
+              <ul className="access-list">
+                {vip.access.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
 
-          <article className="flex flex-col border border-accent p-6 md:p-8">
-            <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-accent">VIP</p>
-            <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight">{vip.name}</h2>
-            <p className="mt-6 font-display text-6xl font-semibold tracking-tight">{formatPrice(vip.price)}</p>
-            <p className="mt-2 text-sm text-muted-foreground">One price. One pass. No extra premium tiers.</p>
-            <p className="mt-6 font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground">
-              Planned benefits
-            </p>
-            <ul className="mt-3 space-y-2 text-sm">
-              {vip.access.map((item) => (
-                <li key={item} className="border-t border-border pt-2">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section className="border-b border-border">
-        <div className="container max-w-3xl py-12">
-          <h2 className="font-display text-2xl font-semibold tracking-tight">Read this before you buy.</h2>
-          <div className="mt-4 space-y-3 text-muted-foreground leading-relaxed">
-            <p>
+        <section className="band-paper">
+          <div className="week-wrap narrow-copy">
+            <h2 className="week-title week-title-wide">Read this before you buy.</h2>
+            <p className="week-lede">
               A pass covers Baltimore Tech Week programming at Tech Week HQ, and partner experiences only where the host says a pass applies.
             </p>
-            <p>
+            <p className="week-lede">
               Partner events may have their own capacity or their own registration. A General Admission or VIP pass is not universal entry to independently hosted events.
             </p>
-            <p>Final inclusions stay editable until checkout opens.</p>
+            <p className="week-lede">Final inclusions stay editable until checkout opens.</p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <div className="container grid gap-10 py-16 md:grid-cols-12">
-          <div className="md:col-span-5">
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Get Tickets</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              Leave your email. When checkout opens, we&apos;ll send the link for the pass you want.
-            </p>
-          </div>
-          <div className="md:col-span-7">
+        <section className="band-sky">
+          <div className="week-wrap split">
+            <div>
+              <p className="week-kicker" style={{ color: "#16120c99" }}>
+                Checkout is not open yet
+              </p>
+              <h2 className="week-title">Get Tickets</h2>
+              <p className="week-lede">Leave your email. When checkout opens, we&apos;ll send the link for the pass you want.</p>
+            </div>
             <InquiryForm
               id="notify"
               subject="Baltimore Tech Week ticket interest"
@@ -101,8 +99,8 @@ export default function TicketsPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

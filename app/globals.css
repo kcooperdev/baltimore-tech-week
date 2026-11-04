@@ -33,25 +33,26 @@
 
 :root {
   --radius: 0.125rem;
-  --background: oklch(0.97 0.01 85);
-  --foreground: oklch(0.18 0.02 60);
-  --card: oklch(0.99 0.005 85);
-  --card-foreground: oklch(0.18 0.02 60);
-  --popover: oklch(0.99 0.005 85);
-  --popover-foreground: oklch(0.18 0.02 60);
-  --primary: oklch(0.48 0.2 300);
-  --primary-foreground: oklch(0.98 0.01 85);
-  --secondary: oklch(0.94 0.01 85);
-  --secondary-foreground: oklch(0.22 0.02 60);
-  --muted: oklch(0.94 0.01 85);
-  --muted-foreground: oklch(0.42 0.02 60);
-  --accent: oklch(0.68 0.17 52);
-  --accent-foreground: oklch(0.16 0.02 60);
-  --destructive: oklch(0.55 0.2 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.86 0.015 70);
-  --input: oklch(0.86 0.015 70);
-  --ring: oklch(0.48 0.2 300);
+  --background: #f3ead7;
+  --foreground: #16120c;
+  --card: #fff8ee;
+  --card-foreground: #16120c;
+  --popover: #fff8ee;
+  --popover-foreground: #16120c;
+  --primary: #1a4d6a;
+  --primary-foreground: #f3ead7;
+  --secondary: #efe4cf;
+  --secondary-foreground: #16120c;
+  --muted: #efe4cf;
+  --muted-foreground: #5c5346;
+  --accent: #e2b13c;
+  --accent-foreground: #16120c;
+  --destructive: #9c3b2e;
+  --destructive-foreground: #fff8ee;
+  --border: #16120c2e;
+  --input: #16120c2e;
+  --ring: #1a4d6a;
+  --font-display: var(--font-sans), system-ui, sans-serif;
 }
 
 .dark {
@@ -83,6 +84,7 @@
   html {
     overflow-x: hidden;
     scroll-behavior: smooth;
+    --font-display: var(--font-sans), system-ui, sans-serif;
   }
   @media (prefers-reduced-motion: reduce) {
     html {

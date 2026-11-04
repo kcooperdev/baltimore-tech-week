@@ -3,32 +3,11 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Topbar } from "@/components/Topbar";
+import { currentNavTone } from "@/lib/nav-tone";
 import { site } from "@/lib/site";
 
 function clamp(value: number, min = 0, max = 1) {
   return Math.min(max, Math.max(min, value));
-}
-
-const tones: [string, string][] = [
-  [".band-paper", "light"],
-  [".band-ink", "dark"],
-  [".band-sky", "sky"],
-  [".harbor-footer", "sunset"],
-];
-
-function navTone() {
-  let bestTop = -Infinity;
-  let best = "dark";
-  for (const [selector, tone] of tones) {
-    for (const node of document.querySelectorAll(selector)) {
-      const rect = node.getBoundingClientRect();
-      if (rect.top <= 56 && rect.bottom > 56 && rect.top >= bestTop) {
-        bestTop = rect.top;
-        best = tone;
-      }
-    }
-  }
-  return best;
 }
 
 export function HarborScene() {
@@ -36,7 +15,6 @@ export function HarborScene() {
   const announced = useRef(false);
   const [reduced, setReduced] = useState(false);
   const [mode, setMode] = useState<"sunset" | "night">("night");
-  const [interactive, setInteractive] = useState(false);
   const [hintOn, setHintOn] = useState(true);
   const [status, setStatus] = useState("");
 
@@ -69,10 +47,9 @@ export function HarborScene() {
       el.classList.toggle("is-night", night > 0.5);
       const past = el.getBoundingClientRect().bottom <= 48;
       el.classList.toggle("is-past", past);
-      el.dataset.navTone = past ? navTone() : "night";
+      el.dataset.navTone = past ? currentNavTone() : "night";
       document.documentElement.style.background = night > 0.5 ? "#070b16" : "#1a4d6a";
       theme?.setAttribute("content", night > 0.5 ? "#070b16" : "#2f7fa8");
-      setInteractive(title > 0.25 || past);
       setHintOn(hint > 0.2 && !past);
       if (night > 0.8 && !announced.current) {
         announced.current = true;
@@ -116,7 +93,7 @@ export function HarborScene() {
       className="harbor-pin"
       aria-label="Baltimore Tech Week. Three days across the city, from sunset into night."
     >
-      <Topbar scene inertBar={!interactive} />
+      <Topbar scene />
       <div className="cycle-progress" aria-hidden="true" />
       <p className="sr-only" aria-live="polite">
         {status}

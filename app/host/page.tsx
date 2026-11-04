@@ -18,36 +18,32 @@ export default function HostPage() {
         lede="Baltimore Tech Week is bigger than one building. If you have a room, a community, or a reason for people to gather, propose it."
       />
 
-      <section className="border-b border-border">
-        <div className="container grid gap-10 py-14 md:grid-cols-12">
-          <div className="md:col-span-7 space-y-4 leading-relaxed text-muted-foreground">
-            <p>
-              Startups, companies, restaurants, coworking spaces, universities, community organizations, meetups, creative spaces, and tech organizations can all propose programming.
-            </p>
-            <p className="text-foreground">
-              Acceptance into the calendar does not mean Baltimore Tech Week produces the event or pays for it. You host it. If it is accepted, we list it and send people toward it.
-            </p>
-            <p>Partner events can have their own capacity and their own tickets. Say so in the proposal.</p>
+      <div className="editorial-flow">
+        <section className="band-paper">
+          <div className="week-wrap split">
+            <div>
+              <p className="week-lede">
+                Startups, companies, restaurants, coworking spaces, universities, community organizations, meetups, creative spaces, and tech organizations can all propose programming.
+              </p>
+              <p className="week-lede" style={{ color: "var(--ink)" }}>
+                Acceptance into the calendar does not mean Baltimore Tech Week produces the event or pays for it. You host it. If it is accepted, we list it and send people toward it.
+              </p>
+              <p className="week-lede">Partner events can have their own capacity and their own tickets. Say so in the proposal.</p>
+            </div>
+            <ul className="hold-list">
+              {hostInvitees.map((name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid content-start gap-2 sm:grid-cols-2 md:col-span-5">
-            {hostInvitees.map((name) => (
-              <li key={name} className="border border-border px-3 py-2 text-sm">
-                {name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+        </section>
 
-      <section>
-        <div className="container grid gap-10 py-16 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Submit your event</h2>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Unconfirmed proposals stay off the public calendar.
-            </p>
-          </div>
-          <div className="md:col-span-8">
+        <section className="band-opportunity">
+          <div className="week-wrap split">
+            <div>
+              <h2 className="week-title">Submit your event</h2>
+              <p className="week-lede">Unconfirmed proposals stay off the public calendar.</p>
+            </div>
             <InquiryForm
               subject="Baltimore Tech Week partner event proposal"
               submitLabel="Submit Your Event"
@@ -61,10 +57,7 @@ export default function HostPage() {
                   label: "Preferred day",
                   type: "select",
                   required: true,
-                  options: [
-                    ...pillars.map((pillar) => `${pillar.day} — ${pillar.name}`),
-                    "No preference",
-                  ],
+                  options: [...pillars.map((pillar) => `${pillar.day} — ${pillar.name}`), "No preference"],
                 },
                 { name: "time", label: "Preferred time", required: true },
                 { name: "venue", label: "Venue", required: true },
@@ -95,8 +88,8 @@ export default function HostPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

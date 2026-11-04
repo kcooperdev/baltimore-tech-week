@@ -87,7 +87,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark ${figtree.variable} ${mono.variable}`}>
+    <html lang="en" className={`${figtree.variable} ${mono.variable}`}>
       <body className="antialiased">
         <div className="bmore flex min-h-screen flex-col">
           <a

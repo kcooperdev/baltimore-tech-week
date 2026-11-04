@@ -15,20 +15,22 @@ export default function GetInvolvedPage() {
         title="Get involved"
         lede="Attend. Speak. Sponsor. Exhibit. Host. Volunteer. Or bring other people with you."
       />
-      <section>
-        <div className="container py-6 pb-20">
-          <ul className="divide-y divide-border border-y border-border">
-            {waysIn.map((way) => (
-              <li key={way.href}>
-                <Link href={way.href} className="grid gap-2 py-7 md:grid-cols-12 md:items-baseline">
-                  <span className="font-display text-3xl font-semibold tracking-tight md:col-span-4">{way.title}</span>
-                  <span className="text-muted-foreground md:col-span-8">{way.text}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <div className="editorial-flow">
+        <section className="band-paper">
+          <div className="week-wrap">
+            <ul className="path-list">
+              {waysIn.map((way) => (
+                <li key={way.href}>
+                  <Link href={way.href}>
+                    <strong>{way.title}</strong>
+                    <span>{way.text}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

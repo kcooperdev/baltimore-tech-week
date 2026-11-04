@@ -15,31 +15,25 @@ export default function AmbassadorPage() {
         title="Bring Baltimore with you"
         lede="Ambassadors spread Baltimore Tech Week through the rooms they are already in. The program is simple on purpose."
       />
-      <section className="border-b border-border">
-        <div className="container grid gap-10 py-14 md:grid-cols-12">
-          <div className="md:col-span-6">
-            <p className="font-display text-3xl font-semibold tracking-tight md:text-4xl">
-              Tech Week grows when Baltimore tells Baltimore.
-            </p>
-            <p className="mt-5 leading-relaxed text-muted-foreground">
-              Tell people it is three days, Wednesday through Friday, based at 4MLK, with partner events around the city. There is no quota, no script you have to hit, and no points system.
-            </p>
+      <div className="editorial-flow">
+        <section className="band-ink">
+          <div className="week-wrap split">
+            <div>
+              <h2 className="week-title week-title-wide">Tech Week grows when Baltimore tells Baltimore.</h2>
+              <p className="week-lede">
+                Tell people it is three days, Wednesday through Friday, based at 4MLK, with partner events around the city. There is no quota, no script you have to hit, and no points system.
+              </p>
+            </div>
+            <ul className="hold-list">
+              {ambassadorChannels.map((channel) => (
+                <li key={channel}>{channel}</li>
+              ))}
+            </ul>
           </div>
-          <ul className="grid content-start gap-2 sm:grid-cols-2 md:col-span-6">
-            {ambassadorChannels.map((channel) => (
-              <li key={channel} className="border border-border px-4 py-3 text-sm">
-                {channel}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-      <section>
-        <div className="container grid gap-10 py-16 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Become an Ambassador</h2>
-          </div>
-          <div className="md:col-span-8">
+        </section>
+        <section className="band-paper">
+          <div className="week-wrap split">
+            <h2 className="week-title week-title-wide">Become an Ambassador</h2>
             <InquiryForm
               subject="Baltimore Tech Week ambassador"
               submitLabel="Become an Ambassador"
@@ -56,8 +50,8 @@ export default function AmbassadorPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

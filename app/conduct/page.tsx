@@ -14,21 +14,19 @@ export default function ConductPage() {
         title="Code of Conduct"
         lede="You don't need a tech title to be here. You do need to treat people like they belong."
       />
-      <section>
-        <div className="container max-w-3xl space-y-5 py-14 text-lg leading-relaxed text-muted-foreground">
-          <p>Baltimore Tech Week is for builders, founders, students, companies, and anyone curious about technology in this city.</p>
-          <p>
-            Harassment, discrimination, and creepy behavior are not part of the week. That applies at 4MLK and at official partner events. Hosts agree to the same standard when their event is listed.
-          </p>
-          <p>
-            If something is off, tell a Tech Week organizer or email{" "}
-            <a className="text-foreground underline underline-offset-4" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
-            . We would rather hear about it than have you leave quietly.
-          </p>
-        </div>
-      </section>
+      <div className="editorial-flow">
+        <section className="band-paper">
+          <div className="week-wrap narrow-copy">
+            <p>Baltimore Tech Week is for builders, founders, students, companies, and anyone curious about technology in this city.</p>
+            <p>
+              Harassment, discrimination, and creepy behavior are not part of the week. That applies at 4MLK and at official partner events. Hosts agree to the same standard when their event is listed.
+            </p>
+            <p>
+              If something is off, tell a Tech Week organizer or email <a href={`mailto:${site.email}`}>{site.email}</a>. We would rather hear about it than have you leave quietly.
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

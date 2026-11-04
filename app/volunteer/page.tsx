@@ -22,25 +22,25 @@ export default function VolunteerPage() {
         title="Help the week happen."
         lede="Volunteers keep HQ moving. There is no hour quota and no leaderboard. Tell us which day you can actually be there."
       />
-      <section className="border-b border-border">
-        <div className="container grid gap-4 py-14 sm:grid-cols-2 lg:grid-cols-4">
-          {roles.map((role) => (
-            <article key={role.title} className="border border-border p-5">
-              <h2 className="font-display text-2xl font-semibold tracking-tight">{role.title}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{role.text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section>
-        <div className="container grid gap-10 py-16 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <h2 className="font-display text-4xl font-semibold tracking-tight">Volunteer</h2>
-            <p className="mt-4 text-sm text-muted-foreground">
-              Shifts are not posted yet. We will write back when roles are set.
-            </p>
+      <div className="editorial-flow">
+        <section className="band-paper">
+          <div className="week-wrap">
+            <div className="who-grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))" }}>
+              {roles.map((role) => (
+                <article key={role.title} className="who-card">
+                  <h3>{role.title}</h3>
+                  <p>{role.text}</p>
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="md:col-span-8">
+        </section>
+        <section className="band-connect">
+          <div className="week-wrap split">
+            <div>
+              <h2 className="week-title">Volunteer</h2>
+              <p className="week-lede">Shifts are not posted yet. We will write back when roles are set.</p>
+            </div>
             <InquiryForm
               subject="Baltimore Tech Week volunteer"
               submitLabel="Volunteer"
@@ -63,8 +63,8 @@ export default function VolunteerPage() {
               ]}
             />
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

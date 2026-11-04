@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { currentNavTone } from "@/lib/nav-tone";
 import { nav, site } from "@/lib/site";
 
 function isCurrent(pathname: string, href: string) {
@@ -18,6 +19,7 @@ export function Topbar({
   inertBar?: boolean;
 }) {
   const pathname = usePathname();
+  const bar = useRef<HTMLElement>(null);
   const [open, setOpen] = useState(false);
   const [involved, setInvolved] = useState(false);
   const [lastPath, setLastPath] = useState(pathname);
@@ -28,8 +30,24 @@ export function Topbar({
     setInvolved(false);
   }
 
+  useEffect(() => {
+    if (scene) return;
+    const el = bar.current;
+    if (!el) return;
+    const paint = () => {
+      el.dataset.navTone = currentNavTone();
+    };
+    paint();
+    window.addEventListener("scroll", paint, { passive: true });
+    window.addEventListener("resize", paint);
+    return () => {
+      window.removeEventListener("scroll", paint);
+      window.removeEventListener("resize", paint);
+    };
+  }, [scene, pathname]);
+
   return (
-    <header className={scene ? "topbar" : "topbar site-topbar"} inert={inertBar ? true : undefined}>
+    <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone="night" inert={inertBar ? true : undefined}>
       <button
         type="button"
         className="topbar-burger"
@@ -70,6 +88,9 @@ export function Topbar({
           </div>
         </span>
       </nav>
+      <Link className="topbar-cta" href="/tickets" aria-current={isCurrent(pathname, "/tickets") ? "page" : undefined}>
+        Get Tickets
+      </Link>
       {open ? (
         <div className="topbar-drawer-layer">
           <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
