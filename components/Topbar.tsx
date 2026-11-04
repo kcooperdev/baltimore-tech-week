@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -47,7 +48,10 @@ export function Topbar({
   }, [scene, pathname]);
 
   return (
-    <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone={scene ? "night" : "light"} inert={inertBar ? true : undefined}>
+    <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone={scene ? "night" : "dark"} inert={inertBar ? true : undefined}>
+      <Link href="/" className="topbar-mark" aria-label="Baltimore Tech Week">
+        <Image src="/images/baltimore-badge.png" alt="" width={48} height={48} priority />
+      </Link>
       <button
         type="button"
         className="topbar-burger"
@@ -96,6 +100,7 @@ export function Topbar({
           <button type="button" className="topbar-drawer-backdrop" aria-label="Close menu" onClick={() => setOpen(false)} />
           <div className="topbar-drawer" role="dialog" aria-label="Menu">
             <p className="topbar-drawer-brand">
+              <Image src="/images/baltimore-badge.png" alt="" width={72} height={72} />
               Baltimore
               <br />
               <span>Tech</span> Week

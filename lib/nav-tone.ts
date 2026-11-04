@@ -1,14 +1,14 @@
 const stops: [string, string][] = [
   [".page-hero", "night"],
-  [".plain-page", "light"],
-  [".plain-hero", "light"],
-  [".band-paper", "light"],
+  [".plain-page", "dark"],
+  [".plain-hero", "dark"],
+  [".band-paper", "dark"],
   [".band-ink", "dark"],
   [".band-connect", "dark"],
-  [".band-build", "gold"],
-  [".band-opportunity", "sky"],
-  [".band-sky", "sky"],
-  [".harbor-footer", "sunset"],
+  [".band-build", "dark"],
+  [".band-opportunity", "dark"],
+  [".band-sky", "dark"],
+  [".harbor-footer", "dark"],
 ];
 
 /** Which header treatment sits over the content at the top of the viewport. */

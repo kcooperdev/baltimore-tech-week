@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { hq, nav, site } from "@/lib/site";
 
@@ -6,8 +7,11 @@ export function Footer() {
     <footer className="harbor-footer">
       <div className="harbor-footer-inner">
         <Link href="/" className="harbor-footer-brand">
-          <span>Baltimore</span>
-          <span>Tech Week</span>
+          <Image src="/images/baltimore-badge.png" alt="" width={84} height={84} />
+          <span>
+            Baltimore
+            <span>Tech Week</span>
+          </span>
         </Link>
         <nav className="harbor-footer-nav" aria-label="Footer">
           {nav.primary.map((item) => (
