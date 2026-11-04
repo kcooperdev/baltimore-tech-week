@@ -3,7 +3,7 @@ import { formatPrice, generalAdmission, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  "Baltimore Tech Week tickets are $49 for April 26–30, 2027. The full week at 4MLK. Checkout is not open yet.",
+  "Baltimore Tech Week tickets are $49 for April 28–30, 2027. Three days at 4MLK. On sale later.",
 );
 
 export default function TicketsPage() {
@@ -13,7 +13,7 @@ export default function TicketsPage() {
         <header className="packs-head" id="main">
           <p className="week-kicker">{site.dates}</p>
           <h1>Tickets</h1>
-          <p>One pass. The week at 4MLK. Checkout is not open yet.</p>
+          <p>One pass. Three days at 4MLK. On sale later.</p>
         </header>
 
         <div className="packs-grid packs-single">
@@ -22,14 +22,14 @@ export default function TicketsPage() {
               <Ticket size={18} strokeWidth={2.25} aria-hidden="true" />
               {generalAdmission.name}
             </p>
-            <p className="pack-kicker">The full week at 4MLK.</p>
+            <p className="pack-kicker">Three days at 4MLK.</p>
             <p className="pack-price">{formatPrice(generalAdmission.price)}</p>
-            <p className="pack-note">The building, Monday through Friday.</p>
+            <p className="pack-note">The building, Wednesday through Friday.</p>
             <ul className="pack-rows">
               <li>
                 <Check size={16} strokeWidth={2.5} aria-hidden="true" />
                 <span>Days</span>
-                <span>Mon–Fri</span>
+                <span>Wed–Fri</span>
               </li>
               <li>
                 <Check size={16} strokeWidth={2.5} aria-hidden="true" />

@@ -3,7 +3,7 @@ import { hq, pageMeta, pillars, site, type Pillar } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "April 26–30, 2027. Tuesday Connect, Wednesday Build, Thursday Opportunity. Days at 4MLK.",
+  "April 28–30, 2027. Wednesday Connect, Thursday Build, Friday Opportunity. Days at 4MLK.",
 );
 
 type Row = {
@@ -95,8 +95,9 @@ export default function SchedulePage() {
           </div>
 
           <div className="week-actions">
-            <Link className="week-btn" href="/tickets">
-              Get a pass
+            <p className="pass-line">Passes are $49, on sale later.</p>
+            <Link className="week-btn" href="/sponsors">
+              Sponsor
             </Link>
           </div>
         </div>

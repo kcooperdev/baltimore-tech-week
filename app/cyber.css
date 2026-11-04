@@ -313,6 +313,27 @@
   color: #f3ead7;
 }
 
+.pass-line {
+  margin: 0.85rem 0 0;
+  color: #e2b13c;
+  font-weight: 700;
+}
+
+.week-actions .pass-line {
+  margin: 0;
+  align-self: center;
+}
+
+.tier-days {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.tier-days .tier-apply {
+  margin-top: 0;
+}
+
 .tier-apply {
   display: inline-flex;
   align-items: center;

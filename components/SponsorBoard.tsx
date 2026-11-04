@@ -2,23 +2,32 @@
 
 import { useEffect, useRef, useState } from "react";
 import { ApplyForm } from "@/components/ApplyForm";
-import { sponsorFields, sponsorTierCopy } from "@/lib/involve";
+import { leadDays, sponsorFieldsFor, sponsorTierCopy } from "@/lib/involve";
 
-export function SponsorBoard({ initialTier }: { initialTier?: string }) {
+type Selection = { tier: string; day?: string };
+
+export function SponsorBoard({ initialTier, initialDay }: { initialTier?: string; initialDay?: string }) {
   const known = new Set(sponsorTierCopy.map((item) => item.id));
-  const [tier, setTier] = useState<string | null>(initialTier && known.has(initialTier) ? initialTier : null);
+  const knownDay = new Set(leadDays.map((day) => day.value));
+  const starting =
+    initialTier && known.has(initialTier)
+      ? { tier: initialTier, day: initialDay && knownDay.has(initialDay) ? initialDay : undefined }
+      : null;
+  const [selection, setSelection] = useState<Selection | null>(starting);
   const dialog = useRef<HTMLDialogElement>(null);
-  const picked = sponsorTierCopy.find((item) => item.id === tier);
+  const picked = sponsorTierCopy.find((item) => item.id === selection?.tier);
+  const day = leadDays.find((item) => item.value === selection?.day);
 
   useEffect(() => {
     const node = dialog.current;
-    if (!node || !tier || node.open) return;
+    if (!node || !selection || node.open) return;
     node.showModal();
-  }, [tier]);
+  }, [selection]);
 
-  function open(id: string) {
-    setTier(id);
-    window.history.replaceState(null, "", `/sponsors?tier=${id}`);
+  function open(tier: string, nextDay?: string) {
+    setSelection({ tier, day: nextDay });
+    const query = nextDay ? `?tier=${tier}&day=${nextDay}` : `?tier=${tier}`;
+    window.history.replaceState(null, "", `/sponsors${query}`);
   }
 
   function close() {
@@ -41,23 +50,38 @@ export function SponsorBoard({ initialTier }: { initialTier?: string }) {
                   <li key={perk}>{perk}</li>
                 ))}
               </ul>
-              <button type="button" className="tier-apply" onClick={() => open(item.id)}>
-                Get this tier
-              </button>
+              {item.pick ? (
+                <div className="tier-days">
+                  {leadDays.map((option) => (
+                    <button key={option.value} type="button" className="tier-apply" onClick={() => open(item.id, option.value)}>
+                      {option.short}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <button type="button" className="tier-apply" onClick={() => open(item.id)}>
+                  Get this tier
+                </button>
+              )}
             </article>
           </li>
         ))}
       </ul>
 
-      <dialog ref={dialog} className="tier-dialog" aria-labelledby="sponsor-form-title" onClose={() => {
-        setTier(null);
-        window.history.replaceState(null, "", "/sponsors");
-      }}>
-        {picked ? (
+      <dialog
+        ref={dialog}
+        className="tier-dialog"
+        aria-labelledby="sponsor-form-title"
+        onClose={() => {
+          setSelection(null);
+          window.history.replaceState(null, "", "/sponsors");
+        }}
+      >
+        {picked && selection ? (
           <>
             <div className="tier-dialog-bar">
               <div>
-                <h2 id="sponsor-form-title">{picked.name}</h2>
+                <h2 id="sponsor-form-title">{day ? `${picked.name} · ${day.short.split(" · ")[0]}` : picked.name}</h2>
                 <p>{picked.price}</p>
               </div>
               <button type="button" className="tier-dialog-close" onClick={close}>
@@ -65,14 +89,14 @@ export function SponsorBoard({ initialTier }: { initialTier?: string }) {
               </button>
             </div>
             <ApplyForm
-              key={picked.id}
+              key={`${selection.tier}-${selection.day ?? "open"}`}
               endpoint="/api/apply"
               extra={{ kind: "sponsor" }}
-              defaults={{ tier: picked.id }}
-              submitLabel="Book call & submit"
+              defaults={{ tier: selection.tier, ...(selection.day ? { day: selection.day } : {}) }}
+              submitLabel="Submit application"
               successTitle="Thanks. We have your application."
-              successBody="If you booked the 30-minute intro, the calendar invite comes from TidyCal. Nothing to pay today. If you still need a time, we will write you."
-              fields={sponsorFields}
+              successBody="Apply by February 15. The name is confirmed when the agreement is signed, by March 1. Talks are chosen that day, so the name can go out with the schedule. If you still need a time for the intro, we will write you."
+              fields={sponsorFieldsFor(selection.tier)}
             />
           </>
         ) : null}

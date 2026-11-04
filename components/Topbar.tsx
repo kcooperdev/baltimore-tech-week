@@ -93,8 +93,8 @@ export function Topbar({
           </div>
         </span>
       </nav>
-      <Link className="topbar-cta" href="/tickets" aria-current={isCurrent(pathname, "/tickets") ? "page" : undefined}>
-        Get Tickets
+      <Link className="topbar-cta" href="/sponsors" aria-current={isCurrent(pathname, "/sponsors") ? "page" : undefined}>
+        Sponsor
       </Link>
       {open ? (
         <div className="topbar-drawer-layer">

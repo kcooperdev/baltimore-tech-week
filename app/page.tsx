@@ -4,9 +4,9 @@ import { LivePortal } from "@/components/LivePortal";
 import { pillars, site } from "@/lib/site";
 
 const panelClass = {
-  tuesday: "day-panel day-panel-connect",
-  wednesday: "day-panel day-panel-build",
-  thursday: "day-panel day-panel-opportunity",
+  wednesday: "day-panel day-panel-connect",
+  thursday: "day-panel day-panel-build",
+  friday: "day-panel day-panel-opportunity",
 } as const;
 
 export default async function Home({
@@ -31,7 +31,10 @@ export default async function Home({
             <h2 id="week-promise" className="week-title">
               {site.promise}
             </h2>
-            <p className="week-lede">{site.positioning}</p>
+            <p className="week-lede">
+              {site.room} {site.positioning}
+            </p>
+            <p className="pass-line">{site.passes}</p>
             <div className="day-panels">
               {pillars.map((pillar) => (
                 <Link key={pillar.id} className={panelClass[pillar.id]} href={`/schedule#${pillar.id}`}>

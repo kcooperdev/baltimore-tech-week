@@ -40,15 +40,13 @@ export const sessionTypes = [
 export const audienceLevels = ["Beginner", "Intermediate", "Advanced", "General Audience"];
 
 export const programNights = [
-  { value: "2027-04-26", label: "Deep & MedTech · Mon · April 26" },
-  { value: "2027-04-27", label: "AI · Tue · April 27" },
-  { value: "2027-04-28", label: "Creative Tech · Wed · April 28" },
-  { value: "2027-04-29", label: "Founders & Startups · Thu · April 29" },
-  { value: "2027-04-30", label: "BTW Finale · Fri · April 30" },
+  { value: "2027-04-28", label: "Connect · Wed · April 28" },
+  { value: "2027-04-29", label: "Build · Thu · April 29" },
+  { value: "2027-04-30", label: "Opportunity · Fri · April 30" },
   { value: "Any", label: "No preference" },
 ];
 
-export const partnerNights = ["Deep & MedTech", "AI", "Creative Tech", "Founders & Startups", "BTW Finale"];
+export const partnerNights = ["Connect · Wednesday", "Build · Thursday", "Opportunity · Friday"];
 
 export const speakerTopics = [
   "MedTech / Biotech",
@@ -125,9 +123,9 @@ export const sponsorTierCopy = [
     id: "lead",
     name: "Lead",
     price: "$5,000",
-    spots: "Three companies",
-    text: "Your name on one day.",
-    perks: ["Everything in Community", "One day of the week in your name", "A two-minute welcome that day", "Eight passes"],
+    spots: "One company each day",
+    text: "Your name on Connect, Build, or Opportunity.",
+    perks: ["Everything in Community", "One company on that day", "A two-minute welcome that day", "Eight passes"],
     pick: true,
     top: false,
   },
@@ -278,6 +276,27 @@ export const sponsorFields: ApplyField[] = [
   },
   { name: "notes", label: "Anything the call should cover?", type: "textarea", placeholder: "If you still need a time, say which week works.", step: "Book a call" },
 ];
+
+export const leadDays = [
+  { value: "connect", label: "Connect · Wednesday · April 28", short: "Connect · April 28" },
+  { value: "build", label: "Build · Thursday · April 29", short: "Build · April 29" },
+  { value: "opportunity", label: "Opportunity · Friday · April 30", short: "Opportunity · April 30" },
+];
+
+export function sponsorFieldsFor(tier: string): ApplyField[] {
+  if (tier !== "lead") return sponsorFields;
+  const dayField: ApplyField = {
+    name: "day",
+    label: "Which day?",
+    type: "select",
+    required: true,
+    choices: leadDays.map(({ value, label }) => ({ value, label })),
+    step: "Company & tier",
+    wide: true,
+  };
+  const tierIndex = sponsorFields.findIndex((field) => field.name === "tier");
+  return [...sponsorFields.slice(0, tierIndex + 1), dayField, ...sponsorFields.slice(tierIndex + 1)];
+}
 
 export const ambassadorFields: ApplyField[] = [
   { name: "name", label: "Your name", required: true, autoComplete: "name", step: you },

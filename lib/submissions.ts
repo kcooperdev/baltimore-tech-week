@@ -32,12 +32,15 @@ function list(value: unknown) {
   return one ? [one] : [];
 }
 
-/** The live database accepts the April 2027 week. The public week is April 26–30. */
+/** The live database accepts the April 2027 week. The public days are April 28–30. */
 function datesFor(value: unknown) {
   const map: Record<string, string> = {
-    tuesday: "2027-04-27",
     wednesday: "2027-04-28",
     thursday: "2027-04-29",
+    friday: "2027-04-30",
+    connect: "2027-04-28",
+    build: "2027-04-29",
+    opportunity: "2027-04-30",
   };
   const dates = list(value)
     .map((item) => {
@@ -45,7 +48,7 @@ function datesFor(value: unknown) {
       return Object.entries(map).find(([day]) => key.startsWith(day))?.[1] ?? "";
     })
     .filter(Boolean);
-  return dates.length ? dates : ["2027-04-27", "2027-04-28", "2027-04-29"];
+  return dates.length ? dates : ["2027-04-28", "2027-04-29", "2027-04-30"];
 }
 
 function optional(value: unknown, label: string, max = 500) {
@@ -93,6 +96,12 @@ const TIER_LABEL: Record<string, string> = {
   community: "Community ($2,500)",
   lead: "Lead ($5,000)",
   presenting: "Presenting ($10,000)",
+};
+
+const LEAD_DAY: Record<string, string> = {
+  connect: "Connect (Wednesday, April 28)",
+  build: "Build (Thursday, April 29)",
+  opportunity: "Opportunity (Friday, April 30)",
 };
 
 async function forward(path: string, body: Record<string, unknown>) {
@@ -247,8 +256,12 @@ export async function saveApplication(body: Record<string, unknown>) {
     const note = optional(body.notes, "Notes", 2000);
     if (booked === "no" && !note) throw new SubmitError("Tell us a week that works");
     const label = TIER_LABEL[tier];
+    const day = optional(body.day, "Day", 40);
+    if (tier === "lead" && !LEAD_DAY[day]) throw new SubmitError("Choose Connect, Build, or Opportunity");
+    const dayLabel = day && LEAD_DAY[day] ? LEAD_DAY[day] : "";
     const notes = [
       `Tier: ${label}`,
+      dayLabel && `Day: ${dayLabel}`,
       optional(body.size, "Company size", 40) && `Company size: ${optional(body.size, "Company size", 40)}`,
       `Goals: ${goals.join(", ")}`,
       `Decision: ${text(body.decision, "Decision", 80)}`,
@@ -267,7 +280,7 @@ export async function saveApplication(body: Record<string, unknown>) {
       organization: text(body.organization, "Company", 160),
       role: text(body.title, "Role", 120),
       website: siteUrl(body.website, "Website"),
-      pass: `Sponsor · ${label.split(" (")[0]}`,
+      pass: `Sponsor · ${label.split(" (")[0]}${dayLabel ? ` · ${dayLabel.split(" (")[0]}` : ""}`,
       notes,
     });
   }
