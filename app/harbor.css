@@ -185,7 +185,6 @@ html:has(.harbor-pin) body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
 
 .day-scroll-cue.is-on {
@@ -401,7 +400,6 @@ html:has(.harbor-pin) body {
   display: inline-flex;
   align-items: center;
   position: relative;
-  cursor: pointer;
 }
 
 .harbor-link:after {
@@ -1542,7 +1540,6 @@ html:has(.harbor-pin) body {
   font: inherit;
   font-size: 0.88rem;
   font-weight: 650;
-  cursor: pointer;
 }
 
 .filter-row button[aria-selected="true"] {
@@ -1636,7 +1633,6 @@ html:has(.harbor-pin) body {
     height: 44px;
     color: inherit;
     pointer-events: auto;
-    cursor: pointer;
     background: #070b1647;
     border: 1px solid #f3ead738;
     border-radius: 999px;

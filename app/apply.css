@@ -31,7 +31,6 @@
 
 .apply-step.is-done {
   color: #16120c;
-  cursor: pointer;
 }
 
 .apply-step.is-current {
@@ -184,10 +183,9 @@
   }
 }
 
-*:not(:disabled) {
-  cursor: url("/images/crab-cursor.png") 6 11, url("/images/crab-cursor.cur") 6 11, auto !important;
-}
-
-:disabled {
-  cursor: not-allowed !important;
+html,
+html *,
+html *::before,
+html *::after {
+  cursor: url("/images/crab-cursor.png") 4 8, auto !important;
 }
