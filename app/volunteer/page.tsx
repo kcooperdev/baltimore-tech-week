@@ -3,7 +3,7 @@ import { pageMeta, pillars } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Volunteer",
-  "Volunteer at Baltimore Tech Week, April 28–30, 2027, at 4MLK. No hour quota.",
+  "Volunteer at Baltimore Tech Week, April 27–29, 2027, at 4MLK. No hour quota.",
 );
 
 export default function VolunteerPage() {

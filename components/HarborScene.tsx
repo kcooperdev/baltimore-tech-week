@@ -53,7 +53,7 @@ export function HarborScene() {
       setHintOn(hint > 0.2 && !past);
       if (night > 0.8 && !announced.current) {
         announced.current = true;
-        setStatus("Baltimore Tech Week. Wednesday through Friday.");
+        setStatus("Baltimore Tech Week. Tuesday through Thursday.");
       }
       if (night < 0.2) {
         announced.current = false;
@@ -148,7 +148,7 @@ export function HarborScene() {
             </span>
           </h1>
           <p className="night-meta">
-            <time dateTime="2027-04-28/2027-04-30">{site.dates}</time>
+            <time dateTime="2027-04-27/2027-04-29">{site.dates}</time>
           </p>
         </main>
       </div>

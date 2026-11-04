@@ -575,16 +575,16 @@
   border-bottom: 2px solid #e2b13c;
 }
 
-.day-sheet-wednesday header {
+.day-sheet-tuesday header {
   background: #0c2433;
 }
 
-.day-sheet-thursday header {
+.day-sheet-wednesday header {
   background: #e2b13c;
   color: #16120c;
 }
 
-.day-sheet-friday header {
+.day-sheet-thursday header {
   background: #16365c;
 }
 
@@ -611,8 +611,8 @@
   line-height: 1.35;
 }
 
-.day-sheet-thursday .day-sheet-date,
-.day-sheet-thursday header p:last-child {
+.day-sheet-wednesday .day-sheet-date,
+.day-sheet-wednesday header p:last-child {
   color: #16120c;
 }
 

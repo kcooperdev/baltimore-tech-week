@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Editable content for Baltimore Tech Week 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
- * The week is Wednesday, April 28 through Friday, April 30, 2027.
+ * The week is Tuesday, April 27 through Thursday, April 29, 2027.
  * Set phase to "live" during the week to turn the homepage into the attendee view.
  */
 
@@ -14,9 +14,9 @@ export const site = {
   url: "https://bmoretechweek.com",
   email: "team@bmoretechweek.com",
   phase: "preview" as "preview" | "live",
-  liveDay: "wednesday" as DayId,
-  dates: "April 28–30, 2027",
-  when: "Wednesday–Friday",
+  liveDay: "tuesday" as DayId,
+  dates: "April 27–29, 2027",
+  when: "Tuesday–Thursday",
   where: "Baltimore, Maryland",
   tagline: "CONNECT. BUILD. OPPORTUNITY.",
   promise: "Be in the room.",
@@ -24,7 +24,7 @@ export const site = {
   positioning: "Three days with the people building Baltimore. Day at 4MLK. Night around the city.",
 };
 
-export type DayId = "wednesday" | "thursday" | "friday";
+export type DayId = "tuesday" | "wednesday" | "thursday";
 export type DayPart = "morning" | "afternoon" | "evening";
 export type Place = "hq" | "partner";
 
@@ -60,9 +60,9 @@ export type Pillar = {
 
 export const pillars: Pillar[] = [
   {
-    id: "wednesday",
-    day: "Wednesday",
-    date: "April 28",
+    id: "tuesday",
+    day: "Tuesday",
+    date: "April 27",
     name: "Connect",
     question: "Who should I meet?",
     tagline: "Meet the people building Baltimore.",
@@ -70,7 +70,7 @@ export const pillars: Pillar[] = [
     purpose: "Put a name to the work happening here.",
     stops: [
       {
-        id: "wed-open",
+        id: "tue-open",
         when: "10am–12pm",
         where: "4MLK",
         title: "Check-in and expo",
@@ -78,11 +78,62 @@ export const pillars: Pillar[] = [
         kind: "hq",
       },
       {
-        id: "wed-floor",
+        id: "tue-floor",
         when: "12–4pm",
         where: "4MLK",
         title: "Community and talks",
         text: "",
+        kind: "hq",
+      },
+      {
+        id: "tue-break",
+        when: "4–5pm",
+        where: "",
+        title: "Break",
+        text: "",
+        kind: "pause",
+      },
+      {
+        id: "tue-city",
+        when: "Evening",
+        where: "City",
+        title: "City night",
+        text: "",
+        kind: "city",
+        places: [
+          {
+            name: "Jerk At Nite",
+            line: "Social",
+            href: "/around-baltimore#jerk-at-nite",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "wednesday",
+    day: "Wednesday",
+    date: "April 28",
+    name: "Build",
+    question: "What can I create?",
+    tagline: "Workshops, demos, and startups.",
+    summary: "Workshops, demos, and startups.",
+    purpose: "Leave with something you made.",
+    stops: [
+      {
+        id: "wed-open",
+        when: "10am–12pm",
+        where: "4MLK",
+        title: "Coworking and expo",
+        text: "",
+        kind: "hq",
+      },
+      {
+        id: "wed-floor",
+        when: "12–4pm",
+        where: "4MLK",
+        title: "Workshops and demos",
+        text: "AI, product, data, creative tech",
         kind: "hq",
       },
       {
@@ -94,25 +145,17 @@ export const pillars: Pillar[] = [
         kind: "pause",
       },
       {
-        id: "wed-night",
-        when: "5–9pm",
-        where: "4MLK",
-        title: "Opening night",
-        text: "",
-        kind: "hq",
-      },
-      {
         id: "wed-city",
-        when: "After 9",
+        when: "Evening",
         where: "City",
         title: "City night",
         text: "",
         kind: "city",
         places: [
           {
-            name: "Jerk At Nite",
-            line: "Not confirmed",
-            href: "/around-baltimore#jerk-at-nite",
+            name: "Spark Baltimore",
+            line: "Founders",
+            href: "/around-baltimore#spark",
           },
         ],
       },
@@ -122,17 +165,17 @@ export const pillars: Pillar[] = [
     id: "thursday",
     day: "Thursday",
     date: "April 29",
-    name: "Build",
-    question: "What can I create?",
-    tagline: "Workshops, demos, and startups.",
-    summary: "Workshops, demos, and startups.",
-    purpose: "Leave with something you made.",
+    name: "Opportunity",
+    question: "Where can this take me?",
+    tagline: "Jobs, funding, and a next step.",
+    summary: "Jobs, funding, and a next step.",
+    purpose: "A job, a cofounder, a room you go back to.",
     stops: [
       {
         id: "thu-open",
         when: "10am–12pm",
         where: "4MLK",
-        title: "Coworking and expo",
+        title: "Coworking and employers",
         text: "",
         kind: "hq",
       },
@@ -140,23 +183,15 @@ export const pillars: Pillar[] = [
         id: "thu-floor",
         when: "12–4pm",
         where: "4MLK",
-        title: "Workshops and demos",
-        text: "AI, product, data, creative tech",
+        title: "Jobs, classes, and funding",
+        text: "",
         kind: "hq",
       },
       {
-        id: "thu-break",
+        id: "thu-close",
         when: "4–5pm",
-        where: "",
-        title: "Break",
-        text: "",
-        kind: "pause",
-      },
-      {
-        id: "thu-night",
-        when: "5–9pm",
         where: "4MLK",
-        title: "Build night",
+        title: "Closing",
         text: "",
         kind: "hq",
       },
@@ -169,70 +204,9 @@ export const pillars: Pillar[] = [
         kind: "city",
         places: [
           {
-            name: "Spark Baltimore",
-            line: "Founders",
-            href: "/around-baltimore#spark",
-          },
-          {
             name: "1023 W Baltimore St Art Gallery",
             line: "Creative tech",
             href: "/around-baltimore#gallery",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    id: "friday",
-    day: "Friday",
-    date: "April 30",
-    name: "Opportunity",
-    question: "Where can this take me?",
-    tagline: "Jobs, funding, and a next step.",
-    summary: "Jobs, funding, and a next step.",
-    purpose: "A job, a cofounder, a room you go back to.",
-    stops: [
-      {
-        id: "fri-open",
-        when: "10am–12pm",
-        where: "4MLK",
-        title: "Coworking and employers",
-        text: "",
-        kind: "hq",
-      },
-      {
-        id: "fri-floor",
-        when: "12–4pm",
-        where: "4MLK",
-        title: "Jobs, classes, and funding",
-        text: "",
-        kind: "hq",
-      },
-      {
-        id: "fri-close",
-        when: "4–5pm",
-        where: "4MLK",
-        title: "Closing",
-        text: "",
-        kind: "hq",
-      },
-      {
-        id: "fri-city",
-        when: "After 5",
-        where: "City",
-        title: "City night",
-        text: "",
-        kind: "city",
-        places: [
-          {
-            name: "Around the city",
-            line: "Food and music",
-            href: "/around-baltimore",
-          },
-          {
-            name: "Jerk At Nite",
-            line: "Not confirmed",
-            href: "/around-baltimore#jerk-at-nite",
           },
         ],
       },
@@ -417,7 +391,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "Spark Baltimore",
     neighborhood: "Downtown",
     address: "8 Market Place, Baltimore, MD 21202",
-    focus: "Thursday night · founders",
+    focus: "Wednesday night · founders",
     categories: ["Startups", "Connect"],
     possible: [
       "Founders",
@@ -448,7 +422,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "Jerk At Nite",
     neighborhood: "Downtown",
     address: "21 N Eutaw St, Baltimore, MD 21201",
-    focus: "A possible social · Wednesday or Friday",
+    focus: "Tuesday night · social",
     categories: ["Networking", "Community"],
     possible: [
       "Networking",
@@ -489,4 +463,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week is April 28–30, 2027, Wednesday through Friday, at 4MLK by day and around the city at night. Passes from $29.";
+  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK by day and around the city at night. Passes from $29.";

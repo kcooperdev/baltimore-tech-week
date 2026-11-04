@@ -3,7 +3,7 @@ import { pageMeta, sponsorPackages } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Sponsors",
-  "Sponsor Baltimore Tech Week, April 28–30, 2027. Packages and prices will be published after they are approved.",
+  "Sponsor Baltimore Tech Week, April 27–29, 2027. Packages and prices will be published after they are approved.",
 );
 
 export default function SponsorsPage() {

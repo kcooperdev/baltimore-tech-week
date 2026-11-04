@@ -3,7 +3,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Ambassadors",
-  "Tell people about Baltimore Tech Week, April 28–30, 2027, at 4MLK. No quotas.",
+  "Tell people about Baltimore Tech Week, April 27–29, 2027, at 4MLK. No quotas.",
 );
 
 export default function AmbassadorPage() {

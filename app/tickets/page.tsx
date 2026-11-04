@@ -3,7 +3,7 @@ import { formatPrice, generalAdmission, pageMeta, site, vip } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Tickets",
-  "Baltimore Tech Week tickets, April 28–30, 2027. General Admission is $29, $49, or $69. VIP is $99. Checkout is not open yet.",
+  "Baltimore Tech Week tickets, April 27–29, 2027. General Admission is $29, $49, or $69. VIP is $99. Checkout is not open yet.",
 );
 
 export default function TicketsPage() {

@@ -3,7 +3,7 @@ import { exhibitors, hq, pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Expo",
-  "The Baltimore Tech Week Expo is at 4MLK, April 28–30, 2027. Exhibitor names will be listed after they confirm.",
+  "The Baltimore Tech Week Expo is at 4MLK, April 27–29, 2027. Exhibitor names will be listed after they confirm.",
 );
 
 export default function ExpoPage() {

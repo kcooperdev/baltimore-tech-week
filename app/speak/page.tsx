@@ -3,7 +3,7 @@ import { pageMeta, pillars, speakerFormats } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Speak",
-  "Apply to speak at Baltimore Tech Week, April 28–30, 2027. Applying does not reserve a slot.",
+  "Apply to speak at Baltimore Tech Week, April 27–29, 2027. Applying does not reserve a slot.",
 );
 
 export default function SpeakPage() {

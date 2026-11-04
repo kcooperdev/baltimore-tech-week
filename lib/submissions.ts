@@ -32,12 +32,12 @@ function list(value: unknown) {
   return one ? [one] : [];
 }
 
-/** The existing database stores the week as April 28–30, 2027. */
+/** The live database accepts the April 2027 week. The public days are April 27–29. */
 function datesFor(value: unknown) {
   const map: Record<string, string> = {
+    tuesday: "2027-04-27",
     wednesday: "2027-04-28",
     thursday: "2027-04-29",
-    friday: "2027-04-30",
   };
   const dates = list(value)
     .map((item) => {
@@ -45,7 +45,7 @@ function datesFor(value: unknown) {
       return Object.entries(map).find(([day]) => key.startsWith(day))?.[1] ?? "";
     })
     .filter(Boolean);
-  return dates.length ? dates : ["2027-04-28", "2027-04-29", "2027-04-30"];
+  return dates.length ? dates : ["2027-04-27", "2027-04-28", "2027-04-29"];
 }
 
 function sessionFormat(value: string) {
