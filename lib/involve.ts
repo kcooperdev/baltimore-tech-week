@@ -146,6 +146,35 @@ export const sponsorTierCopy = [
   },
 ];
 
+export const roles = [
+  "Founder",
+  "Engineer",
+  "Designer",
+  "Product",
+  "Organizer",
+  "Student",
+  "Teacher",
+  "Marketing",
+  "Partnerships",
+  "Recruiter",
+  "Operator",
+  "Other",
+];
+
+export const cities = [
+  "Baltimore, MD",
+  "Towson, MD",
+  "Columbia, MD",
+  "Annapolis, MD",
+  "Washington, DC",
+  "Elsewhere in Maryland",
+  "Somewhere else",
+];
+
+export const gathered = ["Students", "Founders", "Engineers", "Operators", "Designers", "Neighbors", "Employers"];
+
+export const spreadHow = ["A post", "A meetup", "A class", "A newsletter", "At work", "A group chat"];
+
 export const companySizes = ["1–10", "11–50", "51–200", "201–1,000", "1,000+"];
 
 export const sponsorDecisions = ["I can decide", "I recommend, someone else signs", "Exploring for later"];
@@ -183,9 +212,9 @@ export const speakFields: ApplyField[] = [
   { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", placeholder: "you@studio.com", step: you },
   { name: "phone", label: "Phone", type: "tel", autoComplete: "tel", placeholder: "410-555-0100", step: you },
   { name: "pronouns", label: "Pronouns", type: "select", options: pronouns, placeholder: "Choose pronouns", step: you },
-  { name: "cityState", label: "City & state", required: true, autoComplete: "address-level1", placeholder: "Baltimore, MD", step: you },
+  { name: "cityState", label: "City", type: "select", required: true, options: cities, placeholder: "Choose a city", step: you },
   { name: "yearsAround", label: "Your tie to the city", type: "select", options: yearsAround, placeholder: "How you know Baltimore", step: you },
-  { name: "title", label: "Professional title", required: true, placeholder: "Founder, engineer, organizer", step: you },
+  { name: "title", label: "What you do", type: "select", required: true, options: roles, placeholder: "Choose one", step: you },
   { name: "company", label: "Company / organization", autoComplete: "organization", placeholder: "Studio, company, or independent", step: you },
   { name: "linkedinUrl", label: "LinkedIn", type: "url", placeholder: "https://linkedin.com/in/", step: you },
   { name: "websiteUrl", label: "Website", type: "url", placeholder: "https://", step: you },
@@ -234,7 +263,7 @@ export const speakFields: ApplyField[] = [
 export const partnerFields: ApplyField[] = [
   { name: "name", label: "Your name", required: true, autoComplete: "name", step: you },
   { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", placeholder: "you@group.org", step: you },
-  { name: "title", label: "Your role", required: true, placeholder: "Organizer, advisor, founder", step: you },
+  { name: "title", label: "Your role", type: "select", required: true, options: roles, placeholder: "Choose one", step: you },
   { name: "phone", label: "Phone", type: "tel", step: you },
   { name: "pronouns", label: "Pronouns", type: "select", options: pronouns, placeholder: "Choose pronouns", step: you },
   { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
@@ -244,7 +273,7 @@ export const partnerFields: ApplyField[] = [
   { name: "neighborhood", label: "Home neighborhood", type: "select", options: neighborhoods, placeholder: "Choose one", step: "Your group" },
   { name: "website", label: "Website", type: "url", placeholder: "https://", step: "Your group" },
   { name: "instagram", label: "Instagram", placeholder: "@yourgroup", step: "Your group" },
-  { name: "audience", label: "Who do you gather?", type: "textarea", placeholder: "Students, founders, operators, neighbors.", step: "Your group" },
+  { name: "audience", label: "Who do you gather?", type: "checks", options: gathered, step: "Your group" },
   { name: "channels", label: "Where can you share the week?", type: "checks", required: true, options: partnerChannels, step: "How you’ll help" },
   { name: "help", label: "How do you want to help?", type: "checks", required: true, options: partnerHelp, step: "How you’ll help" },
   { name: "nights", label: "Nights you could show up", type: "checks", options: partnerNights, hint: "Optional. Helps us plan shout-outs and rooms.", step: "How you’ll help" },
@@ -254,7 +283,7 @@ export const partnerFields: ApplyField[] = [
 export const sponsorFields: ApplyField[] = [
   { name: "name", label: "Your name", required: true, autoComplete: "name", step: you },
   { name: "email", label: "Work email", type: "email", required: true, autoComplete: "email", placeholder: "you@company.com", step: you },
-  { name: "title", label: "Role / title", required: true, placeholder: "Partnerships, founder, marketing", step: you },
+  { name: "title", label: "Your role", type: "select", required: true, options: roles, placeholder: "Choose one", step: you },
   { name: "phone", label: "Phone", type: "tel", hint: "We’ll use this only if the calendar invite bounces.", step: you },
   { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
   { name: "organization", label: "Company", required: true, autoComplete: "organization", step: "Company & tier" },
@@ -301,24 +330,16 @@ export function sponsorFieldsFor(tier: string): ApplyField[] {
 export const ambassadorFields: ApplyField[] = [
   { name: "name", label: "Your name", required: true, autoComplete: "name", step: you },
   { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", step: you },
-  { name: "city", label: "City", required: true, placeholder: "Baltimore, MD", step: you },
+  { name: "city", label: "City", type: "select", required: true, options: cities, placeholder: "Choose a city", step: you },
   { name: "pronouns", label: "Pronouns", type: "select", options: pronouns, placeholder: "Choose pronouns", step: you },
   { name: "yearsAround", label: "Your tie to the city", type: "select", options: yearsAround, placeholder: "How you know Baltimore", step: you },
   { name: "neighborhood", label: "Neighborhood you move through", type: "select", options: neighborhoods, placeholder: "Choose one", step: you },
   { name: "organization", label: "School, workplace, or group", placeholder: "Optional", step: you },
-  { name: "title", label: "What you do there", placeholder: "Student, organizer, engineer", step: you },
+  { name: "title", label: "What you do there", type: "select", options: roles, placeholder: "Choose one", step: you },
   { name: "phone", label: "Phone", type: "tel", step: you },
   { name: "heardAbout", label: "How did you hear about the week?", type: "select", options: heardAbout, placeholder: "Choose one", step: you, wide: true },
   { name: "channels", label: "Where will you share?", type: "checks", required: true, options: ambassadorChannels, step: "Get the word out" },
   { name: "reach", label: "About how many people can you reach?", type: "select", required: true, options: ambassadorReach, placeholder: "Choose one", step: "Get the word out", wide: true },
-  {
-    name: "why",
-    label: "How will you get the word out?",
-    type: "textarea",
-    required: true,
-    minWords: 12,
-    hint: "A campus Slack, a Sunday dinner, a story you already tell. Be specific.",
-    step: "Get the word out",
-  },
+  { name: "why", label: "How will you get the word out?", type: "select", required: true, options: spreadHow, placeholder: "Choose one", step: "Get the word out", wide: true },
   { name: "notes", label: "Anything else?", type: "textarea", step: "Get the word out" },
 ];

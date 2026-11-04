@@ -185,7 +185,7 @@
 }
 
 *:not(:disabled) {
-  cursor: url("/images/laptop-cursor.png") 4 2, auto !important;
+  cursor: url("/images/crab-cursor.png") 6 11, url("/images/crab-cursor.cur") 6 11, auto !important;
 }
 
 :disabled {
