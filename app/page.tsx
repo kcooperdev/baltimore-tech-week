@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { formatPrice, generalAdmission, pillars, site } from "@/lib/site";
+import { pillars, site } from "@/lib/site";
 
 const panelClass = {
   tuesday: "day-panel day-panel-connect",
@@ -32,14 +32,6 @@ export default async function Home({
               {site.promise}
             </h2>
             <p className="week-lede">{site.positioning}</p>
-            <div className="week-actions">
-              <Link className="week-btn" href="/tickets">
-                Get a pass · {formatPrice(generalAdmission.price)}
-              </Link>
-              <Link className="week-btn week-btn-ghost" href="/schedule">
-                Schedule
-              </Link>
-            </div>
             <div className="day-panels">
               {pillars.map((pillar) => (
                 <Link key={pillar.id} className={panelClass[pillar.id]} href={`/schedule#${pillar.id}`}>
