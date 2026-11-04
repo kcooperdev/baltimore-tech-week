@@ -1,4 +1,4 @@
-import { InquiryForm } from "@/components/InquiryForm";
+import { ApplyForm } from "@/components/ApplyForm";
 import { PageHeader } from "@/components/PageHeader";
 import { exhibitors, hq, pageMeta } from "@/lib/site";
 
@@ -42,13 +42,16 @@ export default function ExpoPage() {
               <h2 className="week-title">A table.</h2>
               <p className="week-lede">Tell us what someone should stop and see. We confirm the space before we put your name on the floor.</p>
             </div>
-            <InquiryForm
+            <ApplyForm
               id="exhibit"
-              subject="Baltimore Tech Week exhibitor application"
+              endpoint="/api/apply"
+              extra={{ kind: "exhibitor" }}
               submitLabel="Ask for a table"
+              successTitle="Thanks. We have your table request."
+              successBody="We confirm the space before your name goes on the floor."
               fields={[
                 { name: "organization", label: "Organization", required: true, autoComplete: "organization" },
-                { name: "contact", label: "Your name", required: true, autoComplete: "name" },
+                { name: "name", label: "Your name", required: true, autoComplete: "name" },
                 { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
                 { name: "website", label: "Website" },
                 { name: "showing", label: "What will you show?", type: "textarea", required: true },

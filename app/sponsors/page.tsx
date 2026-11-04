@@ -1,4 +1,4 @@
-import { InquiryForm } from "@/components/InquiryForm";
+import { ApplyForm } from "@/components/ApplyForm";
 import { PageHeader } from "@/components/PageHeader";
 import { pageMeta, sponsorPackages, sponsorSurfaces } from "@/lib/site";
 
@@ -46,20 +46,18 @@ export default function SponsorsPage() {
                 </ul>
               )}
             </div>
-            <InquiryForm
+            <ApplyForm
               id="sponsor-form"
-              subject="Baltimore Tech Week sponsorship"
+              endpoint="/api/apply"
+              extra={{ kind: "sponsor" }}
               submitLabel="Send"
+              successTitle="Thanks. We have your application."
+              successBody="No public prices yet. Tell us the room you want and we will write back."
               fields={[
                 { name: "organization", label: "Organization", required: true, autoComplete: "organization" },
-                { name: "contact", label: "Your name", required: true, autoComplete: "name" },
+                { name: "name", label: "Your name", required: true, autoComplete: "name" },
                 { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
-                {
-                  name: "note",
-                  label: "What do you want to do?",
-                  type: "textarea",
-                  required: true,
-                },
+                { name: "note", label: "What do you want to do?", type: "textarea", required: true },
               ]}
             />
           </div>

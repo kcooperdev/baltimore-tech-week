@@ -1,4 +1,4 @@
-import { InquiryForm } from "@/components/InquiryForm";
+import { ApplyForm } from "@/components/ApplyForm";
 import { PageHeader } from "@/components/PageHeader";
 import { formatPrice, generalAdmission, pageMeta, site, vip } from "@/lib/site";
 
@@ -41,10 +41,12 @@ export default function TicketsPage() {
             <p className="week-lede">A pass is the HQ. It is not a ticket to every partner night.</p>
             <p className="week-lede">What is included can still change before checkout opens.</p>
           </div>
-          <InquiryForm
+          <ApplyForm
             id="notify"
-            subject="Baltimore Tech Week ticket interest"
+            endpoint="/api/tickets"
             submitLabel="Get Tickets"
+            successTitle="Thanks. We will write you."
+            successBody="Checkout is not open yet. You will hear from us when the sale link is ready."
             fields={[
               { name: "name", label: "Name", required: true, autoComplete: "name" },
               { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },

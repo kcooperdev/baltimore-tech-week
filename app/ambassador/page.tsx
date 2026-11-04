@@ -1,4 +1,4 @@
-import { InquiryForm } from "@/components/InquiryForm";
+import { ApplyForm } from "@/components/ApplyForm";
 import { PageHeader } from "@/components/PageHeader";
 import { pageMeta } from "@/lib/site";
 
@@ -19,9 +19,12 @@ export default function AmbassadorPage() {
         <section className="band-paper">
           <div className="week-wrap split">
             <p className="week-lede">The week spreads when someone you trust says, come with me.</p>
-            <InquiryForm
-              subject="Baltimore Tech Week ambassador"
+            <ApplyForm
+              endpoint="/api/apply"
+              extra={{ kind: "ambassador" }}
               submitLabel="Count me in"
+              successTitle="Thanks. You are on the ambassador list."
+              successBody="No quota and no script. Tell the rooms you are already in."
               fields={[
                 { name: "name", label: "Name", required: true, autoComplete: "name" },
                 { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },

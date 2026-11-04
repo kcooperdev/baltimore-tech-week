@@ -4,6 +4,7 @@ import { Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import "./harbor.css";
 import "./cyber.css";
+import "./apply.css";
 import { Topbar } from "@/components/Topbar";
 import { Footer } from "@/components/Footer";
 import { homeDescription, hq, site } from "@/lib/site";

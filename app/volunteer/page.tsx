@@ -1,4 +1,4 @@
-import { InquiryForm } from "@/components/InquiryForm";
+import { ApplyForm } from "@/components/ApplyForm";
 import { PageHeader } from "@/components/PageHeader";
 import { pageMeta, pillars } from "@/lib/site";
 
@@ -19,20 +19,32 @@ export default function VolunteerPage() {
         <section className="band-paper">
           <div className="week-wrap split">
             <p className="week-lede">Tell us which day you can actually be at 4MLK. We will write back when roles are set.</p>
-            <InquiryForm
-              subject="Baltimore Tech Week volunteer"
+            <ApplyForm
+              endpoint="/api/volunteers"
               submitLabel="Volunteer"
+              successTitle="Thanks. We have you down."
+              successBody="No hour quota. We will write when the shifts are real."
               fields={[
-                { name: "name", label: "Name", required: true, autoComplete: "name" },
-                { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
+                { name: "name", label: "Name", required: true, autoComplete: "name", step: "You" },
+                { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", step: "You" },
+                { name: "phone", label: "Phone", autoComplete: "tel", step: "You" },
+                {
+                  name: "roles",
+                  label: "Where do you want to help?",
+                  type: "checks",
+                  required: true,
+                  options: ["check-in", "set-up", "breakdown"],
+                  step: "The shift",
+                },
                 {
                   name: "day",
                   label: "Which day?",
-                  type: "select",
+                  type: "checks",
                   required: true,
-                  options: [...pillars.map((pillar) => pillar.day), "More than one day", "Not sure yet"],
+                  options: pillars.map((pillar) => pillar.day),
+                  step: "The shift",
                 },
-                { name: "help", label: "How do you want to help?", type: "textarea", required: true },
+                { name: "help", label: "Anything else?", type: "textarea", step: "The shift" },
               ]}
             />
           </div>

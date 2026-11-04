@@ -1,4 +1,4 @@
-import { InquiryForm } from "@/components/InquiryForm";
+import { ApplyForm } from "@/components/ApplyForm";
 import { PageHeader } from "@/components/PageHeader";
 import { pageMeta, pillars, speakerFormats } from "@/lib/site";
 
@@ -23,27 +23,31 @@ export default function SpeakPage() {
               <p className="week-lede">{speakerFormats.join(", ")}.</p>
               <p className="week-lede">{pillars.map((pillar) => `${pillar.day}: ${pillar.name}`).join(" · ")}</p>
             </div>
-            <InquiryForm
-              subject="Baltimore Tech Week speaker application"
-              submitLabel="Apply"
+            <ApplyForm
+              endpoint="/api/speakers"
+              submitLabel="Submit"
+              successTitle="Thanks. We have your session."
+              successBody="Applying does not book the slot. If it fits a day, we email you."
               fields={[
-                { name: "name", label: "Name", required: true, autoComplete: "name" },
-                { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
-                { name: "organization", label: "Organization", autoComplete: "organization" },
-                { name: "format", label: "Format", type: "select", required: true, options: speakerFormats },
+                { name: "name", label: "Name", required: true, autoComplete: "name", step: "You" },
+                { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", step: "You" },
+                { name: "organization", label: "Organization", autoComplete: "organization", step: "You" },
+                { name: "format", label: "Format", type: "select", required: true, options: speakerFormats, step: "The session" },
                 {
                   name: "theme",
                   label: "Day",
                   type: "select",
                   required: true,
                   options: pillars.map((pillar) => `${pillar.day} — ${pillar.name}`),
+                  step: "The session",
                 },
-                { name: "title", label: "Working title", required: true },
+                { name: "title", label: "Working title", required: true, step: "The session" },
                 {
                   name: "description",
                   label: "What will people leave knowing?",
                   type: "textarea",
                   required: true,
+                  step: "The session",
                 },
               ]}
             />
