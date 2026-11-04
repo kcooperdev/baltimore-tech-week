@@ -73,21 +73,22 @@ export default function SchedulePage() {
                   <p>{pillar.tagline}</p>
                 </header>
                 <ol className="day-rows">
-                  {rowsFor(pillar).map((row) => {
-                    const body = (
-                      <>
-                        <strong>{row.title}</strong>
+                  {rowsFor(pillar).map((row) => (
+                    <li key={row.key} className={row.tone === "hq" ? undefined : `is-${row.tone}`}>
+                      <time>{row.when}</time>
+                      <div className="day-main">
+                        {row.href ? (
+                          <Link href={row.href}>
+                            <strong>{row.title}</strong>
+                          </Link>
+                        ) : (
+                          <strong>{row.title}</strong>
+                        )}
                         {row.detail ? <span className="day-detail">{row.detail}</span> : null}
-                        {row.where ? <span className="day-place">{row.where}</span> : null}
-                      </>
-                    );
-                    return (
-                      <li key={row.key} className={row.tone === "hq" ? undefined : `is-${row.tone}`}>
-                        <time>{row.when}</time>
-                        {row.href ? <Link href={row.href}>{body}</Link> : <div>{body}</div>}
-                      </li>
-                    );
-                  })}
+                      </div>
+                      <span className="day-place">{row.where}</span>
+                    </li>
+                  ))}
                 </ol>
               </section>
             ))}
