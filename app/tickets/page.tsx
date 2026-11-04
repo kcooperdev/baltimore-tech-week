@@ -24,7 +24,7 @@ export default function TicketsPage() {
                 </li>
               ))}
             </ul>
-            <p className="week-lede">All three days at 4MLK. Partner nights are separate.</p>
+            <p className="week-lede">All three days at 4MLK.</p>
             <p className="week-kicker">VIP · {formatPrice(vip.price)}</p>
             <p className="week-lede">Same three days, with priority entry and a VIP check-in.</p>
           </header>

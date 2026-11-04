@@ -205,61 +205,52 @@
 }
 
 .day-panels {
-  gap: 0.9rem;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+}
+
+.home-address {
+  margin: 2rem 0 0;
+  color: #f3ead7b5;
+  line-height: 1.5;
+}
+
+.home-address a {
+  color: #e2b13c;
 }
 
 .who-grid {
   margin-top: 1.75rem;
 }
 
-.day-panel {
-  position: relative;
-  border: 2px solid var(--purple);
-  box-shadow: 8px 8px 0 var(--purple);
+.day-panel,
+.day-panel-connect,
+.day-panel-build,
+.day-panel-opportunity {
+  min-height: 0;
+  justify-content: flex-start;
+  background: transparent;
+  color: var(--cream);
+  border: 0;
+  border-top: 1px solid #e2b13c55;
+  box-shadow: none;
+  padding: 0.9rem 0 0;
 }
 
 .day-panel::before,
 .day-panel::after {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: currentColor;
-  border-style: solid;
-  pointer-events: none;
+  display: none;
 }
 
-.day-panel::before {
-  top: 8px;
-  left: 8px;
-  border-width: 2px 0 0 2px;
+.day-panel h3 {
+  margin-top: 0.2rem;
+  font-size: clamp(1.7rem, 2.4vw, 2.15rem);
 }
 
-.day-panel::after {
-  right: 8px;
-  bottom: 8px;
-  border-width: 0 2px 2px 0;
-}
-
-.day-panel-connect {
-  background: #0c2433;
-  color: var(--cream);
-  border-color: #e2b13c;
-  box-shadow: 8px 8px 0 #8a6a1c;
-}
-
-.day-panel-build {
-  background: #e2b13c;
-  color: #16120c;
-  border-color: #16120c;
-  box-shadow: 8px 8px 0 #8a6a1c;
-}
-
-.day-panel-opportunity {
-  background: #16365c;
-  color: var(--cream);
-  border-color: #f4cc5c;
-  box-shadow: 8px 8px 0 #e2b13c;
+.day-panel-q {
+  margin-top: 0.35rem;
+  font-weight: 500;
+  color: #f3ead7b8;
 }
 
 .day-panel-q {
@@ -350,9 +341,9 @@
 .path-list a,
 .sheet-form {
   position: relative;
-  border: 2px solid var(--purple);
-  background: #0c2433;
-  box-shadow: 6px 6px 0 var(--orange);
+  border: 1px solid #e2b13c33;
+  background: transparent;
+  box-shadow: none;
 }
 
 .venue-card,
@@ -566,26 +557,19 @@
 
 .day-sheet {
   scroll-margin-top: 6.5rem;
-  border: 2px solid #16365c;
-  background: #0b1c2a;
+  border: 0;
+  border-top: 1px solid #e2b13c55;
+  background: transparent;
 }
 
-.day-sheet header {
-  padding: 1rem 1.05rem 0.95rem;
-  border-bottom: 2px solid #e2b13c;
-}
-
-.day-sheet-tuesday header {
-  background: #0c2433;
-}
-
-.day-sheet-wednesday header {
-  background: #e2b13c;
-  color: #16120c;
-}
-
+.day-sheet header,
+.day-sheet-tuesday header,
+.day-sheet-wednesday header,
 .day-sheet-thursday header {
-  background: #16365c;
+  padding: 1.35rem 0 0.35rem;
+  border-bottom: 0;
+  background: transparent;
+  color: inherit;
 }
 
 .day-sheet-date {
@@ -611,9 +595,12 @@
   line-height: 1.35;
 }
 
-.day-sheet-wednesday .day-sheet-date,
+.day-sheet-wednesday .day-sheet-date {
+  color: #e2b13c;
+}
+
 .day-sheet-wednesday header p:last-child {
-  color: #16120c;
+  color: #f3ead7;
 }
 
 .day-rows {
@@ -669,7 +656,7 @@
 }
 
 .day-rows .is-city {
-  background: #16365c55;
+  background: transparent;
 }
 
 .journey span {

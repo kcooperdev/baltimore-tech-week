@@ -20,8 +20,8 @@ export const site = {
   where: "Baltimore, Maryland",
   tagline: "CONNECT. BUILD. OPPORTUNITY.",
   promise: "Be in the room.",
-  idea: "4MLK is the HQ. Baltimore is the campus.",
-  positioning: "Three days with the people building Baltimore. Day at 4MLK. Night around the city.",
+  idea: "4MLK is the HQ.",
+  positioning: "Three days at 4MLK.",
 };
 
 export type DayId = "tuesday" | "wednesday" | "thursday";
@@ -248,7 +248,6 @@ export const nav = {
   primary: [
     { href: "/schedule", label: "Schedule" },
     { href: "/expo", label: "Expo" },
-    { href: "/around-baltimore", label: "Around Baltimore" },
     { href: "/tickets", label: "Tickets" },
   ],
   involved: [
@@ -463,4 +462,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK by day and around the city at night. Passes from $29.";
+  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK. Passes from $29.";

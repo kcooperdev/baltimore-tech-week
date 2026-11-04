@@ -37,7 +37,7 @@ export default async function Home({
                 Get a pass · {formatPrice(generalAdmission.windows[0].price)}
               </Link>
               <Link className="week-btn week-btn-ghost" href="/schedule">
-                The hours
+                Schedule
               </Link>
             </div>
             <div className="day-panels">
@@ -51,28 +51,17 @@ export default async function Home({
                 </Link>
               ))}
             </div>
-          </div>
-        </section>
-
-        <section className="band-paper" aria-labelledby="hq">
-          <div className="week-wrap">
-            <h2 id="hq" className="week-title">
-              4MLK by day. Baltimore by night.
-            </h2>
-            <p className="week-lede">The pass covers HQ. The city is the rest of the story.</p>
-            <p className="week-lede">
+            <p className="home-address">
+              {hq.venue}
+              <br />
               {hq.street}
               <br />
               {hq.cityLine}
-            </p>
-            <div className="week-actions">
-              <a className="week-btn" href={hq.mapsUrl} target="_blank" rel="noreferrer">
+              <br />
+              <a href={hq.mapsUrl} target="_blank" rel="noreferrer">
                 Directions
               </a>
-              <Link className="week-btn week-btn-ghost" href="/around-baltimore">
-                Around the city
-              </Link>
-            </div>
+            </p>
           </div>
         </section>
       </div>

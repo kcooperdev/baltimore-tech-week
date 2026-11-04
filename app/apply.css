@@ -1,9 +1,9 @@
 .apply-card {
   background: #f3ead7;
   color: #16120c;
-  border-radius: 1.55rem;
+  border-radius: 0;
   padding: 1.35rem 1.2rem 1.3rem;
-  box-shadow: 0 24px 60px rgb(0 0 0 / 0.28);
+  box-shadow: none;
 }
 
 .apply-steps {
