@@ -110,18 +110,15 @@ export const sponsorTiers = [
   { value: "innovation", label: "Innovation · $2,500" },
   { value: "ecosystem", label: "Ecosystem · $5,000" },
   { value: "presenting", label: "Presenting · $10,000" },
-  { value: "table-night", label: "Night table only · $500" },
-  { value: "table-two", label: "Two-night table only · $900" },
-  { value: "table-week", label: "Week table only · $2,000" },
   { value: "unsure", label: "Not sure yet · Talk first" },
 ];
 
 export const sponsorTierCopy = [
-  { name: "Supporting · $500", text: "Logo and a mention. No table. Eight spots." },
-  { name: "Community · $1,000", text: "Everything in Supporting, plus a table on one night. Five spots." },
-  { name: "Innovation · $2,500", text: "A table on two nights and a 2-minute welcome. Three spots." },
-  { name: "Ecosystem · $5,000", text: "Your name on one full night, and a space all five nights. Two spots." },
-  { name: "Presenting · $10,000", text: "Baltimore Tech Week 2027, presented by your company. One spot." },
+  { id: "supporting", name: "Supporting", price: "$500", spots: "Eight spots", text: "Logo and a mention." },
+  { id: "community", name: "Community", price: "$1,000", spots: "Five spots", text: "Everything in Supporting." },
+  { id: "innovation", name: "Innovation", price: "$2,500", spots: "Three spots", text: "A 2-minute welcome." },
+  { id: "ecosystem", name: "Ecosystem", price: "$5,000", spots: "Two spots", text: "Your name on one full night." },
+  { id: "presenting", name: "Presenting", price: "$10,000", spots: "One spot", text: "Baltimore Tech Week 2027, presented by your company." },
 ];
 
 export const companySizes = ["1–10", "11–50", "51–200", "201–1,000", "1,000+"];
@@ -134,7 +131,6 @@ export const sponsorGoals = [
   "Customers / pipeline",
   "Community support",
   "Product in front of builders",
-  "A table in the room",
 ];
 
 export const ambassadorChannels = [

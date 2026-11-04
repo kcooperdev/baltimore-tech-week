@@ -14,6 +14,7 @@ const paths = [
   "/ambassadors",
   "/get-involved",
   "/conduct",
+  "/privacy",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

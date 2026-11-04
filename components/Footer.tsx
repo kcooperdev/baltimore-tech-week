@@ -48,6 +48,9 @@ export function Footer() {
               <a href="https://www.linkedin.com/company/baltimore-tech-week-2027">LinkedIn</a>
             </p>
             <p>
+              <Link href="/privacy">Privacy</Link>
+            </p>
+            <p>
               <Link href="/conduct">Code of Conduct</Link>
             </p>
           </div>

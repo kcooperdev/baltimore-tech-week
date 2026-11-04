@@ -5,6 +5,7 @@ import "./globals.css";
 import "./harbor.css";
 import "./cyber.css";
 import "./apply.css";
+import { CookieNotice } from "@/components/CookieNotice";
 import { Topbar } from "@/components/Topbar";
 import { Footer } from "@/components/Footer";
 import { homeDescription, hq, site } from "@/lib/site";
@@ -103,6 +104,7 @@ export default function RootLayout({
           <Topbar />
           <div className="flex-1">{children}</div>
           <Footer />
+          <CookieNotice />
         </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
