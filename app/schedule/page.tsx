@@ -1,87 +1,97 @@
 import Link from "next/link";
-import { PageHeader } from "@/components/PageHeader";
-import { pageMeta, pillars, site } from "@/lib/site";
+import { hq, pageMeta, pillars, site, type Pillar } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "Baltimore Tech Week 2027 runs Wednesday through Friday. Connect, Build, and Opportunity. Days at 4MLK, nights around Baltimore. Sessions are added when they are booked.",
+  "April 28–30, 2027. Wednesday Connect, Thursday Build, Friday Opportunity. Days at 4MLK. Nights around Baltimore.",
 );
 
-export default function SchedulePage() {
-  const today = pillars.find((pillar) => pillar.id === site.liveDay);
+type Row = {
+  key: string;
+  when: string;
+  title: string;
+  where: string;
+  detail: string;
+  href?: string;
+  tone: "hq" | "pause" | "city";
+};
 
+function rowsFor(pillar: Pillar): Row[] {
+  const rows: Row[] = [];
+  for (const stop of pillar.stops) {
+    if (stop.places?.length) {
+      for (const place of stop.places) {
+        rows.push({
+          key: `${stop.id}-${place.name}`,
+          when: stop.when,
+          title: place.name,
+          where: place.line,
+          detail: "",
+          href: place.href,
+          tone: "city",
+        });
+      }
+      continue;
+    }
+    rows.push({
+      key: stop.id,
+      when: stop.when,
+      title: stop.title,
+      where: stop.where,
+      detail: stop.text,
+      tone: stop.kind,
+    });
+  }
+  return rows;
+}
+
+export default function SchedulePage() {
   return (
-    <main className="plain-page">
-      <PageHeader
-        eyebrow={`${site.dates} · ${site.when}`}
-        title="How the week goes"
-        lede="Three days. The building by day. The city after. Names of talks show up when someone is booked."
-      />
+    <main className="plain-page schedule-page">
+      <header className="plain-hero" id="main">
+        <div className="week-wrap schedule-intro">
+          <div>
+            <p className="week-kicker">{site.dates}</p>
+            <h1>Schedule</h1>
+          </div>
+          <p className="plain-lede">
+            Days at 4MLK, {hq.street} City nights are separate. Talks are added when booked.
+          </p>
+        </div>
+      </header>
 
       <div className="plain-body">
         <div className="week-wrap">
-          {site.phase === "live" && today ? (
-            <p className="week-lede">
-              Today is {today.day}. <a href={`#${today.id}`}>Jump to today</a>
-            </p>
-          ) : null}
-
-          <nav className="day-jump" aria-label="Days">
+          <div className="day-board">
             {pillars.map((pillar) => (
-              <a key={pillar.id} href={`#${pillar.id}`}>
-                <span>{pillar.day}</span>
-                <strong>{pillar.name}</strong>
-                <em>{pillar.question}</em>
-              </a>
+              <section key={pillar.id} id={pillar.id} className={`day-sheet day-sheet-${pillar.id}`}>
+                <header>
+                  <p className="day-sheet-date">
+                    {pillar.day} · {pillar.date}
+                  </p>
+                  <h2>{pillar.name}</h2>
+                  <p>{pillar.tagline}</p>
+                </header>
+                <ol className="day-rows">
+                  {rowsFor(pillar).map((row) => {
+                    const body = (
+                      <>
+                        <strong>{row.title}</strong>
+                        {row.detail ? <span className="day-detail">{row.detail}</span> : null}
+                        {row.where ? <span className="day-place">{row.where}</span> : null}
+                      </>
+                    );
+                    return (
+                      <li key={row.key} className={row.tone === "hq" ? undefined : `is-${row.tone}`}>
+                        <time>{row.when}</time>
+                        {row.href ? <Link href={row.href}>{body}</Link> : <div>{body}</div>}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </section>
             ))}
-          </nav>
-
-          {pillars.map((pillar) => (
-            <section key={pillar.id} id={pillar.id} className="day-chapter">
-              <header>
-                <p className="week-kicker">{pillar.day}</p>
-                <h2>{pillar.name}</h2>
-                <p className="day-question">{pillar.question}</p>
-                <p className="week-lede">{pillar.tagline}</p>
-              </header>
-              <ol className="day-spine">
-                {pillar.stops.map((stop) => (
-                  <li key={stop.id} className={stop.kind === "city" ? "is-city" : stop.kind === "pause" ? "is-pause" : undefined}>
-                    <p className="day-when">{stop.when}</p>
-                    <div>
-                      <p className="day-where">{stop.where}</p>
-                      <h3>{stop.title}</h3>
-                      <p>{stop.text}</p>
-                      {stop.places ? (
-                        <ul className="city-places">
-                          {stop.places.map((place) => (
-                            <li key={place.name}>
-                              {place.href ? (
-                                <Link href={place.href}>
-                                  <strong>{place.name}</strong>
-                                  <span>{place.line}</span>
-                                </Link>
-                              ) : (
-                                <>
-                                  <strong>{place.name}</strong>
-                                  <span>{place.line}</span>
-                                </>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      ) : null}
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </section>
-          ))}
-
-          <p className="campus-note">
-            <span>4MLK is headquarters.</span>
-            <span>Baltimore is the campus.</span>
-          </p>
+          </div>
 
           <div className="week-actions">
             <Link className="week-btn" href="/tickets">
