@@ -35,7 +35,7 @@ export default function ExpoPage() {
               { name: "organization", label: "Organization", required: true, autoComplete: "organization" },
               { name: "name", label: "Your name", required: true, autoComplete: "name" },
               { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
-              { name: "website", label: "Website" },
+              { name: "website", label: "Website", type: "url" },
               { name: "showing", label: "What will you show?", type: "textarea", required: true },
             ]}
           />

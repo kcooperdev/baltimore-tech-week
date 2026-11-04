@@ -183,3 +183,11 @@
     grid-column: 1 / -1;
   }
 }
+
+*:not(:disabled) {
+  cursor: url("/images/laptop-cursor.png") 4 2, auto !important;
+}
+
+:disabled {
+  cursor: not-allowed !important;
+}

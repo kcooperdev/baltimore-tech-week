@@ -63,9 +63,17 @@ function phone(value: unknown) {
 }
 
 function siteUrl(value: unknown, label: string) {
-  const next = optional(value, label, 300);
-  if (!next) return "";
+  let next = optional(value, label, 300);
+  if (!next || /^https?:\/\/(www\.)?$/i.test(next) || /^https?:\/\/(www\.)?linkedin\.com\/in\/?$/i.test(next)) return "";
+  if (!/^https?:\/\//i.test(next)) next = `https://www.${next.replace(/^(www\.)/i, "")}`;
   if (!/^https?:\/\/\S+$/i.test(next)) throw new SubmitError(`${label} must start with http:// or https://`);
+  let host = "";
+  try {
+    host = new URL(next).hostname;
+  } catch {
+    throw new SubmitError(`${label} must start with http:// or https://`);
+  }
+  if (!host.includes(".") || host === "www") throw new SubmitError(`${label} needs a full address`);
   return next;
 }
 

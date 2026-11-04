@@ -22,6 +22,19 @@ function lineCount(value: string) {
     .filter(Boolean).length;
 }
 
+const WEB_PREFIX = "https://www.";
+const LINKEDIN_PREFIX = "https://www.linkedin.com/in/";
+
+function urlPrefix(field: ApplyField) {
+  if (field.type !== "url") return "";
+  return field.name.toLowerCase().includes("linkedin") ? LINKEDIN_PREFIX : WEB_PREFIX;
+}
+
+function bareUrl(value: string) {
+  const text = value.trim();
+  return text === WEB_PREFIX || text === LINKEDIN_PREFIX || text === "https://" || text === "http://" || text === "https://www";
+}
+
 export function ApplyForm({
   id,
   endpoint,
@@ -61,7 +74,8 @@ export function ApplyForm({
       if (field.type === "checks") {
         payload[field.name] = data.getAll(field.name).map(String);
       } else {
-        payload[field.name] = String(data.get(field.name) ?? "").trim();
+        const text = String(data.get(field.name) ?? "").trim();
+        payload[field.name] = field.type === "url" && bareUrl(text) ? "" : text;
       }
     }
     return payload;
@@ -71,8 +85,9 @@ export function ApplyForm({
     const next: Record<string, string> = {};
     for (const field of only ?? fields) {
       const value = payload[field.name];
-      const empty = Array.isArray(value) ? value.length === 0 : !String(value ?? "").trim();
-      const textValue = Array.isArray(value) ? "" : String(value ?? "").trim();
+      const raw = Array.isArray(value) ? "" : String(value ?? "").trim();
+      const textValue = field.type === "url" && bareUrl(raw) ? "" : raw;
+      const empty = Array.isArray(value) ? value.length === 0 : !textValue;
       if (field.required && empty) next[field.name] = "This is required";
       if (field.type === "email" && textValue && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(textValue)) {
         next[field.name] = "Enter a valid email";
@@ -219,9 +234,42 @@ export function ApplyForm({
                 name={field.name}
                 type={field.type ?? "text"}
                 className={`apply-input${problem ? " is-invalid" : ""}`}
-                placeholder={field.placeholder}
+                placeholder={field.type === "url" ? undefined : field.placeholder}
                 autoComplete={field.autoComplete}
-                defaultValue={defaults?.[field.name]}
+                autoCapitalize={field.type === "url" ? "off" : undefined}
+                spellCheck={field.type === "url" ? false : undefined}
+                defaultValue={defaults?.[field.name] || urlPrefix(field) || undefined}
+                onFocus={(event) => {
+                  if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
+                  const input = event.target;
+                  if (input.selectionStart === 0 && input.selectionEnd === 0) {
+                    const end = input.value.length;
+                    requestAnimationFrame(() => input.setSelectionRange(end, end));
+                  }
+                }}
+                onPaste={(event) => {
+                  if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
+                  const pasted = event.clipboardData.getData("text").trim();
+                  if (!pasted) return;
+                  event.preventDefault();
+                  const input = event.target;
+                  const prefix = urlPrefix(field) || WEB_PREFIX;
+                  input.value = /^https?:\/\//i.test(pasted) ? pasted : prefix + pasted.replace(/^(www\.)/i, "");
+                  const end = input.value.length;
+                  input.setSelectionRange(end, end);
+                }}
+                onBlur={(event) => {
+                  if (field.type !== "url" || !(event.target instanceof HTMLInputElement)) return;
+                  const input = event.target;
+                  const value = input.value.trim();
+                  const prefix = urlPrefix(field);
+                  if (!prefix) return;
+                  if (!value || bareUrl(value)) {
+                    input.value = prefix;
+                    return;
+                  }
+                  if (!/^https?:\/\//i.test(value)) input.value = prefix + value.replace(/^(www\.)/i, "");
+                }}
               />
             );
           return (
