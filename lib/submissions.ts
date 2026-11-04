@@ -32,7 +32,7 @@ function list(value: unknown) {
   return one ? [one] : [];
 }
 
-/** The live database accepts the April 2027 week. The public days are April 27–29. */
+/** The live database accepts the April 2027 week. The public week is April 26–30. */
 function datesFor(value: unknown) {
   const map: Record<string, string> = {
     tuesday: "2027-04-27",
@@ -90,15 +90,9 @@ function sessionFormat(value: string) {
 const SPONSOR_CALL = "https://tidycal.com/bmore-tech-week/30-minute-meeting";
 
 const TIER_LABEL: Record<string, string> = {
-  supporting: "Supporting ($500)",
-  community: "Community ($1,000)",
-  innovation: "Innovation ($2,500)",
-  ecosystem: "Ecosystem ($5,000)",
+  community: "Community ($2,500)",
+  lead: "Lead ($5,000)",
   presenting: "Presenting ($10,000)",
-  "table-night": "Night table only ($500)",
-  "table-two": "Two-night table only ($900)",
-  "table-week": "Week table only ($2,000)",
-  unsure: "Not sure yet (Talk first)",
 };
 
 async function forward(path: string, body: Record<string, unknown>) {

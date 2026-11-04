@@ -264,26 +264,128 @@
 
 .tier-card p:last-of-type {
   margin-top: 0.55rem;
-  flex: 1;
   line-height: 1.4;
+}
+
+.tier-flag {
+  min-height: 1rem;
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tier-flag-empty {
+  visibility: hidden;
+}
+
+.tier-perks {
+  display: grid;
+  gap: 0.35rem;
+  flex: 1;
+  margin: 0.85rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tier-perks li {
+  position: relative;
+  padding-left: 0.85rem;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.tier-perks li::before {
+  content: "";
+  position: absolute;
+  top: 0.45rem;
+  left: 0;
+  width: 0.32rem;
+  height: 0.32rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.tier-card.is-pick {
+  background: #16120c;
+  color: #f3ead7;
 }
 
 .tier-apply {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   margin-top: 1rem;
   min-height: 40px;
+  border: 0;
   border-radius: 999px;
   background: #16120c;
   color: #f3ead7;
+  font: inherit;
   font-size: 0.88rem;
   font-weight: 700;
-  text-decoration: none;
+  cursor: pointer;
 }
 
-.sponsor-apply {
-  max-width: 44rem;
+.tier-card.is-pick .tier-apply {
+  background: #e2b13c;
+  color: #16120c;
+}
+
+.tier-dialog {
+  width: min(44rem, calc(100vw - 2rem));
+  max-height: min(44rem, calc(100vh - 2rem));
+  margin: auto;
+  padding: 1.15rem 1.15rem 1.25rem;
+  overflow: auto;
+  border: 1.5px solid #16120c;
+  border-radius: 1.2rem;
+  background: #f3ead7;
+  color: #16120c;
+}
+
+.tier-dialog::backdrop {
+  background: rgb(7 17 28 / 0.62);
+}
+
+.tier-dialog-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.tier-dialog-bar h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+}
+
+.tier-dialog-bar p {
+  margin: 0.15rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.tier-dialog-close {
+  border: 1.5px solid #16120c;
+  border-radius: 999px;
+  background: transparent;
+  color: #16120c;
+  padding: 0.35rem 0.8rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tier-dialog .apply-card {
+  padding: 0;
+  background: transparent;
 }
 
 .cookie-layer {
@@ -382,15 +484,9 @@
   border-color: #16120c;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 900px) {
   .tier-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (min-width: 1100px) {
-  .tier-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

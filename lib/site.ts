@@ -4,7 +4,7 @@ import type { Metadata } from "next";
  * Editable content for Baltimore Tech Week 2027.
  * Add confirmed sessions, exhibitors, sponsors, and partner events here.
  * Do not add a partner event until the partnership, time, and capacity are confirmed.
- * The week is Tuesday, April 27 through Thursday, April 29, 2027.
+ * The week is Monday, April 26 through Friday, April 30, 2027.
  * Set phase to "live" during the week to turn the homepage into the attendee view.
  */
 
@@ -15,13 +15,13 @@ export const site = {
   email: "team@bmoretechweek.com",
   phase: "preview" as "preview" | "live",
   liveDay: "tuesday" as DayId,
-  dates: "April 27–29, 2027",
-  when: "Tuesday–Thursday",
+  dates: "April 26–30, 2027",
+  when: "Monday–Friday",
   where: "Baltimore, Maryland",
   tagline: "CONNECT. BUILD. OPPORTUNITY.",
   promise: "Be in the room.",
   idea: "4MLK is the HQ.",
-  positioning: "Three days at 4MLK.",
+  positioning: "The week at 4MLK.",
 };
 
 export type DayId = "tuesday" | "wednesday" | "thursday";
@@ -237,7 +237,7 @@ export const hq = {
 export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
   { href: "/partners", title: "Partner", text: "Free if you already gather people in Baltimore." },
-  { href: "/sponsors", title: "Sponsor", text: "$500 to $10,000. A name on the week, or a table." },
+  { href: "/sponsors", title: "Sponsor", text: "Three tiers, $2,500 to $10,000. The list closes March 1." },
   { href: "/ambassadors", title: "Ambassador", text: "Share the nights with people who already listen to you." },
 ];
 
@@ -415,4 +415,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Be in the room. Baltimore Tech Week is April 27–29, 2027, Tuesday through Thursday, at 4MLK. Passes are $49.";
+  "Be in the room. Baltimore Tech Week is April 26–30, 2027, Monday through Friday, at 4MLK. Passes are $49.";

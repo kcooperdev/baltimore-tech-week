@@ -105,20 +105,47 @@ export const partnerHelp = [
 ];
 
 export const sponsorTiers = [
-  { value: "supporting", label: "Supporting · $500" },
-  { value: "community", label: "Community · $1,000" },
-  { value: "innovation", label: "Innovation · $2,500" },
-  { value: "ecosystem", label: "Ecosystem · $5,000" },
+  { value: "community", label: "Community · $2,500" },
+  { value: "lead", label: "Lead · $5,000" },
   { value: "presenting", label: "Presenting · $10,000" },
-  { value: "unsure", label: "Not sure yet · Talk first" },
 ];
 
 export const sponsorTierCopy = [
-  { id: "supporting", name: "Supporting", price: "$500", spots: "Eight spots", text: "Logo and a mention." },
-  { id: "community", name: "Community", price: "$1,000", spots: "Five spots", text: "Everything in Supporting." },
-  { id: "innovation", name: "Innovation", price: "$2,500", spots: "Three spots", text: "A 2-minute welcome." },
-  { id: "ecosystem", name: "Ecosystem", price: "$5,000", spots: "Two spots", text: "Your name on one full night." },
-  { id: "presenting", name: "Presenting", price: "$10,000", spots: "One spot", text: "Baltimore Tech Week 2027, presented by your company." },
+  {
+    id: "community",
+    name: "Community",
+    price: "$2,500",
+    spots: "Eight companies",
+    text: "Your logo on the week.",
+    perks: ["Logo on the site and in the program", "One mention in the attendee email", "Four passes"],
+    pick: false,
+    top: false,
+  },
+  {
+    id: "lead",
+    name: "Lead",
+    price: "$5,000",
+    spots: "Three companies",
+    text: "Your name on one day.",
+    perks: ["Everything in Community", "One day of the week in your name", "A two-minute welcome that day", "Eight passes"],
+    pick: true,
+    top: false,
+  },
+  {
+    id: "presenting",
+    name: "Presenting",
+    price: "$10,000",
+    spots: "One company",
+    text: "The week, presented by you.",
+    perks: [
+      "Baltimore Tech Week 2027, presented by your company",
+      "Logo on the homepage",
+      "A mention in the room each day",
+      "Twelve passes",
+    ],
+    pick: false,
+    top: true,
+  },
 ];
 
 export const companySizes = ["1–10", "11–50", "51–200", "201–1,000", "1,000+"];
