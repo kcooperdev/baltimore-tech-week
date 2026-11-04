@@ -22,9 +22,6 @@ export const site = {
   promise: "Be in the room.",
   idea: "4MLK is the HQ. Baltimore is the campus.",
   positioning: "Three days with the people building Baltimore. Day at 4MLK. Night around the city.",
-  nightLine: "Spend the day at Tech Week HQ. Explore Baltimore at night.",
-  forLine: "For the people who will actually show up.",
-  spread: "A week spreads when someone you trust says, come with me.",
 };
 
 export type DayId = "wednesday" | "thursday" | "friday";
@@ -254,21 +251,6 @@ export const hq = {
   ],
 };
 
-export const audiences: { title: string; text: string }[] = [
-  {
-    title: "You build",
-    text: "Engineers, designers, founders, and anyone making the thing.",
-  },
-  {
-    title: "You hire",
-    text: "Companies that want Baltimore in the room, not on a slide.",
-  },
-  {
-    title: "You tell people",
-    text: "The week spreads when you bring the room you already have.",
-  },
-];
-
 export const waysIn: { href: string; title: string; text: string }[] = [
   { href: "/tickets", title: "Attend", text: "Get the pass. From $29. Checkout opens later." },
   { href: "/speak", title: "Speak", text: "Teach what you know. Applying is not a booking." },
@@ -281,7 +263,6 @@ export const waysIn: { href: string; title: string; text: string }[] = [
 
 export const nav = {
   primary: [
-    { href: "/the-week", label: "The Week" },
     { href: "/schedule", label: "Schedule" },
     { href: "/expo", label: "Expo" },
     { href: "/around-baltimore", label: "Around Baltimore" },
@@ -335,13 +316,6 @@ export type SponsorPackage = {
  * Add a package only after the price and benefits are signed off.
  */
 export const sponsorPackages: SponsorPackage[] = [];
-
-export const sponsorSurfaces: { title: string; text: string }[] = [
-  { title: "The room", text: "HQ is where people spend the day. Be there." },
-  { title: "The floor", text: "A table beats a logo on a slide." },
-  { title: "The work", text: "Back a talk or a workshop people came to use." },
-  { title: "The story", text: "A moment worth telling someone else about." },
-];
 
 export type TicketWindow = {
   id: string;
@@ -484,40 +458,6 @@ export const speakerFormats = [
   "Workshops",
   "Fireside conversations",
   "Demonstrations",
-];
-
-export const hostInvitees = [
-  "Startups",
-  "Companies",
-  "Restaurants",
-  "Coworking spaces",
-  "Universities",
-  "Community organizations",
-  "Meetups",
-  "Creative spaces",
-  "Tech organizations",
-];
-
-export const ambassadorChannels = [
-  "Campuses",
-  "Companies",
-  "Neighborhoods",
-  "Community groups",
-  "Slack and Discord communities",
-  "Professional networks",
-  "Social media",
-  "Personal networks",
-];
-
-export const expoParticipants = [
-  "Technology companies",
-  "Startups",
-  "Universities",
-  "Community organizations",
-  "Employers",
-  "Education and training organizations",
-  "Sponsors",
-  "Technology products",
 ];
 
 export function formatPrice(amount: number) {

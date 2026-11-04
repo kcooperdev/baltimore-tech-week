@@ -10,38 +10,21 @@ export const metadata = pageMeta(
 export default function ExpoPage() {
   return (
     <main className="plain-page">
-      <PageHeader eyebrow={hq.venue} title="Expo" lede="Come for the floor. Stay for the person at the next table. You do not need a table to walk in.">
-        <a className="week-btn" href="#exhibit">
-          Ask for a table
-        </a>
-      </PageHeader>
+      <PageHeader eyebrow={hq.venue} title="Expo" lede="The floor is open all three days. You do not need a table to walk it." />
 
-      <div className="editorial-flow">
-        <section className="band-paper">
-          <div className="week-wrap">
-            {exhibitors.length === 0 ? (
-              <>
-                <h2 className="week-title">Exhibitors coming soon.</h2>
-                <p className="week-lede">Names land here after an organization confirms. No placeholders.</p>
-              </>
-            ) : (
-              <ul className="hold-list">
-                {exhibitors.map((exhibitor) => (
-                  <li key={exhibitor.name}>
-                    {exhibitor.url ? <a href={exhibitor.url}>{exhibitor.name}</a> : exhibitor.name}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </section>
-
-        <section className="scroll-mt-24">
-          <div className="week-wrap split">
-            <div>
-              <h2 className="week-title">A table.</h2>
-              <p className="week-lede">Tell us what someone should stop and see. We confirm the space before we put your name on the floor.</p>
-            </div>
+      <div className="plain-body">
+        <div className="week-wrap">
+          {exhibitors.length > 0 ? (
+            <ul className="hold-list">
+              {exhibitors.map((exhibitor) => (
+                <li key={exhibitor.name}>
+                  {exhibitor.url ? <a href={exhibitor.url}>{exhibitor.name}</a> : exhibitor.name}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <div className="apply-wrap">
+            <p className="week-lede">Want a table? Tell us what someone should stop and see.</p>
             <ApplyForm
               id="exhibit"
               endpoint="/api/apply"
@@ -58,7 +41,7 @@ export default function ExpoPage() {
               ]}
             />
           </div>
-        </section>
+        </div>
       </div>
     </main>
   );

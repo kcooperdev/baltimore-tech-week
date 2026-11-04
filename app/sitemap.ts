@@ -3,7 +3,6 @@ import { site } from "@/lib/site";
 
 const paths = [
   "",
-  "/the-week",
   "/schedule",
   "/expo",
   "/around-baltimore",

@@ -1,34 +1,24 @@
-import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
 import { PartnerBoard } from "@/components/PartnerBoard";
-import { hq, pageMeta, site } from "@/lib/site";
+import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Around Baltimore",
-  "Partner events around Baltimore during Tech Week. Nothing is listed as confirmed until the venue, time, and RSVP are set.",
+  "Nights around Baltimore during Tech Week. A time and an RSVP go up when a room is ready.",
 );
 
 export default function AroundBaltimorePage() {
   return (
     <main className="plain-page">
       <PageHeader
-        eyebrow="Not confirmed yet"
+        eyebrow="After 5"
         title="Around Baltimore"
-        lede="The pass is HQ. After 5, the week is whatever room in the city is actually ready. A time and an RSVP go up when they are."
-      >
-        <Link className="week-btn" href="/host">
-          Host an event
-        </Link>
-      </PageHeader>
-      <div className="editorial-flow">
-        <section className="band-paper">
-          <div className="week-wrap">
-            <p className="week-lede">
-              HQ is {hq.venue}, {hq.street}. {site.datesNote}.
-            </p>
-            <PartnerBoard />
-          </div>
-        </section>
+        lede="The pass is 4MLK. These are the rooms the nights are headed toward. A time and an RSVP go up when the night is real."
+      />
+      <div className="plain-body">
+        <div className="week-wrap">
+          <PartnerBoard />
+        </div>
       </div>
     </main>
   );

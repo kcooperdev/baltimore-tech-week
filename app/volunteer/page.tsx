@@ -15,10 +15,8 @@ export default function VolunteerPage() {
         title="Volunteer"
         lede="Help someone find the right room. Check-in, the floor, directions. No hour quota. Shifts are not posted yet."
       />
-      <div className="editorial-flow">
-        <section className="band-paper">
-          <div className="week-wrap split">
-            <p className="week-lede">Tell us which day you can actually be at 4MLK. We will write back when roles are set.</p>
+      <div className="plain-body">
+        <div className="week-wrap apply-wrap">
             <ApplyForm
               endpoint="/api/volunteers"
               submitLabel="Volunteer"
@@ -33,7 +31,7 @@ export default function VolunteerPage() {
                   label: "Where do you want to help?",
                   type: "checks",
                   required: true,
-                  options: ["check-in", "set-up", "breakdown"],
+                  options: ["Check-in", "Set up", "Breakdown"],
                   step: "The shift",
                 },
                 {
@@ -47,8 +45,7 @@ export default function VolunteerPage() {
                 { name: "help", label: "Anything else?", type: "textarea", step: "The shift" },
               ]}
             />
-          </div>
-        </section>
+        </div>
       </div>
     </main>
   );

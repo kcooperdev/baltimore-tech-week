@@ -10,7 +10,7 @@ export const metadata = pageMeta(
 export default function GetInvolvedPage() {
   return (
     <main className="plain-page">
-      <PageHeader eyebrow="Pick one" title="Get involved" lede="One way in. One form. A person writes back." />
+      <PageHeader eyebrow="Pick one" title="Get involved" lede="Pick a way in. A person writes back." />
       <div className="editorial-flow">
         <section className="band-paper">
           <div className="week-wrap">

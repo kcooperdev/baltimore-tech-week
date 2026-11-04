@@ -15,10 +15,8 @@ export default function AmbassadorPage() {
         title="Bring people"
         lede="Tell the rooms you are already in. No quota. No script. Three days at 4MLK, then the city."
       />
-      <div className="editorial-flow">
-        <section className="band-paper">
-          <div className="week-wrap split">
-            <p className="week-lede">The week spreads when someone you trust says, come with me.</p>
+      <div className="plain-body">
+        <div className="week-wrap apply-wrap">
             <ApplyForm
               endpoint="/api/apply"
               extra={{ kind: "ambassador" }}
@@ -37,8 +35,7 @@ export default function AmbassadorPage() {
                 },
               ]}
             />
-          </div>
-        </section>
+        </div>
       </div>
     </main>
   );

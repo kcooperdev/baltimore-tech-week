@@ -100,8 +100,14 @@ export async function saveSpeaker(body: Record<string, unknown>) {
   return forward("/api/speakers", payload);
 }
 
+const volunteerRoles: Record<string, string> = {
+  "Check-in": "check-in",
+  "Set up": "set-up",
+  Breakdown: "breakdown",
+};
+
 export async function saveVolunteer(body: Record<string, unknown>) {
-  const roles = list(body.roles);
+  const roles = list(body.roles).map((role) => volunteerRoles[role] ?? role);
   const days = datesFor(body.day);
   if (roles.length === 0) throw new SubmitError("Pick at least one role");
   const payload = {
@@ -125,17 +131,20 @@ export async function saveVenue(body: Record<string, unknown>) {
   }
   const concept = text(body.concept, "Event", 180);
   const street = text(body.address, "Address", 160);
+  const when = text(body.time, "Time", 40, false);
+  const organization = text(body.organization, "Organization", 80, false);
+  const contact = text(body.contact, "Contact name", 80);
   const payload = {
     name: text(body.venue, "Venue", 120),
     neighborhood: "Downtown",
-    address: `${street} — ${concept}`.slice(0, 200),
+    address: `${street} — ${when} — ${concept}`.slice(0, 200),
     capacity,
     availableDates: datesFor(body.day),
     venueType: "hybrid",
     costType,
     costAmount: costType === "Free" ? "" : "1",
     amenities: [],
-    contactName: text(body.contact, "Contact name", 120),
+    contactName: `${contact}${organization ? `, ${organization}` : ""}`.slice(0, 120),
     contactEmail: email(body.email),
   };
   return forward("/api/venues", payload);

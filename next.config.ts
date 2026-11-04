@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
     return [
       { source: "/events", destination: "/schedule", permanent: true },
       { source: "/speakers", destination: "/speak", permanent: true },
-      { source: "/about", destination: "/the-week", permanent: true },
+      { source: "/about", destination: "/schedule", permanent: true },
+      { source: "/the-week", destination: "/schedule", permanent: true },
     ];
   },
   async headers() {

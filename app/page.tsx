@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { audiences, formatPrice, generalAdmission, hq, pillars, site } from "@/lib/site";
+import { formatPrice, generalAdmission, hq, pillars, site } from "@/lib/site";
 
 const panelClass = {
   wednesday: "day-panel day-panel-connect",
@@ -36,8 +36,8 @@ export default async function Home({
               <Link className="week-btn" href="/tickets">
                 Get a pass · {formatPrice(generalAdmission.windows[0].price)}
               </Link>
-              <Link className="week-btn week-btn-ghost" href="/the-week">
-                The three days
+              <Link className="week-btn week-btn-ghost" href="/schedule">
+                The hours
               </Link>
             </div>
             <div className="day-panels">
@@ -49,22 +49,6 @@ export default async function Home({
                   </div>
                   <p className="day-panel-q">{pillar.question}</p>
                 </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="band-ink" aria-labelledby="who">
-          <div className="week-wrap">
-            <h2 id="who" className="week-title">
-              {site.forLine}
-            </h2>
-            <div className="who-grid">
-              {audiences.map((audience) => (
-                <article key={audience.title} className="who-card">
-                  <h3>{audience.title}</h3>
-                  <p>{audience.text}</p>
-                </article>
               ))}
             </div>
           </div>

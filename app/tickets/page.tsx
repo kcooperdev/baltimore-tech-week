@@ -28,18 +28,12 @@ export default function TicketsPage() {
                 </li>
               ))}
             </ul>
-            <p className="week-lede">All three days at HQ. The floor, the talks, the workshops, the people.</p>
+            <p className="week-lede">All three days at 4MLK. Partner nights are separate.</p>
 
             <p className="week-kicker" style={{ marginTop: "2rem" }}>
               VIP · {formatPrice(vip.price)}
             </p>
             <p className="week-lede">Same three days, with priority entry and a VIP check-in.</p>
-
-            <h2 className="week-title" style={{ marginTop: "2.5rem", fontSize: "clamp(1.7rem, 3vw, 2.2rem)" }}>
-              Know this first.
-            </h2>
-            <p className="week-lede">A pass is the HQ. It is not a ticket to every partner night.</p>
-            <p className="week-lede">What is included can still change before checkout opens.</p>
           </div>
           <ApplyForm
             id="notify"
