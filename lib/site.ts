@@ -235,12 +235,10 @@ export const hq = {
 };
 
 export const waysIn: { href: string; title: string; text: string }[] = [
-  { href: "/tickets", title: "Attend", text: "Get the pass. $49. Checkout opens later." },
-  { href: "/speak", title: "Speak", text: "Teach what you know. Applying is not a booking." },
-  { href: "/sponsors", title: "Sponsor", text: "Be where your people already want to be." },
-  { href: "/expo#exhibit", title: "Exhibit", text: "A table at HQ. We list you after the space is real." },
-  { href: "/host", title: "Host", text: "Your event, your room. We send people if we accept it." },
-  { href: "/ambassador", title: "Ambassador", text: "Tell the rooms you are already in." },
+  { href: "/speak", title: "Give a Talk", text: "Apply by February 1, 2027. First-time speakers welcome." },
+  { href: "/partners", title: "Partner", text: "Free if you already gather people in Baltimore." },
+  { href: "/sponsors", title: "Sponsor", text: "$500 to $10,000. A name on the week, or a table." },
+  { href: "/ambassadors", title: "Ambassador", text: "Share the nights with people who already listen to you." },
 ];
 
 export const nav = {
@@ -250,11 +248,10 @@ export const nav = {
     { href: "/tickets", label: "Tickets" },
   ],
   involved: [
-    { href: "/speak", label: "Speak" },
+    { href: "/speak", label: "Give a Talk" },
+    { href: "/partners", label: "Partner" },
     { href: "/sponsors", label: "Sponsor" },
-    { href: "/expo#exhibit", label: "Exhibit" },
-    { href: "/host", label: "Host an Event" },
-    { href: "/ambassador", label: "Ambassador" },
+    { href: "/ambassadors", label: "Ambassador" },
   ],
 };
 
@@ -397,14 +394,6 @@ export const exploringVenues: ExploringVenue[] = [
       "Closing celebration",
     ],
   },
-];
-
-export const speakerFormats = [
-  "Talks",
-  "Panels",
-  "Workshops",
-  "Fireside conversations",
-  "Demonstrations",
 ];
 
 export function formatPrice(amount: number) {

@@ -1,5 +1,4 @@
 import { Check, Ticket } from "lucide-react";
-import { ApplyForm } from "@/components/ApplyForm";
 import { formatPrice, generalAdmission, pageMeta, site } from "@/lib/site";
 
 export const metadata = pageMeta(
@@ -14,7 +13,7 @@ export default function TicketsPage() {
         <header className="packs-head" id="main">
           <p className="week-kicker">{site.dates}</p>
           <h1>Tickets</h1>
-          <p>One pass. Checkout is not open yet. Leave your email and we will write when it is.</p>
+          <p>One pass. All three days at 4MLK. Checkout is not open yet.</p>
         </header>
 
         <div className="packs-grid packs-single">
@@ -53,24 +52,11 @@ export default function TicketsPage() {
                 <span>Coworking</span>
               </li>
             </ul>
-            <a className="pack-btn" href="#notify">
+            <button type="button" className="pack-btn" disabled>
               Get Tickets
-            </a>
+            </button>
+            <p className="pack-closed">Not open yet.</p>
           </article>
-        </div>
-
-        <div className="pack-form" id="notify">
-          <ApplyForm
-            endpoint="/api/tickets"
-            extra={{ pass: generalAdmission.name }}
-            submitLabel="Get Tickets"
-            successTitle="Thanks. We will write you."
-            successBody="Checkout is not open yet. You will hear from us when the sale link is ready."
-            fields={[
-              { name: "name", label: "Name", required: true, autoComplete: "name" },
-              { name: "email", label: "Email", type: "email", required: true, autoComplete: "email" },
-            ]}
-          />
         </div>
       </div>
     </main>

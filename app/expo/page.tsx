@@ -25,6 +25,7 @@ export default function ExpoPage() {
           </header>
           <ApplyForm
             id="exhibit"
+            closed
             endpoint="/api/apply"
             extra={{ kind: "exhibitor" }}
             submitLabel="Ask for a table"

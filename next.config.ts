@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
     return [
       { source: "/events", destination: "/schedule", permanent: true },
       { source: "/speakers", destination: "/speak", permanent: true },
+      { source: "/apply/speak", destination: "/speak", permanent: true },
+      { source: "/apply/partner", destination: "/partners", permanent: true },
+      { source: "/apply/sponsor", destination: "/sponsors", permanent: true },
+      { source: "/apply/ambassador", destination: "/ambassadors", permanent: true },
+      { source: "/ambassador", destination: "/ambassadors", permanent: true },
       { source: "/about", destination: "/schedule", permanent: true },
       { source: "/the-week", destination: "/schedule", permanent: true },
       { source: "/volunteer", destination: "/get-involved", permanent: true },

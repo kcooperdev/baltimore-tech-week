@@ -17,6 +17,7 @@ export default function HostPage() {
             <p className="plain-lede">You run the night. If we accept it, we list it and point people to you.</p>
           </header>
           <ApplyForm
+            closed
             endpoint="/api/venues"
             submitLabel="Submit"
             successTitle="Thanks. We have the room."

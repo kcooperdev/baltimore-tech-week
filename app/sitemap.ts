@@ -8,9 +8,10 @@ const paths = [
   "/around-baltimore",
   "/tickets",
   "/speak",
+  "/partners",
   "/sponsors",
   "/host",
-  "/ambassador",
+  "/ambassadors",
   "/get-involved",
   "/conduct",
 ];

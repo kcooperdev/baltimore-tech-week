@@ -631,6 +631,28 @@
   box-shadow: 0 3px 0 #16120c;
 }
 
+.pack-btn:disabled,
+.pack-btn:disabled:hover,
+.week-btn:disabled,
+.week-btn:disabled:hover {
+  cursor: not-allowed;
+  opacity: 0.48;
+  transform: none;
+}
+
+.pack-ga .pack-btn:disabled,
+.pack-ga .pack-btn:disabled:hover {
+  background: #f3ead7;
+  box-shadow: 0 4px 0 #16120c;
+}
+
+.pack-closed {
+  margin: 0.7rem 0 0;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
 .pack-vip .pack-btn:hover {
   box-shadow: 0 3px 0 #e2b13c;
 }
