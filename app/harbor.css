@@ -553,7 +553,7 @@ html:has(.harbor-pin) body {
 .band-paper {
   background: var(--paper);
   color: var(--ink);
-  padding: 5.5rem 0;
+  padding: 3.25rem 0 3.75rem;
   position: relative;
   z-index: 3;
 }
@@ -561,7 +561,7 @@ html:has(.harbor-pin) body {
 .band-ink {
   background: #070b16;
   color: var(--paper);
-  padding: 5.5rem 0;
+  padding: 3.25rem 0 3.75rem;
   position: relative;
   z-index: 3;
 }
@@ -569,7 +569,7 @@ html:has(.harbor-pin) body {
 .band-sky {
   background: #b8d3e6;
   color: var(--ink);
-  padding: 5.5rem 0;
+  padding: 3.25rem 0 3.75rem;
   position: relative;
   z-index: 3;
 }
@@ -593,19 +593,19 @@ html:has(.harbor-pin) body {
 .week-title {
   margin: 0;
   max-width: 16ch;
-  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-size: clamp(2.15rem, 4.6vw, 3.4rem);
   font-weight: 650;
-  letter-spacing: -0.045em;
-  line-height: 0.96;
+  letter-spacing: -0.04em;
+  line-height: 1;
   text-transform: none;
 }
 
 .week-lede {
-  max-width: 38rem;
-  margin: 1.25rem 0 0;
-  font-size: 1.12rem;
+  max-width: 34rem;
+  margin: 0.9rem 0 0;
+  font-size: 1.08rem;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .band-paper .week-lede {
@@ -661,10 +661,10 @@ html:has(.harbor-pin) body {
 
 .day-panel {
   display: flex;
-  min-height: 22rem;
+  min-height: 13rem;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1.6rem 1.5rem 1.4rem;
+  padding: 1.35rem 1.3rem 1.2rem;
   text-decoration: none;
 }
 
@@ -1202,7 +1202,7 @@ html:has(.harbor-pin) body {
   z-index: 2;
   width: min(74rem, 100%);
   margin: 0 auto;
-  padding: 8.25rem 1.5rem 2.75rem;
+  padding: 7.25rem 1.5rem 2.25rem;
   color: var(--paper);
 }
 
@@ -1210,7 +1210,7 @@ html:has(.harbor-pin) body {
   color: transparent;
   -webkit-text-stroke: 2.4px #f3ead7fa;
   paint-order: stroke fill;
-  font-size: clamp(3.2rem, 8vw, 6.4rem);
+  font-size: clamp(2.8rem, 6.5vw, 5rem);
   font-weight: 500;
   letter-spacing: -0.048em;
   line-height: 0.9;
@@ -1219,11 +1219,11 @@ html:has(.harbor-pin) body {
 }
 
 .page-hero-lede {
-  max-width: 38rem;
-  margin: 1rem 0 0;
+  max-width: 32rem;
+  margin: 0.85rem 0 0;
   color: var(--paper);
   font-size: 1.05rem;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .page-hero-actions {
@@ -1242,7 +1242,7 @@ html:has(.harbor-pin) body {
 .band-opportunity {
   position: relative;
   z-index: 3;
-  padding: 4.75rem 0;
+  padding: 3.25rem 0 3.75rem;
 }
 
 .band-connect {

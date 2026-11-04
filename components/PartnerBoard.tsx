@@ -27,7 +27,7 @@ export function PartnerBoard() {
 
   return (
     <div>
-      <div className="filter-row" role="tablist" aria-label="Filter partner events">
+      <div className="filter-row" role="tablist" aria-label="Filter partner events" style={{ marginTop: "1.75rem" }}>
         {partnerFilters.map((item) => (
           <button
             key={item}
@@ -41,37 +41,23 @@ export function PartnerBoard() {
         ))}
       </div>
 
-      <div style={{ marginTop: "2.5rem" }}>
-        <p className="week-kicker">Confirmed</p>
-        <h2 className="week-title week-title-wide">Partner events</h2>
-        <p className="week-lede">
-          {events.length === 0
-            ? "None confirmed yet."
-            : `${events.length} confirmed.`}
-        </p>
+      <div style={{ marginTop: "2.25rem" }}>
+        <h2 className="week-title">Confirmed</h2>
         {events.length === 0 ? (
-          <div className="coming" style={{ marginTop: "1.5rem" }}>
-            <h3>Partner events coming soon.</h3>
-            <p className="week-lede">
-              Confirmed community-hosted experiences will show a venue, a time, and how to RSVP.
-            </p>
-          </div>
+          <p className="week-lede">None yet. A confirmed event will show a time and a way to RSVP.</p>
         ) : (
           <ul className="venue-grid">
             {events.map((event) => (
               <li key={event.id} className="venue-card">
-                <p className="status-tag">Partner event · {event.category}</p>
+                <p className="status-tag">{event.category}</p>
                 <h3>{event.name}</h3>
-                <p>{event.description}</p>
                 <p>
-                  {event.host} · {event.venue} · {event.neighborhood}
+                  {event.venue} · {event.neighborhood}
                 </p>
                 <p>
                   {event.date} · {event.time}
                 </p>
-                <p>
-                  {event.capacity} · {event.ticket}
-                </p>
+                <p>{event.ticket}</p>
                 {event.rsvpUrl ? (
                   <a className="week-btn" href={event.rsvpUrl} style={{ marginTop: "1rem" }}>
                     RSVP
@@ -83,14 +69,11 @@ export function PartnerBoard() {
         )}
       </div>
 
-      <div style={{ marginTop: "3.5rem" }}>
-        <p className="week-kicker">Not confirmed</p>
-        <h2 className="week-title week-title-wide">Locations being explored</h2>
-        <p className="week-lede">
-          These places are in conversation. Nothing below is a confirmed Tech Week event, time, or partnership.
-        </p>
+      <div style={{ marginTop: "3rem" }}>
+        <h2 className="week-title">Being explored</h2>
+        <p className="week-lede">In conversation. Not a partnership, a time, or an event.</p>
         {venues.length === 0 ? (
-          <p className="week-lede">No locations in this category yet.</p>
+          <p className="week-lede">Nothing in this category.</p>
         ) : (
           <ul className="venue-grid">
             {venues.map((venue) => (
@@ -101,14 +84,13 @@ export function PartnerBoard() {
                   {venue.focus} · {venue.neighborhood}
                 </p>
                 <p>{venue.address}</p>
-                <p>{venue.possible.join(" · ")}</p>
               </li>
             ))}
           </ul>
         )}
         <div className="week-actions">
           <Link className="week-btn" href="/host">
-            Host an Event
+            Host an event
           </Link>
         </div>
       </div>
