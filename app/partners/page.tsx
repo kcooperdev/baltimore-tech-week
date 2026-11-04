@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Community Partners",
-  "Partner with Baltimore Tech Week for free. For meetups, schools, accelerators, nonprofits, and student groups.",
+  "Free for meetups, schools, accelerators, nonprofits, and student groups that already gather people in Baltimore.",
 );
 
 export default function PartnersPage() {
@@ -16,22 +16,22 @@ export default function PartnersPage() {
             <p className="week-kicker">Community partner · Free</p>
             <h1>Partner</h1>
             <p className="plain-lede">
-              Partnership is free for meetups, schools, accelerators, nonprofits, and student groups. You already have a circle. We want them in the rooms.
+              Free for meetups, schools, accelerators, nonprofits, and student groups. You already have people who show up for you. Send them.
             </p>
             <ul className="side-notes">
-              <li>Logo and a listing on this page</li>
-              <li>Your name when the week opens and closes</li>
-              <li>A thank-you with the other community partners</li>
-              <li>A link that counts the people you send</li>
+              <li>Your logo on this page.</li>
+              <li>Your name when the week starts, and when it ends.</li>
+              <li>A thank-you next to the other groups.</li>
+              <li>A link that counts who you sent.</li>
             </ul>
-            <p className="plain-lede">What you share: the week, at least once. Include it in your newsletter if you send one. Point your people here.</p>
+            <p className="plain-lede">Tell them once. Put it in the newsletter if you have one. Use the link so we can see they came from you.</p>
           </header>
           <ApplyForm
             endpoint="/api/apply"
             extra={{ kind: "partner" }}
             submitLabel="Submit partnership"
             successTitle="Thanks. We have your partner application."
-            successBody="If the fit is right, we will write you about listing, shout-outs, and the link you can share. Community partner is free. No invoice."
+            successBody="If we list you, we will send the details and the link. It is free."
             fields={partnerFields}
           />
         </div>
