@@ -484,3 +484,218 @@
 .harbor-footer-meta a {
   border-bottom-color: #1a120c66;
 }
+
+.day-jump {
+  display: grid;
+  gap: 1.25rem;
+  margin: 0 0 3rem;
+  padding: 0;
+}
+
+.day-jump a {
+  color: var(--cream);
+  text-decoration: none;
+  border-top: 2px solid #e2b13c;
+  padding-top: 0.7rem;
+}
+
+.day-jump span,
+.journey span {
+  display: block;
+  color: #e2b13c;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.day-jump strong,
+.journey strong {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.day-jump em,
+.journey em {
+  display: block;
+  margin-top: 0.45rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #f3ead7d6;
+}
+
+.day-chapter {
+  margin: 0 0 4.5rem;
+  scroll-margin-top: 7.5rem;
+}
+
+.day-chapter h2 {
+  margin: 0.1rem 0 0;
+  font-size: clamp(3.4rem, 9vw, 6.4rem);
+  font-weight: 650;
+  letter-spacing: -0.05em;
+  line-height: 0.88;
+}
+
+.day-question {
+  margin: 0.8rem 0 0;
+  color: #e2b13c;
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.day-spine {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0 0 0 0.15rem;
+  border-left: 1px solid #e2b13c73;
+}
+
+.day-spine > li {
+  display: grid;
+  gap: 0.35rem;
+  position: relative;
+  padding: 1.15rem 0 1.2rem 1.15rem;
+}
+
+.day-spine > li::before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 1.45rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e2b13c;
+}
+
+.day-when {
+  margin: 0;
+  color: #e2b13c;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.day-where {
+  margin: 0;
+  color: #f3ead799;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.day-spine h3 {
+  margin: 0.15rem 0 0;
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.day-spine p {
+  max-width: 38rem;
+  margin: 0.4rem 0 0;
+  color: #f3ead7cc;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+.day-spine .is-pause h3 {
+  font-weight: 550;
+  font-style: italic;
+}
+
+.day-spine .is-city {
+  margin-top: 0.35rem;
+  background: linear-gradient(90deg, #16365c88, #16365c00 78%);
+}
+
+.city-places {
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
+}
+
+.city-places li {
+  padding: 0.55rem 0 0;
+}
+
+.city-places a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.city-places strong {
+  display: block;
+  color: var(--cream);
+  font-size: 1.05rem;
+}
+
+.city-places span,
+.city-places a span {
+  display: block;
+  margin-top: 0.15rem;
+  color: #f3ead7b8;
+  font-size: 0.95rem;
+}
+
+.city-places a:hover strong {
+  color: #e2b13c;
+}
+
+.campus-note {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1.5rem;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid #e2b13c73;
+  color: var(--cream);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+}
+
+.journey {
+  list-style: none;
+  display: grid;
+  gap: 1.4rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+
+.journey a {
+  display: block;
+  color: var(--cream);
+  text-decoration: none;
+  border-top: 2px solid #e2b13c;
+  padding-top: 0.75rem;
+}
+
+.journey p {
+  max-width: 28rem;
+  margin: 0.55rem 0 0;
+  color: #f3ead7c2;
+}
+
+@media (min-width: 800px) {
+  .day-jump,
+  .journey {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .day-spine > li {
+    grid-template-columns: 9.5rem 1fr;
+    gap: 1.25rem;
+    align-items: start;
+  }
+}

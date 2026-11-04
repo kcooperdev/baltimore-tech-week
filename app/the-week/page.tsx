@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
-import { hq, pageMeta, pillars, rhythm, site } from "@/lib/site";
+import { hq, pageMeta, pillars, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "The Week",
-  "Baltimore Tech Week 2027 is Wednesday, Thursday, and Friday. Connect, Build, and Opportunity. Tech Week HQ is 4MLK.",
+  "Baltimore Tech Week 2027 is Wednesday, Thursday, and Friday. Connect, Build, and Opportunity. Tech Week HQ is 4MLK. The city is the campus.",
 );
 
 export default function TheWeekPage() {
@@ -12,48 +12,37 @@ export default function TheWeekPage() {
     <main className="plain-page">
       <PageHeader
         eyebrow={`${site.when} · ${site.year} · ${site.datesNote}`}
-        title="The Week"
-        lede="Connect. Build. Opportunity. One city. Exact dates coming soon."
+        title="One question a day"
+        lede="Connect. Build. Opportunity. The hours live on the schedule. The idea is simpler than that."
       />
 
       <div className="plain-body">
         <div className="week-wrap">
-          <div className="day-list">
+          <ol className="journey">
             {pillars.map((pillar) => (
-              <article key={pillar.id} id={pillar.id} className="scroll-mt-24">
-                <p className="week-kicker">{pillar.day}</p>
-                <h2>{pillar.name}</h2>
-                <p className="week-lede">{pillar.purpose}</p>
-                <p className="week-kicker" style={{ marginTop: "1rem" }}>
-                  {pillar.question}
-                </p>
-                <ul className="topic-list">
-                  {pillar.programming.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
+              <li key={pillar.id}>
+                <Link href={`/schedule#${pillar.id}`}>
+                  <span>{pillar.day}</span>
+                  <strong>{pillar.name}</strong>
+                  <em>{pillar.question}</em>
+                  <p>{pillar.purpose}</p>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ol>
 
-          <div className="rhythm">
-            {rhythm.map((block) => (
-              <div key={block.label}>
-                <h3>{block.label}</h3>
-                <p>{block.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <p className="week-lede">
-            {hq.venue} · {hq.street}, {hq.cityLine}
+          <p className="campus-note">
+            <span>{hq.venue} · {hq.street}</span>
+            <span>Baltimore is the campus.</span>
           </p>
+          <p className="week-lede">{hq.cityLine}</p>
+
           <div className="week-actions">
             <Link className="week-btn" href="/schedule">
-              Schedule
+              The hours
             </Link>
             <a className="week-btn week-btn-ghost" href={hq.mapsUrl} target="_blank" rel="noreferrer">
-              Directions
+              Directions to 4MLK
             </a>
           </div>
         </div>

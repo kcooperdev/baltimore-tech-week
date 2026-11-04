@@ -14,7 +14,7 @@ export default function AroundBaltimorePage() {
       <PageHeader
         eyebrow="Not confirmed yet"
         title="Around Baltimore"
-        lede="The pass is HQ. The nights are the city. A pass is not a ticket to every partner event."
+        lede="The pass is HQ. After 5, the week is whatever room in the city is actually ready. A time and an RSVP go up when they are."
       >
         <Link className="week-btn" href="/host">
           Host an event

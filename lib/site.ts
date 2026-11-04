@@ -31,6 +31,24 @@ export type DayId = "wednesday" | "thursday" | "friday";
 export type DayPart = "morning" | "afternoon" | "evening";
 export type Place = "hq" | "partner";
 
+export type DayStopKind = "hq" | "pause" | "city";
+
+export type DayPlace = {
+  name: string;
+  line: string;
+  href?: string;
+};
+
+export type DayStop = {
+  id: string;
+  when: string;
+  where: string;
+  title: string;
+  text: string;
+  kind: DayStopKind;
+  places?: DayPlace[];
+};
+
 export type Pillar = {
   id: DayId;
   day: string;
@@ -39,7 +57,7 @@ export type Pillar = {
   tagline: string;
   summary: string;
   purpose: string;
-  programming: string[];
+  stops: DayStop[];
 };
 
 export const pillars: Pillar[] = [
@@ -48,45 +66,120 @@ export const pillars: Pillar[] = [
     day: "Wednesday",
     name: "Connect",
     question: "Who should I meet?",
-    tagline: "Meet the people you keep meaning to meet.",
-    summary: "Meet the people you keep meaning to meet.",
-    purpose: "Put a name to the work happening in this city.",
-    programming: [
-      "Opening programming",
-      "Coworking",
-      "Expo",
-      "Community organizations",
-      "Networking",
-      "Baltimore tech ecosystem conversations",
-      "Meetups",
-      "Featured conversations",
-      "Opening reception",
-      "Partner events throughout Baltimore",
+    tagline: "Meet the people building this city.",
+    summary: "Meet the people building this city.",
+    purpose: "Put a name to the work happening here.",
+    stops: [
+      {
+        id: "wed-open",
+        when: "10am – noon",
+        where: "4MLK",
+        title: "The doors open",
+        text: "Check in, take a table, walk the expo. Coffee is how the first conversation starts.",
+        kind: "hq",
+      },
+      {
+        id: "wed-floor",
+        when: "Noon – 4pm",
+        where: "4MLK",
+        title: "Stay on the floor",
+        text: "The people building Baltimore, community rooms, and a few talks. Names go on the schedule when someone is booked.",
+        kind: "hq",
+      },
+      {
+        id: "wed-break",
+        when: "4 – 5pm",
+        where: "Step outside",
+        title: "An hour with nothing on",
+        text: "Get air. Get to the next room.",
+        kind: "pause",
+      },
+      {
+        id: "wed-night",
+        when: "5 – 9pm",
+        where: "4MLK",
+        title: "Opening night",
+        text: "We open the week in the building. A welcome, longer conversations, food and a drink.",
+        kind: "hq",
+      },
+      {
+        id: "wed-city",
+        when: "Later",
+        where: "Around Baltimore",
+        title: "If you still want a room",
+        text: "Partner nights around the city. The pass covers HQ. A city night has its own door.",
+        kind: "city",
+        places: [
+          {
+            name: "Jerk At Nite",
+            line: "A possible social. Optional, and still being set.",
+            href: "/around-baltimore#jerk-at-nite",
+          },
+        ],
+      },
     ],
   },
   {
     id: "thursday",
     day: "Thursday",
     name: "Build",
-    question: "What can I build?",
-    tagline: "Make something before you leave.",
-    summary: "Make something before you leave.",
-    purpose: "Workshops and demos. Leave with something you made.",
-    programming: [
-      "AI",
-      "Software engineering",
-      "Product",
-      "UX and design",
-      "Data",
-      "Cloud",
-      "Creative technology",
-      "Developer tools",
-      "Startup demos",
-      "Hands-on workshops",
-      "Builder conversations",
-      "Entrepreneurship",
-      "Founder programming",
-      "Partner events",
+    question: "What can I create?",
+    tagline: "Builders, startups, and work you can touch.",
+    summary: "Builders, startups, and work you can touch.",
+    purpose: "Leave with something you made.",
+    stops: [
+      {
+        id: "thu-open",
+        when: "10am – noon",
+        where: "4MLK",
+        title: "Tables are open",
+        text: "Cowork. The expo is up. Find the other person making the same thing.",
+        kind: "hq",
+      },
+      {
+        id: "thu-floor",
+        when: "Noon – 4pm",
+        where: "4MLK",
+        title: "Make something",
+        text: "AI, engineering, product, data, and creative technology. Workshops and demos. The lineup fills in. The day stays this shape.",
+        kind: "hq",
+      },
+      {
+        id: "thu-break",
+        when: "4 – 5pm",
+        where: "Step outside",
+        title: "An hour with nothing on",
+        text: "Same pause as yesterday. Use it to move.",
+        kind: "pause",
+      },
+      {
+        id: "thu-night",
+        when: "5pm – late",
+        where: "4MLK",
+        title: "Build night",
+        text: "Talks and demos you can watch happen. The room runs until 8 or 9.",
+        kind: "hq",
+      },
+      {
+        id: "thu-city",
+        when: "Evening",
+        where: "Around Baltimore",
+        title: "Two rooms, then whoever is ready",
+        text: "The night leaves HQ. Another partner can add a room once we approve it.",
+        kind: "city",
+        places: [
+          {
+            name: "Spark Baltimore",
+            line: "Founders, and the people around a company.",
+            href: "/around-baltimore#spark",
+          },
+          {
+            name: "1023 W Baltimore St Art Gallery",
+            line: "Art, design, and work you can walk through.",
+            href: "/around-baltimore#gallery",
+          },
+        ],
+      },
     ],
   },
   {
@@ -94,32 +187,51 @@ export const pillars: Pillar[] = [
     day: "Friday",
     name: "Opportunity",
     question: "Where can this take me?",
-    tagline: "Walk out with a next step.",
-    summary: "Walk out with a next step.",
-    purpose: "Jobs, founders, and the conversation that starts the next thing.",
-    programming: [
-      "Jobs",
-      "Hiring",
-      "Career development",
-      "Entrepreneurship",
-      "Founder resources",
-      "Investment",
-      "Education",
-      "Training",
-      "Community resources",
-      "Professional development",
-      "Networking",
-      "Closing programming",
-      "Closing celebration",
+    tagline: "Leave with somewhere to go next.",
+    summary: "Leave with somewhere to go next.",
+    purpose: "A job, a cofounder, a room you go back to.",
+    stops: [
+      {
+        id: "fri-open",
+        when: "10am – noon",
+        where: "4MLK",
+        title: "One more morning",
+        text: "Cowork, the expo, and the people who hire.",
+        kind: "hq",
+      },
+      {
+        id: "fri-floor",
+        when: "Noon – 4pm",
+        where: "4MLK",
+        title: "The useful part",
+        text: "Jobs, classes, founder help, investors, and the groups that keep this city working. A session appears here when it is real.",
+        kind: "hq",
+      },
+      {
+        id: "fri-close",
+        when: "4 – 5pm",
+        where: "4MLK",
+        title: "We close the building",
+        text: "What comes next for Baltimore tech, a few thank-yous, then HQ is done for the week.",
+        kind: "hq",
+      },
+      {
+        id: "fri-city",
+        when: "5pm on",
+        where: "Around Baltimore",
+        title: "The week moves outside",
+        text: "Partner rooms, food, music. The celebration happens in the city.",
+        kind: "city",
+        places: [
+          {
+            name: "Jerk At Nite",
+            line: "A possible last stop. Still a maybe.",
+            href: "/around-baltimore#jerk-at-nite",
+          },
+        ],
+      },
     ],
   },
-];
-
-export const rhythm: { label: string; text: string }[] = [
-  { label: "Morning", text: "Arrive. Cowork. Walk the floor." },
-  { label: "Afternoon", text: "Talks and workshops. Stay for one." },
-  { label: "Evening", text: "The program people came for." },
-  { label: "After", text: "The city. A pass is not a ticket to every night." },
 ];
 
 export const hq = {
@@ -322,7 +434,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "Spark Baltimore",
     neighborhood: "Downtown",
     address: "8 Market Place, Baltimore, MD 21202",
-    focus: "Startups + Founders",
+    focus: "Thursday night · founders",
     categories: ["Startups", "Connect"],
     possible: [
       "Founders",
@@ -337,7 +449,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "1023 W Baltimore St Art Gallery",
     neighborhood: "Poppleton",
     address: "1023 W Baltimore St, Baltimore, MD 21223",
-    focus: "Creative Tech",
+    focus: "Thursday night · creative tech",
     categories: ["Creative Tech", "Build", "Community"],
     possible: [
       "Art and technology",
@@ -353,7 +465,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "Jerk At Nite",
     neighborhood: "Downtown",
     address: "21 N Eutaw St, Baltimore, MD 21201",
-    focus: "Tech Week Social",
+    focus: "A possible social · Wednesday or Friday",
     categories: ["Networking", "Community"],
     possible: [
       "Networking",

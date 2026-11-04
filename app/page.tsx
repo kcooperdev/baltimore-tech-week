@@ -47,7 +47,7 @@ export default async function Home({
                     <p className="day-panel-day">{pillar.day}</p>
                     <h3>{pillar.name}</h3>
                   </div>
-                  <p className="day-panel-q">{pillar.tagline}</p>
+                  <p className="day-panel-q">{pillar.question}</p>
                 </Link>
               ))}
             </div>

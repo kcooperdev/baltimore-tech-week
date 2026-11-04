@@ -1,71 +1,94 @@
 import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
-import { pageMeta, pillars, schedule, site } from "@/lib/site";
+import { pageMeta, pillars, site } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Schedule",
-  "Baltimore Tech Week 2027 schedule. Wednesday Connect, Thursday Build, Friday Opportunity. Sessions will be posted when they are confirmed.",
+  "Baltimore Tech Week 2027 runs Wednesday through Friday. Connect, Build, and Opportunity. Days at 4MLK, nights around Baltimore. Sessions are added when they are booked.",
 );
 
 export default function SchedulePage() {
+  const today = pillars.find((pillar) => pillar.id === site.liveDay);
+
   return (
     <main className="plain-page">
       <PageHeader
-        eyebrow={site.when}
-        title="Schedule"
-        lede="The days are set. The sessions go up when they are real."
+        eyebrow={`${site.when} · ${site.year} · ${site.datesNote}`}
+        title="How the week goes"
+        lede="Three days. The building by day. The city after. Names of talks show up when someone is booked."
       />
 
       <div className="plain-body">
         <div className="week-wrap">
-          {site.phase === "live" ? (
+          {site.phase === "live" && today ? (
             <p className="week-lede">
-              Today is {pillars.find((pillar) => pillar.id === site.liveDay)?.day}.{" "}
-              <a href={`#${site.liveDay}`}>Jump to today</a>
+              Today is {today.day}. <a href={`#${today.id}`}>Jump to today</a>
             </p>
           ) : null}
 
-          <ul className="schedule-days">
-            {pillars.map((pillar) => {
-              const items = schedule.filter((item) => item.day === pillar.id);
-              return (
-                <li key={pillar.id} id={pillar.id} className="scroll-mt-24">
-                  <div>
-                    <p className="week-kicker">{pillar.day}</p>
-                    <h2 style={{ margin: "0.15rem 0 0", fontSize: "clamp(1.7rem, 3vw, 2.2rem)", fontWeight: 650, letterSpacing: "-0.03em" }}>
-                      {pillar.name}
-                    </h2>
-                    <p className="week-lede" style={{ marginTop: "0.35rem" }}>
-                      {pillar.tagline}
-                    </p>
-                  </div>
-                  <div>
-                    {items.length === 0 ? (
-                      <p className="week-lede">Schedule coming soon.</p>
-                    ) : (
-                      <ul className="topic-list">
-                        {items.map((item) => (
-                          <li key={item.id}>
-                            <strong>
-                              {item.time} · {item.title}
-                            </strong>
-                            <span style={{ display: "block" }}>{item.description}</span>
-                            <span style={{ display: "block" }}>
-                              {item.venue} · {item.registration}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          <nav className="day-jump" aria-label="Days">
+            {pillars.map((pillar) => (
+              <a key={pillar.id} href={`#${pillar.id}`}>
+                <span>{pillar.day}</span>
+                <strong>{pillar.name}</strong>
+                <em>{pillar.question}</em>
+              </a>
+            ))}
+          </nav>
+
+          {pillars.map((pillar) => (
+            <section key={pillar.id} id={pillar.id} className="day-chapter">
+              <header>
+                <p className="week-kicker">{pillar.day}</p>
+                <h2>{pillar.name}</h2>
+                <p className="day-question">{pillar.question}</p>
+                <p className="week-lede">{pillar.tagline}</p>
+              </header>
+              <ol className="day-spine">
+                {pillar.stops.map((stop) => (
+                  <li key={stop.id} className={stop.kind === "city" ? "is-city" : stop.kind === "pause" ? "is-pause" : undefined}>
+                    <p className="day-when">{stop.when}</p>
+                    <div>
+                      <p className="day-where">{stop.where}</p>
+                      <h3>{stop.title}</h3>
+                      <p>{stop.text}</p>
+                      {stop.places ? (
+                        <ul className="city-places">
+                          {stop.places.map((place) => (
+                            <li key={place.name}>
+                              {place.href ? (
+                                <Link href={place.href}>
+                                  <strong>{place.name}</strong>
+                                  <span>{place.line}</span>
+                                </Link>
+                              ) : (
+                                <>
+                                  <strong>{place.name}</strong>
+                                  <span>{place.line}</span>
+                                </>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          ))}
+
+          <p className="campus-note">
+            <span>4MLK is headquarters.</span>
+            <span>Baltimore is the campus.</span>
+          </p>
 
           <div className="week-actions">
-            <Link className="week-btn week-btn-ghost" href="/the-week">
-              About the days
+            <Link className="week-btn" href="/tickets">
+              Get a pass
+            </Link>
+            <Link className="week-btn week-btn-ghost" href="/around-baltimore">
+              Nights in the city
             </Link>
           </div>
         </div>

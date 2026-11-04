@@ -70,14 +70,14 @@ export function PartnerBoard() {
       </div>
 
       <div style={{ marginTop: "3rem" }}>
-        <h2 className="week-title">Being explored</h2>
-        <p className="week-lede">In conversation. Not a partnership, a time, or an event.</p>
+        <h2 className="week-title">Where the nights are headed</h2>
+        <p className="week-lede">These rooms are in the plan. A time and a door go up when the night is real.</p>
         {venues.length === 0 ? (
           <p className="week-lede">Nothing in this category.</p>
         ) : (
           <ul className="venue-grid">
             {venues.map((venue) => (
-              <li key={venue.id} className="venue-card">
+              <li key={venue.id} id={venue.id} className="venue-card scroll-mt-24">
                 <p className="status-tag">Being explored</p>
                 <h3>{venue.name}</h3>
                 <p>
