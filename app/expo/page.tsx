@@ -9,7 +9,7 @@ export const metadata = pageMeta(
 
 export default function ExpoPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader eyebrow={hq.venue} title="Expo" lede="Walk the floor at Tech Week HQ. You do not need a table to come in.">
         <a className="week-btn" href="#exhibit">
           Ask for a table
@@ -36,7 +36,7 @@ export default function ExpoPage() {
           </div>
         </section>
 
-        <section className="band-ink scroll-mt-24">
+        <section className="scroll-mt-24">
           <div className="week-wrap split">
             <div>
               <h2 className="week-title">A table.</h2>

@@ -10,7 +10,7 @@ export const metadata = pageMeta(
 
 export default function AroundBaltimorePage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader
         eyebrow="Not confirmed yet"
         title="Around Baltimore"

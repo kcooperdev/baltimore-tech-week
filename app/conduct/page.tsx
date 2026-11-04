@@ -8,7 +8,7 @@ export const metadata = pageMeta(
 
 export default function ConductPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader eyebrow="Community" title="Be decent" lede="You don't need a tech title to be here." />
       <div className="editorial-flow">
         <section className="band-paper">

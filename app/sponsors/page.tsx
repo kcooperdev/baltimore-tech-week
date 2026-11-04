@@ -9,7 +9,7 @@ export const metadata = pageMeta(
 
 export default function SponsorsPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader eyebrow="Get involved" title="Sponsor" lede="Packages are not published yet. Tell us what you want to back.">
         <a className="week-btn" href="#sponsor-form">
           Write to us

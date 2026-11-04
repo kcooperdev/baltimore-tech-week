@@ -9,7 +9,7 @@ export const metadata = pageMeta(
 
 export default function SpeakPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader
         eyebrow="Get involved"
         title="Speak"

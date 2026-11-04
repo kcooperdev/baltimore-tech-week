@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="editorial-flow" id="main">
+    <main className="plain-page" id="main" style={{ minHeight: "70vh", paddingTop: "7rem" }}>
       <section className="band-paper" style={{ minHeight: "70vh" }}>
         <div className="week-wrap">
           <p className="week-kicker">404</p>

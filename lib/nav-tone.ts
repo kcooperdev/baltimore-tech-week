@@ -1,5 +1,7 @@
 const stops: [string, string][] = [
   [".page-hero", "night"],
+  [".plain-page", "light"],
+  [".plain-hero", "light"],
   [".band-paper", "light"],
   [".band-ink", "dark"],
   [".band-connect", "dark"],

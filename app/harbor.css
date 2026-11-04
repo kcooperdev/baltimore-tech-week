@@ -300,8 +300,9 @@ html:has(.harbor-pin) body {
 .site-topbar[data-nav-tone="light"] {
   color: var(--ink);
   text-shadow: none;
-  backdrop-filter: blur(14px);
-  background: #f3ead7eb;
+  backdrop-filter: none;
+  background: var(--paper);
+  box-shadow: inset 0 -1px 0 #16120c18;
 }
 
 .site-topbar[data-nav-tone="dark"] {
@@ -422,9 +423,18 @@ html:has(.harbor-pin) body {
 
 .harbor-pin.is-night .harbor-link:hover,
 .harbor-pin.is-past .harbor-link:hover,
-.site-topbar .harbor-link:hover,
-.harbor-link[aria-current="page"] {
+.site-topbar[data-nav-tone="night"] .harbor-link:hover,
+.site-topbar[data-nav-tone="dark"] .harbor-link:hover,
+.harbor-pin.is-night .harbor-link[aria-current="page"],
+.site-topbar[data-nav-tone="night"] .harbor-link[aria-current="page"],
+.site-topbar[data-nav-tone="dark"] .harbor-link[aria-current="page"] {
   color: var(--gold);
+}
+
+.site-topbar[data-nav-tone="light"] .harbor-link,
+.site-topbar[data-nav-tone="light"] .harbor-link:hover,
+.site-topbar[data-nav-tone="light"] .harbor-link[aria-current="page"] {
+  color: var(--ink);
 }
 
 .harbor-pin:not(.is-night) .topbar .harbor-link[aria-current="page"] {
@@ -805,7 +815,7 @@ html:has(.harbor-pin) body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: #16120c99;
 }
 
 .path-list {
@@ -1172,6 +1182,129 @@ html:has(.harbor-pin) body {
   color: #16120c;
   border-bottom: 1px solid #16120c59;
   text-decoration: none;
+}
+
+.plain-page {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.plain-page .editorial-flow,
+.plain-page .band-paper,
+.plain-page .band-ink,
+.plain-page .band-connect,
+.plain-page .band-build,
+.plain-page .band-opportunity,
+.plain-page .band-sky {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.plain-page .vip-panel {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.topic-list {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: #16120cb8;
+  font-size: 0.95rem;
+}
+
+.topic-list li {
+  padding: 0.18rem 0;
+}
+
+.schedule-days {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.schedule-days > li {
+  display: grid;
+  gap: 0.6rem;
+  border-top: 1px solid #16120c22;
+  padding: 1.4rem 0;
+}
+
+@media (min-width: 800px) {
+  .schedule-days > li {
+    grid-template-columns: 14rem 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.plain-hero {
+  padding: 7.25rem 0 0.5rem;
+}
+
+.plain-hero h1 {
+  margin: 0;
+  max-width: 16ch;
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  font-weight: 650;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.plain-lede {
+  max-width: 32rem;
+  margin: 0.85rem 0 0;
+  font-size: 1.08rem;
+  line-height: 1.5;
+  color: #16120cc7;
+}
+
+.plain-body {
+  padding: 1.75rem 0 4rem;
+}
+
+.day-list {
+  display: grid;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-list article,
+.day-list li {
+  border-top: 1px solid #16120c22;
+  padding-top: 1rem;
+}
+
+.day-list h2 {
+  margin: 0.15rem 0 0;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.plain-page .week-kicker {
+  color: #16120c99;
+}
+
+.plain-page .week-lede {
+  color: #16120cc7;
+}
+
+@media (min-width: 800px) {
+  .day-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .day-list article,
+  .day-list li {
+    border-top: 0;
+    padding-top: 0;
+  }
 }
 
 .page-hero {

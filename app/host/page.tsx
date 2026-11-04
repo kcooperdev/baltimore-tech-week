@@ -11,7 +11,7 @@ const categories = partnerFilters.filter((item) => item !== "All");
 
 export default function HostPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader
         eyebrow="Partner events"
         title="Host"

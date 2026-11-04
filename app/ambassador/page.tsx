@@ -9,7 +9,7 @@ export const metadata = pageMeta(
 
 export default function AmbassadorPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader
         eyebrow="Get involved"
         title="Bring people"

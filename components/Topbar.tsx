@@ -47,7 +47,7 @@ export function Topbar({
   }, [scene, pathname]);
 
   return (
-    <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone="night" inert={inertBar ? true : undefined}>
+    <header ref={bar} className={scene ? "topbar" : "topbar site-topbar"} data-nav-tone={scene ? "night" : "light"} inert={inertBar ? true : undefined}>
       <button
         type="button"
         className="topbar-burger"

@@ -7,62 +7,68 @@ export const metadata = pageMeta(
   "Baltimore Tech Week 2027 schedule. Wednesday Connect, Thursday Build, Friday Opportunity. Sessions will be posted when they are confirmed.",
 );
 
-const band = {
-  wednesday: "band-connect",
-  thursday: "band-build",
-  friday: "band-opportunity",
-} as const;
-
 export default function SchedulePage() {
   return (
-    <main>
-      <PageHeader eyebrow={site.when} title="Schedule" lede="Nothing is posted until it is confirmed.">
-        <Link className="week-btn" href="/tickets">
-          Get Tickets
-        </Link>
-      </PageHeader>
+    <main className="plain-page">
+      <PageHeader
+        eyebrow={site.when}
+        title="Schedule"
+        lede="Nothing is posted until it is confirmed."
+      />
 
-      <div className="editorial-flow">
-        {site.phase === "live" ? (
-          <section className="band-ink">
-            <div className="week-wrap">
-              <p className="week-lede">
-                Today is {pillars.find((pillar) => pillar.id === site.liveDay)?.day}.{" "}
-                <a href={`#${site.liveDay}`}>Jump to today</a>
-              </p>
-            </div>
-          </section>
-        ) : null}
+      <div className="plain-body">
+        <div className="week-wrap">
+          {site.phase === "live" ? (
+            <p className="week-lede">
+              Today is {pillars.find((pillar) => pillar.id === site.liveDay)?.day}.{" "}
+              <a href={`#${site.liveDay}`}>Jump to today</a>
+            </p>
+          ) : null}
 
-        {pillars.map((pillar) => {
-          const items = schedule.filter((item) => item.day === pillar.id);
-          return (
-            <section key={pillar.id} id={pillar.id} className={`${band[pillar.id]} scroll-mt-24`}>
-              <div className="week-wrap">
-                <p className="week-kicker">{pillar.day}</p>
-                <h2 className="week-title">{pillar.name}</h2>
-                <p className="week-lede">{pillar.tagline}</p>
-                {items.length === 0 ? (
-                  <p className="week-lede">Schedule coming soon.</p>
-                ) : (
-                  <ul className="hold-list" style={{ marginTop: "1.5rem" }}>
-                    {items.map((item) => (
-                      <li key={item.id}>
-                        <strong>
-                          {item.time} · {item.title}
-                        </strong>
-                        <span style={{ display: "block" }}>{item.description}</span>
-                        <span style={{ display: "block" }}>
-                          {item.venue} · {item.registration}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </section>
-          );
-        })}
+          <ul className="schedule-days">
+            {pillars.map((pillar) => {
+              const items = schedule.filter((item) => item.day === pillar.id);
+              return (
+                <li key={pillar.id} id={pillar.id} className="scroll-mt-24">
+                  <div>
+                    <p className="week-kicker">{pillar.day}</p>
+                    <h2 style={{ margin: "0.15rem 0 0", fontSize: "clamp(1.7rem, 3vw, 2.2rem)", fontWeight: 650, letterSpacing: "-0.03em" }}>
+                      {pillar.name}
+                    </h2>
+                    <p className="week-lede" style={{ marginTop: "0.35rem" }}>
+                      {pillar.tagline}
+                    </p>
+                  </div>
+                  <div>
+                    {items.length === 0 ? (
+                      <p className="week-lede">Schedule coming soon.</p>
+                    ) : (
+                      <ul className="topic-list">
+                        {items.map((item) => (
+                          <li key={item.id}>
+                            <strong>
+                              {item.time} · {item.title}
+                            </strong>
+                            <span style={{ display: "block" }}>{item.description}</span>
+                            <span style={{ display: "block" }}>
+                              {item.venue} · {item.registration}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="week-actions">
+            <Link className="week-btn week-btn-ghost" href="/the-week">
+              About the days
+            </Link>
+          </div>
+        </div>
       </div>
     </main>
   );

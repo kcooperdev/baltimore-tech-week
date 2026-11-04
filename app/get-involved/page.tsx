@@ -9,7 +9,7 @@ export const metadata = pageMeta(
 
 export default function GetInvolvedPage() {
   return (
-    <main>
+    <main className="plain-page">
       <PageHeader eyebrow="Pick one" title="Get involved" lede="Seven ways in. Each one is a short form." />
       <div className="editorial-flow">
         <section className="band-paper">
