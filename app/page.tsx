@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { formatPrice, generalAdmission, hq, pillars, site } from "@/lib/site";
+import { formatPrice, generalAdmission, pillars, site } from "@/lib/site";
 
 const panelClass = {
   tuesday: "day-panel day-panel-connect",
@@ -51,17 +51,6 @@ export default async function Home({
                 </Link>
               ))}
             </div>
-            <p className="home-address">
-              {hq.venue}
-              <br />
-              {hq.street}
-              <br />
-              {hq.cityLine}
-              <br />
-              <a href={hq.mapsUrl} target="_blank" rel="noreferrer">
-                Directions
-              </a>
-            </p>
           </div>
         </section>
       </div>

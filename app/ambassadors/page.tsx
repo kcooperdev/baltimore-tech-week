@@ -18,7 +18,7 @@ export default function AmbassadorsPage() {
             <p className="plain-lede">
               Help bring people out. Share events with your network and introduce more people to the community. You do not need a big following.
             </p>
-            <ul className="hold-list">
+            <ul className="side-notes">
               <li>Start with the circle you already have. A campus Slack, a Sunday dinner, the group chat that answers.</li>
               <li>Share the night, not a pile of graphics. Who it is for, when it is, and the ticket link.</li>
               <li>Bring one person with you. A roommate, a classmate, someone from work.</li>

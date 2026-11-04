@@ -245,7 +245,6 @@ export const nav = {
   primary: [
     { href: "/schedule", label: "Schedule" },
     { href: "/expo", label: "Expo" },
-    { href: "/tickets", label: "Tickets" },
   ],
   involved: [
     { href: "/speak", label: "Give a Talk" },

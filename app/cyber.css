@@ -209,14 +209,21 @@
   margin-top: 2.25rem;
 }
 
-.home-address {
-  margin: 2rem 0 0;
-  color: #f3ead7b5;
-  line-height: 1.5;
+.side-notes {
+  display: grid;
+  gap: 0.95rem;
+  margin: 1.4rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.home-address a {
-  color: #e2b13c;
+.side-notes li {
+  line-height: 1.45;
+}
+
+.side-notes strong {
+  display: block;
+  font-weight: 650;
 }
 
 .who-grid {

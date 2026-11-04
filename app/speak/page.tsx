@@ -27,20 +27,17 @@ export default async function SpeakPage({
             <p className="plain-lede">
               Workshops, panels, and tech talks from people who do the work here. First-time speakers are welcome. You do not need a touring deck.
             </p>
-            <ul className="hold-list">
+            <ul className="side-notes">
               <li>
                 <strong>Workshop · 45–60 minutes</strong>
-                <br />
                 Interactive. Teach a practical skill.
               </li>
               <li>
                 <strong>Panel · 45–60 minutes</strong>
-                <br />
                 Several voices on one question.
               </li>
               <li>
                 <strong>Tech talk · 20–30 minutes</strong>
-                <br />
                 Something you built, learned, or are arguing for.
               </li>
             </ul>

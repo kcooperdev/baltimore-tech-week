@@ -1,7 +1,5 @@
 import type { ApplyField } from "@/lib/apply-fields";
 
-export const sponsorCallUrl = "https://tidycal.com/bmore-tech-week/30-minute-meeting";
-
 export const pronouns = ["she / her", "he / him", "they / them", "Prefer not to say", "Something else"];
 
 export const yearsAround = ["I live here now", "A few years", "Most of my life", "Visiting / elsewhere"];
@@ -124,12 +122,6 @@ export const sponsorTierCopy = [
   { name: "Innovation · $2,500", text: "A table on two nights and a 2-minute welcome. Three spots." },
   { name: "Ecosystem · $5,000", text: "Your name on one full night, and a space all five nights. Two spots." },
   { name: "Presenting · $10,000", text: "Baltimore Tech Week 2027, presented by your company. One spot." },
-];
-
-export const tableCopy = [
-  { name: "Night table · $500", text: "One 6-foot table, two chairs, two staff passes. Eight tables a night." },
-  { name: "Two-night table · $900", text: "Same setup on two nights you choose." },
-  { name: "Week table · $2,000", text: "A table all five nights, plus 2 VIP week passes." },
 ];
 
 export const companySizes = ["1–10", "11–50", "51–200", "201–1,000", "1,000+"];

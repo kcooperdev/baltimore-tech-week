@@ -18,7 +18,7 @@ export default function PartnersPage() {
             <p className="plain-lede">
               Partnership is free for meetups, schools, accelerators, nonprofits, and student groups. You already have a circle. We want them in the rooms.
             </p>
-            <ul className="hold-list">
+            <ul className="side-notes">
               <li>Logo and a listing on this page</li>
               <li>Your name when the week opens and closes</li>
               <li>A thank-you with the other community partners</li>
