@@ -1,4 +1,4 @@
-import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
+const LIVE = "https://www.bmoretechweek.com";
 
 export class SubmitError extends Error {
   status: number;
@@ -32,132 +32,140 @@ function list(value: unknown) {
   return one ? [one] : [];
 }
 
-async function write(table: string, row: Record<string, unknown>, conflict?: string) {
-  if (!isSupabaseConfigured()) {
-    throw new SubmitError("We could not save that yet. Email team@bmoretechweek.com.", 503);
-  }
-  const query = getSupabase().from(table);
-  const result = conflict
-    ? await query.upsert(row, { onConflict: conflict }).select("id").single()
-    : await query.insert(row).select("id").single();
-  if (result.error) throw new SubmitError(result.error.message, 500);
-  return result.data;
+/** The existing database stores the 2027 week by these dates. The public site still says exact dates are coming soon. */
+function datesFor(value: unknown) {
+  const map: Record<string, string> = {
+    wednesday: "2027-04-28",
+    thursday: "2027-04-29",
+    friday: "2027-04-30",
+  };
+  const dates = list(value)
+    .map((item) => {
+      const key = item.toLowerCase();
+      return Object.entries(map).find(([day]) => key.startsWith(day))?.[1] ?? "";
+    })
+    .filter(Boolean);
+  return dates.length ? dates : ["2027-04-28", "2027-04-29", "2027-04-30"];
+}
+
+function sessionFormat(value: string) {
+  const next = value.toLowerCase();
+  if (next.startsWith("panel")) return "panel";
+  if (next.startsWith("workshop")) return "workshop";
+  if (next.startsWith("fireside")) return "fireside";
+  return "techtalk";
+}
+
+async function forward(path: string, body: Record<string, unknown>) {
+  const response = await fetch(`${LIVE}${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+  const payload = (await response.json().catch(() => ({}))) as { error?: string; id?: string };
+  if (!response.ok) throw new SubmitError(payload.error || "Could not save that.", response.status);
+  return payload;
 }
 
 export async function saveSpeaker(body: Record<string, unknown>) {
   const name = text(body.name, "Full name", 120);
   const talkTitle = text(body.title, "Session title", 140);
   const description = text(body.description, "Session description", 2500);
-  const format = text(body.format, "Session type", 80);
+  const format = sessionFormat(text(body.format, "Session type", 80));
   const day = text(body.theme, "Day", 80);
   const organization = text(body.organization, "Organization", 140, false);
-  const details = [description, organization && `Organization: ${organization}`].filter(Boolean).join("\n\n");
-  return write("speakers", {
-    year: "2027",
+  const payload = {
     name,
     email: email(body.email),
-    talk_title: talkTitle,
-    talk_description: details,
-    topic: day,
+    phone: "",
+    company: organization,
+    title: organization || "Speaker",
+    cityState: "Baltimore, MD",
+    talkTitle,
+    talkDescription: description,
+    takeaways: description.slice(0, 600),
     format,
-    preferred_neighborhood: "Any",
-    preferred_date: day,
-    linkedin_url: "",
-    website_url: "",
-    portfolio_url: "",
-    status: "pending",
-  });
+    preferredNights: ["Any"],
+    preferredNeighborhood: "Any",
+    topics: ["Other"],
+    audienceLevel: "General Audience",
+    spokenBefore: "no",
+    panelistFallback: "no",
+    previousTalks: "",
+    accessibility: "",
+    notes: `Day: ${day}`,
+    linkedinUrl: "",
+    websiteUrl: "",
+  };
+  return forward("/api/speakers", payload);
 }
 
 export async function saveVolunteer(body: Record<string, unknown>) {
   const roles = list(body.roles);
-  const days = list(body.day);
+  const days = datesFor(body.day);
   if (roles.length === 0) throw new SubmitError("Pick at least one role");
-  if (days.length === 0) throw new SubmitError("Select at least one day");
-  return write("volunteers", {
-    year: "2027",
+  const payload = {
     name: text(body.name, "Name", 120),
     email: email(body.email),
     phone: text(body.phone, "Phone", 40, false),
     roles,
-    available_dates: days,
-    preferred_neighborhood: text(body.neighborhood, "Neighborhood", 80, false) || "4MLK / Westside",
+    availableDates: days,
+    preferredNeighborhood: "4MLK / Westside",
     notes: text(body.help, "How you want to help", 600, false),
-    status: "pending",
-  });
+  };
+  return forward("/api/volunteers", payload);
 }
 
 export async function saveVenue(body: Record<string, unknown>) {
   const cost = text(body.cost, "Cost", 40);
-  const costType = cost === "Paid" ? "Standard" : cost === "Free" ? "Free" : "Low-Cost";
+  const costType = cost === "Paid" ? "Standard" : cost === "Not sure" ? "Low-Cost" : "Free";
   const capacity = Number(String(body.capacity ?? "").replace(/[^\d]/g, ""));
   if (!Number.isFinite(capacity) || capacity < 1 || capacity > 5000) {
     throw new SubmitError("Capacity must be between 1 and 5000");
   }
-  const amenities = [
-    `Event: ${text(body.concept, "Event", 180)}`,
-    `Time: ${text(body.time, "Time", 80)}`,
-    `Category: ${text(body.category, "Category", 80)}`,
-    `Access: ${text(body.access, "Accessibility", 160)}`,
-    `Provides: ${text(body.provide, "What you provide", 160)}`,
-    `Needs: ${text(body.support, "What you need", 160)}`,
-    `Organization: ${text(body.organization, "Organization", 140)}`,
-  ];
-  return write("venues", {
-    year: "2027",
+  const concept = text(body.concept, "Event", 180);
+  const street = text(body.address, "Address", 160);
+  const payload = {
     name: text(body.venue, "Venue", 120),
     neighborhood: "Downtown",
-    address: text(body.address, "Address", 200),
+    address: `${street} — ${concept}`.slice(0, 200),
     capacity,
-    available_dates: [text(body.day, "Day", 80)],
-    venue_type: "hybrid",
-    cost_type: costType,
-    cost_amount: null,
-    amenities,
-    contact_name: text(body.contact, "Contact name", 120),
-    contact_email: email(body.email),
-    status: "pending",
-  });
+    availableDates: datesFor(body.day),
+    venueType: "hybrid",
+    costType,
+    costAmount: costType === "Free" ? "" : "1",
+    amenities: [],
+    contactName: text(body.contact, "Contact name", 120),
+    contactEmail: email(body.email),
+  };
+  return forward("/api/venues", payload);
 }
 
 export async function saveTicket(body: Record<string, unknown>) {
-  return write(
-    "ticket_signups",
-    {
-      email: email(body.email),
-      pass: text(body.pass, "Pass", 120, false) || "Updates list",
-      name: text(body.name, "Name", 120, false),
-      notes: "",
-    },
-    "email",
-  );
+  const payload = {
+    email: email(body.email),
+    pass: text(body.pass, "Pass", 120, false) || "Updates list",
+    name: text(body.name, "Name", 120, false),
+  };
+  return forward("/api/tickets", payload);
 }
 
 export async function saveApplication(body: Record<string, unknown>) {
   const kind = text(body.kind, "Application type", 40);
-  if (!["partner", "sponsor", "ambassador", "exhibitor"].includes(kind)) {
-    throw new SubmitError("Application type is invalid");
-  }
+  const mapped = kind === "exhibitor" ? "partner" : kind;
+  if (!["partner", "sponsor", "ambassador"].includes(mapped)) throw new SubmitError("Application type is invalid");
   const name = text(body.name, "Name", 120);
-  const organization = text(body.organization, "Organization", 160, kind !== "ambassador");
-  const note = text(body.note ?? body.where ?? body.showing, "Details", 2500);
-  const lines = [
-    `Kind: ${kind}`,
-    organization && `Organization: ${organization}`,
-    body.website && `Website: ${text(body.website, "Website", 300, false)}`,
-    note && `Notes: ${note}`,
-  ]
-    .filter(Boolean)
-    .join("\n");
-  return write(
-    "ticket_signups",
-    {
-      email: email(body.email),
-      pass: kind,
-      name,
-      organization,
-      notes: lines,
-    },
-    "email",
-  );
+  const organization = text(body.organization, "Organization", 160, mapped !== "ambassador");
+  const note = text(body.note ?? body.where ?? body.showing, "Details", 2000);
+  const payload = {
+    kind: mapped,
+    name,
+    email: email(body.email),
+    organization,
+    role: mapped === "ambassador" ? "Ambassador" : mapped === "sponsor" ? "Sponsor" : "Partner",
+    website: text(body.website, "Website", 300, false),
+    pass: mapped === "sponsor" ? "Talk first" : mapped === "ambassador" ? "Ambassador" : "Partner",
+    notes: [`Kind: ${kind}`, organization && `Organization: ${organization}`, note].filter(Boolean).join("\n"),
+  };
+  return forward("/api/apply", payload);
 }
