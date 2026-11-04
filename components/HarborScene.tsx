@@ -10,21 +10,25 @@ function clamp(value: number, min = 0, max = 1) {
 }
 
 const tones: [string, string][] = [
-  [".ed-cream-section", "light"],
-  [".ed-dark-showcase", "dark"],
-  [".ed-nights-strip", "dark"],
-  [".ed-sky-band", "sky"],
+  [".band-paper", "light"],
+  [".band-ink", "dark"],
+  [".band-sky", "sky"],
   [".harbor-footer", "sunset"],
 ];
 
 function navTone() {
+  let bestTop = -Infinity;
+  let best = "dark";
   for (const [selector, tone] of tones) {
     for (const node of document.querySelectorAll(selector)) {
       const rect = node.getBoundingClientRect();
-      if (rect.top <= 56 && rect.bottom > 56) return tone;
+      if (rect.top <= 56 && rect.bottom > 56 && rect.top >= bestTop) {
+        bestTop = rect.top;
+        best = tone;
+      }
     }
   }
-  return "dark";
+  return best;
 }
 
 export function HarborScene() {

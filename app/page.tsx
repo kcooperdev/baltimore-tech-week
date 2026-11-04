@@ -1,7 +1,22 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { audiences, formatPrice, generalAdmission, hq, pillars, site, waysIn } from "@/lib/site";
+import {
+  audiences,
+  exploringVenues,
+  expoParticipants,
+  hq,
+  pillars,
+  rhythm,
+  site,
+  waysIn,
+} from "@/lib/site";
+
+const panelClass = {
+  wednesday: "day-panel day-panel-connect",
+  thursday: "day-panel day-panel-build",
+  friday: "day-panel day-panel-opportunity",
+} as const;
 
 export default async function Home({
   searchParams,
@@ -10,7 +25,6 @@ export default async function Home({
 }) {
   const params = await searchParams;
   const live = site.phase === "live" || params.live === "1";
-  const early = generalAdmission.windows[0];
 
   return (
     <>
@@ -18,132 +32,170 @@ export default async function Home({
       <div className="editorial-flow">
         {live ? <LivePortal /> : null}
 
-        <section className="ed-cream-section" aria-labelledby="manifesto">
-          <div className="ed-container">
-            <p className="ed-eyebrow">
+        <section className="band-paper" aria-labelledby="week-promise">
+          <div className="week-wrap">
+            <p className="week-kicker">
               {site.when} · {site.year} · {site.where}
             </p>
-            <h2 id="manifesto" className="ed-manifesto-title">
-              Three days. Across <span className="ed-highlight">Baltimore</span>.
+            <h2 id="week-promise" className="week-title">
+              Connect. Build. Opportunity.
             </h2>
-            <p className="ed-manifesto-sub">{site.promise}</p>
-            <p className="ed-manifesto-sub">{site.nightLine}</p>
-            <div className="ed-manifesto-cta">
-              <Link className="ed-pill-btn" href="/tickets">
+            <p className="week-lede">{site.promise}</p>
+            <p className="week-lede">{site.positioning}</p>
+            <div className="week-actions">
+              <Link className="week-btn" href="/tickets">
                 Get Tickets
               </Link>
-              <Link className="ed-pill-btn ed-pill-btn-outline" href="/the-week">
+              <Link className="week-btn week-btn-ghost" href="/the-week">
                 Explore the Week
               </Link>
-            </div>
-            <dl className="ed-stats-row">
-              <div className="ed-stat-cell">
-                <dt>When</dt>
-                <dd>Wed–Fri</dd>
-              </div>
-              <div className="ed-stat-cell">
-                <dt>Days</dt>
-                <dd>3</dd>
-              </div>
-              <div className="ed-stat-cell">
-                <dt>General admission from</dt>
-                <dd>{formatPrice(early.price)}</dd>
-              </div>
-            </dl>
-          </div>
-        </section>
-
-        <section className="ed-nights-strip" aria-labelledby="three-days">
-          <div className="ed-container">
-            <p className="ed-night-meta">Connect. Build. Opportunity.</p>
-            <h2 id="three-days" className="ed-nights-title">
-              Meet people. Make something. Find what&apos;s next.
-            </h2>
-            <ul className="ed-nights-grid">
-              {pillars.map((pillar, index) => (
-                <li key={pillar.id}>
-                  <Link className="ed-night-card" href={`/schedule#${pillar.id}`}>
-                    <span className="ed-night-num">0{index + 1}</span>
-                    <span>
-                      <p className="ed-night-meta">{pillar.day}</p>
-                      <h3 className="ed-night-name">{pillar.name}</h3>
-                      <p className="ed-night-body">{pillar.summary}</p>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="ed-sky-band" aria-labelledby="hq">
-          <div className="ed-container">
-            <p className="ed-eyebrow" style={{ color: "#16120ca6" }}>
-              {hq.venue}
-            </p>
-            <h2 id="hq" className="ed-sky-title">
-              One home base. A whole city participating.
-            </h2>
-            <p className="ed-sky-copy">
-              {hq.venue} is Baltimore Tech Week HQ. Registration, the expo, coworking, talks, workshops, and evening programming can live there. Not every event does. {site.idea}
-            </p>
-            <div className="ed-manifesto-cta" style={{ justifyContent: "flex-start" }}>
-              <Link className="ed-pill-btn" href="/around-baltimore">
-                Explore Venues
-              </Link>
-              <a className="ed-pill-btn ed-pill-btn-outline" href={hq.mapsUrl} target="_blank" rel="noreferrer">
-                Directions
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="ed-dark-showcase" aria-labelledby="who">
-          <div className="ed-container">
-            <h2 id="who" className="ed-section-title">
-              You don&apos;t need a tech title to belong here.
-            </h2>
-            <ul className="ed-nights-grid">
-              {audiences.map((audience) => (
-                <li key={audience.title} className="ed-night-card">
-                  <span>
-                    <h3 className="ed-night-name">{audience.title}</h3>
-                    <p className="ed-night-body">{audience.text}</p>
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="ed-cream-section" aria-labelledby="participate">
-          <div className="ed-container">
-            <h2 id="participate" className="ed-manifesto-title">
-              Tech Week doesn&apos;t stop at the front door.
-            </h2>
-            <p className="ed-manifesto-sub">
-              The expo is at HQ. Partner events are hosted around the city, and they are listed only after they are confirmed.
-            </p>
-            <div className="ed-manifesto-cta">
-              <Link className="ed-pill-btn" href="/expo">
-                The Expo
-              </Link>
-              <Link className="ed-pill-btn ed-pill-btn-outline" href="/host">
+              <Link className="week-btn week-btn-ghost" href="/host">
                 Host a Partner Event
               </Link>
             </div>
-            <ul className="ed-nights-grid" style={{ textAlign: "left", marginTop: "2.5rem" }}>
-              {waysIn.slice(0, 6).map((way) => (
+            <div className="day-panels">
+              {pillars.map((pillar) => (
+                <Link key={pillar.id} className={panelClass[pillar.id]} href={`/schedule#${pillar.id}`}>
+                  <div>
+                    <p className="day-panel-day">{pillar.day}</p>
+                    <h3>{pillar.name}</h3>
+                    <p>{pillar.summary}</p>
+                  </div>
+                  <p className="day-panel-q">{pillar.tagline}</p>
+                </Link>
+              ))}
+            </div>
+            <p className="week-kicker" style={{ marginTop: "2.75rem" }}>
+              Shape of the day · not a timetable
+            </p>
+            <div className="rhythm">
+              {rhythm.map((block) => (
+                <div key={block.label}>
+                  <h3>{block.label}</h3>
+                  <p>{block.text}</p>
+                </div>
+              ))}
+            </div>
+            <p className="week-lede">{site.nightLine}</p>
+          </div>
+        </section>
+
+        <section className="band-ink" aria-labelledby="hq">
+          <div className="week-wrap split">
+            <div>
+              <p className="week-kicker">Baltimore Tech Week HQ · {hq.venue}</p>
+              <h2 id="hq" className="week-title">
+                One home base. A whole city participating.
+              </h2>
+              <p className="week-lede">
+                Spend the day at {hq.venue}. Registration, the expo, coworking, talks, workshops, and evening programming can all happen there. Not every Baltimore Tech Week event does.
+              </p>
+              <p className="week-title" style={{ fontSize: "clamp(1.6rem, 3vw, 2.2rem)", marginTop: "1.5rem", maxWidth: "20ch" }}>
+                {site.idea}
+              </p>
+              <p className="week-lede">
+                {hq.street}, {hq.cityLine}. Hours and rooms will be posted when they are confirmed.
+              </p>
+              <div className="week-actions">
+                <Link className="week-btn" href="/around-baltimore">
+                  Explore Venues
+                </Link>
+                <a className="week-btn week-btn-ghost" href={hq.mapsUrl} target="_blank" rel="noreferrer">
+                  Directions to 4MLK
+                </a>
+              </div>
+            </div>
+            <ul className="hold-list">
+              {hq.holds.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <section className="band-paper" aria-labelledby="expo">
+          <div className="week-wrap split">
+            <div>
+              <p className="week-kicker">At Tech Week HQ</p>
+              <h2 id="expo" className="week-title">
+                See what&apos;s being built.
+              </h2>
+              <p className="week-lede">
+                The Baltimore Tech Week Expo is where you meet the organizations, companies, startups, products, and resources in this city&apos;s technology ecosystem.
+              </p>
+              <div className="week-actions">
+                <Link className="week-btn" href="/expo#exhibit">
+                  Become an Exhibitor
+                </Link>
+                <Link className="week-btn week-btn-ghost" href="/sponsors">
+                  Sponsor Tech Week
+                </Link>
+              </div>
+            </div>
+            <div className="coming">
+              <h3>Exhibitors coming soon.</h3>
+              <p className="week-lede">Logos go here after an organization confirms. The floor is open to:</p>
+              <ul className="hold-list">
+                {expoParticipants.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="band-ink" aria-labelledby="around">
+          <div className="week-wrap">
+            <p className="week-kicker">Partner events</p>
+            <h2 id="around" className="week-title">
+              Tech Week doesn&apos;t stop at the front door.
+            </h2>
+            <p className="week-lede">
+              Organizations around Baltimore can host official Tech Week experiences. Nothing below is a confirmed event, time, or partnership. Confirmed events will show a venue, a time, and a way to RSVP.
+            </p>
+            <div className="venue-grid">
+              {exploringVenues.map((venue) => (
+                <article key={venue.id} className="venue-card">
+                  <p className="status-tag">Being explored</p>
+                  <h3>{venue.name}</h3>
+                  <p>
+                    {venue.focus} · {venue.neighborhood}
+                  </p>
+                  <p>{venue.possible.slice(0, 3).join(" · ")}</p>
+                </article>
+              ))}
+            </div>
+            <div className="week-actions">
+              <Link className="week-btn" href="/host">
+                Host an Event
+              </Link>
+              <Link className="week-btn week-btn-ghost" href="/around-baltimore">
+                Around Baltimore
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="band-paper" aria-labelledby="who">
+          <div className="week-wrap">
+            <p className="week-kicker">Who it&apos;s for</p>
+            <h2 id="who" className="week-title">
+              You don&apos;t need a tech title to belong at Tech Week.
+            </h2>
+            <div className="who-grid">
+              {audiences.map((audience) => (
+                <article key={audience.title} className="who-card">
+                  <h3>{audience.title}</h3>
+                  <p>{audience.text}</p>
+                </article>
+              ))}
+            </div>
+            <ul className="path-list">
+              {waysIn.map((way) => (
                 <li key={way.href}>
-                  <Link href={way.href} className="ed-night-card" style={{ background: "#16120c0d", borderColor: "#16120c24", color: "#16120c" }}>
-                    <span>
-                      <h3 className="ed-night-name" style={{ color: "#16120c" }}>
-                        {way.title}
-                      </h3>
-                      <p className="ed-night-body" style={{ color: "#16120cc7" }}>
-                        {way.text}
-                      </p>
-                    </span>
+                  <Link href={way.href}>
+                    <strong>{way.title}</strong>
+                    <span>{way.text}</span>
                   </Link>
                 </li>
               ))}
