@@ -31,6 +31,7 @@
 
 .apply-step.is-done {
   color: #16120c;
+  cursor: pointer;
 }
 
 .apply-step.is-current {
@@ -181,11 +182,4 @@
   .apply-wide {
     grid-column: 1 / -1;
   }
-}
-
-html,
-html *,
-html *::before,
-html *::after {
-  cursor: url("/images/crab-cursor.png") 4 8, auto !important;
 }

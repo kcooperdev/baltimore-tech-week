@@ -348,6 +348,7 @@
   font: inherit;
   font-size: 0.88rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .tier-card.is-pick .tier-apply {
@@ -400,6 +401,7 @@
   font: inherit;
   font-size: 0.85rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .tier-dialog .apply-card {
@@ -942,6 +944,7 @@
 .pack-btn:disabled:hover,
 .week-btn:disabled,
 .week-btn:disabled:hover {
+  cursor: not-allowed;
   opacity: 0.48;
   transform: none;
 }
