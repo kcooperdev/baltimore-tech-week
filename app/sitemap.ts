@@ -1,0 +1,27 @@
+import type { MetadataRoute } from "next";
+import { site } from "@/lib/site";
+
+const paths = [
+  "",
+  "/the-week",
+  "/schedule",
+  "/expo",
+  "/around-baltimore",
+  "/tickets",
+  "/speak",
+  "/sponsors",
+  "/host",
+  "/volunteer",
+  "/ambassador",
+  "/get-involved",
+  "/conduct",
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return paths.map((path) => ({
+    url: `${site.url}${path}`,
+    lastModified: new Date("2026-11-03"),
+    changeFrequency: "weekly",
+    priority: path === "" ? 1 : 0.7,
+  }));
+}
