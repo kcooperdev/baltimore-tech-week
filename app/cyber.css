@@ -30,10 +30,23 @@
   height: 46px;
 }
 
-.topbar-mark img {
+.btw-mark {
+  display: block;
   width: 46px;
   height: 46px;
-  object-fit: contain;
+  background: url("/images/baltimore-mark.png") center / contain no-repeat;
+}
+
+.site-topbar[data-nav-tone="sunset"] .topbar-mark .btw-mark,
+.site-topbar[data-nav-tone="light"] .topbar-mark .btw-mark,
+.site-topbar[data-nav-tone="sky"] .topbar-mark .btw-mark,
+.site-topbar[data-nav-tone="gold"] .topbar-mark .btw-mark,
+.harbor-pin.is-past[data-nav-tone="sunset"] .topbar-mark .btw-mark,
+.harbor-pin.is-past[data-nav-tone="light"] .topbar-mark .btw-mark,
+.harbor-pin.is-past[data-nav-tone="sky"] .topbar-mark .btw-mark,
+.harbor-pin.is-past[data-nav-tone="gold"] .topbar-mark .btw-mark,
+.harbor-footer .btw-mark {
+  background-image: url("/images/baltimore-mark-ink.png");
 }
 
 .harbor-pin .topbar {
@@ -144,9 +157,10 @@
   gap: 0.75rem;
 }
 
-.topbar-drawer-brand img {
+.topbar-drawer-brand .btw-mark {
   width: 64px;
   height: 64px;
+  background-image: url("/images/baltimore-mark.png");
 }
 
 .editorial-flow,
@@ -437,9 +451,10 @@
   color: var(--ink);
 }
 
-.harbor-footer-brand img {
+.harbor-footer-brand .btw-mark {
   width: 84px;
   height: 84px;
+  flex: none;
 }
 
 .harbor-footer-brand > span {

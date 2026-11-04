@@ -49,8 +49,8 @@ export const metadata: Metadata = {
     images: ["/images/harbor-sunset.jpg"],
   },
   icons: {
-    icon: "/logo.svg",
-    apple: "/logo.svg",
+    icon: "/images/mark-icon.png",
+    apple: "/images/apple-touch.png",
   },
 };
 
@@ -62,7 +62,7 @@ const jsonLd = {
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
   eventStatus: "https://schema.org/EventScheduled",
   url: site.url,
-  image: `${site.url}/images/baltimore-badge.png`,
+  image: `${site.url}/images/harbor-sunset.jpg`,
   location: {
     "@type": "Place",
     name: `${hq.name} at ${hq.venue}`,

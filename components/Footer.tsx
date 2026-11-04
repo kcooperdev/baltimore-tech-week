@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { hq, nav, site } from "@/lib/site";
 
@@ -7,7 +6,7 @@ export function Footer() {
     <footer className="harbor-footer">
       <div className="harbor-footer-inner">
         <Link href="/" className="harbor-footer-brand">
-          <Image src="/images/baltimore-badge.png" alt="" width={84} height={84} />
+          <span className="btw-mark" />
           <span>
             Baltimore
             <span>Tech Week</span>
