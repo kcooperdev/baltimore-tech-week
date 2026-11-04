@@ -96,15 +96,15 @@ export const pillars: Pillar[] = [
       {
         id: "tue-city",
         when: "Evening",
-        where: "City",
-        title: "City night",
+        where: "",
+        title: "Partner events",
         text: "",
         kind: "city",
         places: [
           {
-            name: "Jerk At Nite",
-            line: "Social",
-            href: "/around-baltimore#jerk-at-nite",
+            name: "Partner events",
+            line: "",
+            href: "/around-baltimore",
           },
         ],
       },
@@ -147,15 +147,15 @@ export const pillars: Pillar[] = [
       {
         id: "wed-city",
         when: "Evening",
-        where: "City",
-        title: "City night",
+        where: "",
+        title: "Partner events",
         text: "",
         kind: "city",
         places: [
           {
-            name: "Spark Baltimore",
-            line: "Founders",
-            href: "/around-baltimore#spark",
+            name: "Partner events",
+            line: "",
+            href: "/around-baltimore",
           },
         ],
       },
@@ -198,15 +198,15 @@ export const pillars: Pillar[] = [
       {
         id: "thu-city",
         when: "Evening",
-        where: "City",
-        title: "City night",
+        where: "",
+        title: "Partner events",
         text: "",
         kind: "city",
         places: [
           {
-            name: "1023 W Baltimore St Art Gallery",
-            line: "Creative tech",
-            href: "/around-baltimore#gallery",
+            name: "Partner events",
+            line: "",
+            href: "/around-baltimore",
           },
         ],
       },
@@ -391,7 +391,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "Spark Baltimore",
     neighborhood: "Downtown",
     address: "8 Market Place, Baltimore, MD 21202",
-    focus: "Wednesday night · founders",
+    focus: "Founders",
     categories: ["Startups", "Connect"],
     possible: [
       "Founders",
@@ -406,7 +406,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "1023 W Baltimore St Art Gallery",
     neighborhood: "Poppleton",
     address: "1023 W Baltimore St, Baltimore, MD 21223",
-    focus: "Thursday night · creative tech",
+    focus: "Creative tech",
     categories: ["Creative Tech", "Build", "Community"],
     possible: [
       "Art and technology",
@@ -422,7 +422,7 @@ export const exploringVenues: ExploringVenue[] = [
     name: "Jerk At Nite",
     neighborhood: "Downtown",
     address: "21 N Eutaw St, Baltimore, MD 21201",
-    focus: "Tuesday night · social",
+    focus: "Social",
     categories: ["Networking", "Community"],
     possible: [
       "Networking",
