@@ -13,7 +13,7 @@ export default function VolunteerPage() {
       <PageHeader
         eyebrow="Get involved"
         title="Volunteer"
-        lede="Help with check-in, the expo, directions, or welcoming people. No hour quota. Shifts are not posted yet."
+        lede="Help someone find the right room. Check-in, the floor, directions. No hour quota. Shifts are not posted yet."
       />
       <div className="editorial-flow">
         <section className="band-paper">

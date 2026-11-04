@@ -10,7 +10,7 @@ export const metadata = pageMeta(
 export default function ExpoPage() {
   return (
     <main className="plain-page">
-      <PageHeader eyebrow={hq.venue} title="Expo" lede="Walk the floor at Tech Week HQ. You do not need a table to come in.">
+      <PageHeader eyebrow={hq.venue} title="Expo" lede="Come for the floor. Stay for the person at the next table. You do not need a table to walk in.">
         <a className="week-btn" href="#exhibit">
           Ask for a table
         </a>
@@ -22,7 +22,7 @@ export default function ExpoPage() {
             {exhibitors.length === 0 ? (
               <>
                 <h2 className="week-title">Exhibitors coming soon.</h2>
-                <p className="week-lede">Names go here after an organization confirms.</p>
+                <p className="week-lede">Names land here after an organization confirms. No placeholders.</p>
               </>
             ) : (
               <ul className="hold-list">
@@ -40,7 +40,7 @@ export default function ExpoPage() {
           <div className="week-wrap split">
             <div>
               <h2 className="week-title">A table.</h2>
-              <p className="week-lede">Tell us what people should walk up and see. We confirm space before listing you.</p>
+              <p className="week-lede">Tell us what someone should stop and see. We confirm the space before we put your name on the floor.</p>
             </div>
             <InquiryForm
               id="exhibit"

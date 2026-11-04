@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { HarborScene } from "@/components/HarborScene";
 import { LivePortal } from "@/components/LivePortal";
-import { hq, pillars, site } from "@/lib/site";
+import { audiences, formatPrice, generalAdmission, hq, pillars, site } from "@/lib/site";
 
 const panelClass = {
   wednesday: "day-panel day-panel-connect",
@@ -29,12 +29,15 @@ export default async function Home({
               {site.when} · {site.year} · {site.datesNote}
             </p>
             <h2 id="week-promise" className="week-title">
-              Connect. Build. Opportunity.
+              {site.promise}
             </h2>
             <p className="week-lede">{site.positioning}</p>
             <div className="week-actions">
               <Link className="week-btn" href="/tickets">
-                Get Tickets
+                Get a pass · {formatPrice(generalAdmission.windows[0].price)}
+              </Link>
+              <Link className="week-btn week-btn-ghost" href="/the-week">
+                The three days
               </Link>
             </div>
             <div className="day-panels">
@@ -51,12 +54,28 @@ export default async function Home({
           </div>
         </section>
 
-        <section className="band-ink" aria-labelledby="hq">
+        <section className="band-ink" aria-labelledby="who">
+          <div className="week-wrap">
+            <h2 id="who" className="week-title">
+              {site.forLine}
+            </h2>
+            <div className="who-grid">
+              {audiences.map((audience) => (
+                <article key={audience.title} className="who-card">
+                  <h3>{audience.title}</h3>
+                  <p>{audience.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="band-paper" aria-labelledby="hq">
           <div className="week-wrap">
             <h2 id="hq" className="week-title">
-              4MLK is the HQ.
+              4MLK by day. Baltimore by night.
             </h2>
-            <p className="week-lede">Baltimore is the campus.</p>
+            <p className="week-lede">The pass covers HQ. The city is the rest of the story.</p>
             <p className="week-lede">
               {hq.street}
               <br />

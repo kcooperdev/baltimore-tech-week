@@ -1,6 +1,6 @@
 import { InquiryForm } from "@/components/InquiryForm";
 import { PageHeader } from "@/components/PageHeader";
-import { pageMeta, sponsorPackages } from "@/lib/site";
+import { pageMeta, sponsorPackages, sponsorSurfaces } from "@/lib/site";
 
 export const metadata = pageMeta(
   "Sponsors",
@@ -10,7 +10,7 @@ export const metadata = pageMeta(
 export default function SponsorsPage() {
   return (
     <main className="plain-page">
-      <PageHeader eyebrow="Get involved" title="Sponsor" lede="Packages are not published yet. Tell us what you want to back.">
+      <PageHeader eyebrow="Get involved" title="Sponsor" lede="Be in the room your people already want to be in. Prices stay off this page until they are approved.">
         <a className="week-btn" href="#sponsor-form">
           Write to us
         </a>
@@ -22,8 +22,15 @@ export default function SponsorsPage() {
             <div>
               {sponsorPackages.length === 0 ? (
                 <>
-                  <h2 className="week-title">No prices yet.</h2>
-                  <p className="week-lede">Prices and benefits go here after they are approved. Nothing is listed until then.</p>
+                  <h2 className="week-title">No public prices yet.</h2>
+                  <p className="week-lede">Tell us the room you want. We publish a package only after the price and the benefits are signed off.</p>
+                  <ul className="topic-list">
+                    {sponsorSurfaces.map((surface) => (
+                      <li key={surface.title}>
+                        <strong>{surface.title}.</strong> {surface.text}
+                      </li>
+                    ))}
+                  </ul>
                 </>
               ) : (
                 <ul className="hold-list">

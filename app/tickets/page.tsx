@@ -13,7 +13,7 @@ export default function TicketsPage() {
       <PageHeader
         eyebrow={`${site.when} · ${site.year}`}
         title="Tickets"
-        lede="Two passes. Checkout is not open yet."
+        lede="The early pass is $29. Checkout is not open yet. Leave your email and we will write when it is."
       />
 
       <div className="plain-body">
@@ -28,18 +28,18 @@ export default function TicketsPage() {
                 </li>
               ))}
             </ul>
-            <p className="week-lede">HQ for all three days: expo, talks, workshops, and places to meet.</p>
+            <p className="week-lede">All three days at HQ. The floor, the talks, the workshops, the people.</p>
 
             <p className="week-kicker" style={{ marginTop: "2rem" }}>
               VIP · {formatPrice(vip.price)}
             </p>
-            <p className="week-lede">General Admission, plus priority entry and a VIP check-in.</p>
+            <p className="week-lede">Same three days, with priority entry and a VIP check-in.</p>
 
             <h2 className="week-title" style={{ marginTop: "2.5rem", fontSize: "clamp(1.7rem, 3vw, 2.2rem)" }}>
-              Before you buy.
+              Know this first.
             </h2>
-            <p className="week-lede">A pass covers HQ. It does not get you into every partner event.</p>
-            <p className="week-lede">What a pass includes can still change before checkout opens.</p>
+            <p className="week-lede">A pass is the HQ. It is not a ticket to every partner night.</p>
+            <p className="week-lede">What is included can still change before checkout opens.</p>
           </div>
           <InquiryForm
             id="notify"

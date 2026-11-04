@@ -13,7 +13,7 @@ export default function SpeakPage() {
       <PageHeader
         eyebrow="Get involved"
         title="Speak"
-        lede="Apply if you are building, hiring, or teaching here. Applying does not book you a slot."
+        lede="If you are building it, hiring for it, or teaching it here, tell us. We read every note. A form is not a slot."
       />
 
       <div className="editorial-flow">

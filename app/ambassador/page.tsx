@@ -13,12 +13,12 @@ export default function AmbassadorPage() {
       <PageHeader
         eyebrow="Get involved"
         title="Bring people"
-        lede="Tell the rooms you are already in. Three days, Wednesday through Friday, based at 4MLK. No quota and no script."
+        lede="Tell the rooms you are already in. No quota. No script. Three days at 4MLK, then the city."
       />
       <div className="editorial-flow">
         <section className="band-paper">
           <div className="week-wrap split">
-            <p className="week-lede">Tech Week grows when Baltimore tells Baltimore.</p>
+            <p className="week-lede">The week spreads when someone you trust says, come with me.</p>
             <InquiryForm
               subject="Baltimore Tech Week ambassador"
               submitLabel="Count me in"

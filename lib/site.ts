@@ -19,10 +19,12 @@ export const site = {
   datesNote: "Exact dates coming soon",
   where: "Baltimore, Maryland",
   tagline: "CONNECT. BUILD. OPPORTUNITY.",
-  promise: "Three days in Baltimore for anyone who wants to meet, make, or find what's next.",
+  promise: "Be in the room.",
   idea: "4MLK is the HQ. Baltimore is the campus.",
-  positioning: "Day at 4MLK. Night around the city.",
+  positioning: "Three days with the people building Baltimore. Day at 4MLK. Night around the city.",
   nightLine: "Spend the day at Tech Week HQ. Explore Baltimore at night.",
+  forLine: "For the people who will actually show up.",
+  spread: "A week spreads when someone you trust says, come with me.",
 };
 
 export type DayId = "wednesday" | "thursday" | "friday";
@@ -46,9 +48,9 @@ export const pillars: Pillar[] = [
     day: "Wednesday",
     name: "Connect",
     question: "Who should I meet?",
-    tagline: "Meet people.",
-    summary: "Meet people.",
-    purpose: "Meet the people building in Baltimore.",
+    tagline: "Meet the people you keep meaning to meet.",
+    summary: "Meet the people you keep meaning to meet.",
+    purpose: "Put a name to the work happening in this city.",
     programming: [
       "Opening programming",
       "Coworking",
@@ -67,9 +69,9 @@ export const pillars: Pillar[] = [
     day: "Thursday",
     name: "Build",
     question: "What can I build?",
-    tagline: "Make something.",
-    summary: "Make something.",
-    purpose: "Workshops, demos, and time to build.",
+    tagline: "Make something before you leave.",
+    summary: "Make something before you leave.",
+    purpose: "Workshops and demos. Leave with something you made.",
     programming: [
       "AI",
       "Software engineering",
@@ -92,9 +94,9 @@ export const pillars: Pillar[] = [
     day: "Friday",
     name: "Opportunity",
     question: "Where can this take me?",
-    tagline: "Find what's next.",
-    summary: "Find what's next.",
-    purpose: "Jobs, founders, and what comes after the week.",
+    tagline: "Walk out with a next step.",
+    summary: "Walk out with a next step.",
+    purpose: "Jobs, founders, and the conversation that starts the next thing.",
     programming: [
       "Jobs",
       "Hiring",
@@ -114,10 +116,10 @@ export const pillars: Pillar[] = [
 ];
 
 export const rhythm: { label: string; text: string }[] = [
-  { label: "Morning", text: "Arrive, cowork, walk the expo." },
-  { label: "Afternoon", text: "Talks and workshops." },
-  { label: "Evening", text: "The main program." },
-  { label: "After", text: "Partner events around the city." },
+  { label: "Morning", text: "Arrive. Cowork. Walk the floor." },
+  { label: "Afternoon", text: "Talks and workshops. Stay for one." },
+  { label: "Evening", text: "The program people came for." },
+  { label: "After", text: "The city. A pass is not a ticket to every night." },
 ];
 
 export const hq = {
@@ -142,35 +144,27 @@ export const hq = {
 
 export const audiences: { title: string; text: string }[] = [
   {
-    title: "Builders",
-    text: "Engineers, designers, product people, AI practitioners and technologists.",
+    title: "You build",
+    text: "Engineers, designers, founders, and anyone making the thing.",
   },
   {
-    title: "Founders",
-    text: "Startup builders, entrepreneurs and people thinking about starting.",
+    title: "You hire",
+    text: "Companies that want Baltimore in the room, not on a slide.",
   },
   {
-    title: "Career Builders",
-    text: "Students, professionals, career changers and people looking for their next opportunity.",
-  },
-  {
-    title: "Companies",
-    text: "Employers, technology teams, startups and organizations looking to meet Baltimore's talent.",
-  },
-  {
-    title: "Community",
-    text: "Anyone curious about technology and what's being built in Baltimore.",
+    title: "You tell people",
+    text: "The week spreads when you bring the room you already have.",
   },
 ];
 
 export const waysIn: { href: string; title: string; text: string }[] = [
-  { href: "/tickets", title: "Attend", text: "Get a pass." },
-  { href: "/speak", title: "Speak", text: "Apply for a slot. Applying does not book you." },
-  { href: "/sponsors", title: "Sponsor", text: "Tell us what you want to back." },
-  { href: "/expo#exhibit", title: "Exhibit", text: "Ask for a table at 4MLK." },
-  { href: "/host", title: "Host", text: "Propose an event in the city." },
-  { href: "/volunteer", title: "Volunteer", text: "Help at HQ. No hour quota." },
-  { href: "/ambassador", title: "Ambassador", text: "Tell people. No quota." },
+  { href: "/tickets", title: "Attend", text: "Get the pass. From $29. Checkout opens later." },
+  { href: "/speak", title: "Speak", text: "Teach what you know. Applying is not a booking." },
+  { href: "/sponsors", title: "Sponsor", text: "Be where your people already want to be." },
+  { href: "/expo#exhibit", title: "Exhibit", text: "A table at HQ. We list you after the space is real." },
+  { href: "/host", title: "Host", text: "Your event, your room. We send people if we accept it." },
+  { href: "/volunteer", title: "Volunteer", text: "Help people find the room. No quota." },
+  { href: "/ambassador", title: "Ambassador", text: "Tell the rooms you are already in." },
 ];
 
 export const nav = {
@@ -231,13 +225,10 @@ export type SponsorPackage = {
 export const sponsorPackages: SponsorPackage[] = [];
 
 export const sponsorSurfaces: { title: string; text: string }[] = [
-  { title: "Tech Week HQ", text: "Be present where people spend the day." },
-  { title: "Expo", text: "Meet attendees looking for organizations, products, and resources." },
-  { title: "Programming", text: "Support talks, workshops, and conversations." },
-  { title: "Experiences", text: "Host a moment people will actually remember." },
-  { title: "Community access", text: "Reach builders, founders, students, and companies in one place." },
-  { title: "Partner programming", text: "Show up alongside official events around the city, where it fits." },
-  { title: "Brand visibility", text: "Be seen across the week, on site and in the city." },
+  { title: "The room", text: "HQ is where people spend the day. Be there." },
+  { title: "The floor", text: "A table beats a logo on a slide." },
+  { title: "The work", text: "Back a talk or a workshop people came to use." },
+  { title: "The story", text: "A moment worth telling someone else about." },
 ];
 
 export type TicketWindow = {
@@ -437,4 +428,4 @@ export function pageMeta(title: string, description: string): Metadata {
 }
 
 export const homeDescription =
-  "Baltimore Tech Week 2027 is three days, Wednesday through Friday. Daytime at 4MLK. Evenings around Baltimore. Exact dates coming soon.";
+  "Be in the room. Baltimore Tech Week 2027 is three days, Wednesday through Friday, at 4MLK by day and around the city at night. Passes from $29. Exact dates coming soon.";

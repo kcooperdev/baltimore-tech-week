@@ -13,7 +13,7 @@ export default function TheWeekPage() {
       <PageHeader
         eyebrow={`${site.when} · ${site.year} · ${site.datesNote}`}
         title="The Week"
-        lede="Three days. One city. Exact dates coming soon."
+        lede="Connect. Build. Opportunity. One city. Exact dates coming soon."
       />
 
       <div className="plain-body">

@@ -13,7 +13,7 @@ export default function SchedulePage() {
       <PageHeader
         eyebrow={site.when}
         title="Schedule"
-        lede="Nothing is posted until it is confirmed."
+        lede="The days are set. The sessions go up when they are real."
       />
 
       <div className="plain-body">

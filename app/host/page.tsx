@@ -15,7 +15,7 @@ export default function HostPage() {
       <PageHeader
         eyebrow="Partner events"
         title="Host"
-        lede="You run it. If we accept it, we list it and send people your way. We do not produce it or pay for it."
+        lede="You run it. If we accept it, we list it and point people to you. We do not produce it, and we do not pay for it."
       />
 
       <div className="editorial-flow">

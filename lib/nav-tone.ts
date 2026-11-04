@@ -8,7 +8,7 @@ const stops: [string, string][] = [
   [".band-build", "dark"],
   [".band-opportunity", "dark"],
   [".band-sky", "dark"],
-  [".harbor-footer", "dark"],
+  [".harbor-footer", "sunset"],
 ];
 
 /** Which header treatment sits over the content at the top of the viewport. */
