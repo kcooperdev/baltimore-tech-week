@@ -171,6 +171,20 @@ export const cities = [
   "Somewhere else",
 ];
 
+export const cityFollowUps = ["Elsewhere in Maryland", "Somewhere else"];
+
+function cityDetail(parent: string, step: string): ApplyField {
+  return {
+    name: "cityDetail",
+    label: "City and state",
+    required: true,
+    placeholder: "Frederick, MD",
+    when: { field: parent, is: cityFollowUps },
+    step,
+    wide: true,
+  };
+}
+
 export const gathered = ["Students", "Founders", "Engineers", "Operators", "Designers", "Neighbors", "Employers"];
 
 export const spreadHow = ["A post", "A meetup", "A class", "A newsletter", "At work", "A group chat"];
@@ -213,6 +227,7 @@ export const speakFields: ApplyField[] = [
   { name: "phone", label: "Phone", type: "tel", autoComplete: "tel", placeholder: "410-555-0100", step: you },
   { name: "pronouns", label: "Pronouns", type: "select", options: pronouns, placeholder: "Choose pronouns", step: you },
   { name: "cityState", label: "City", type: "select", required: true, options: cities, placeholder: "Choose a city", step: you },
+  cityDetail("cityState", you),
   { name: "yearsAround", label: "Your tie to the city", type: "select", options: yearsAround, placeholder: "How you know Baltimore", step: you },
   { name: "title", label: "What you do", type: "select", required: true, options: roles, placeholder: "Choose one", step: you },
   { name: "company", label: "Company / organization", autoComplete: "organization", placeholder: "Studio, company, or independent", step: you },
@@ -331,6 +346,7 @@ export const ambassadorFields: ApplyField[] = [
   { name: "name", label: "Your name", required: true, autoComplete: "name", step: you },
   { name: "email", label: "Email", type: "email", required: true, autoComplete: "email", step: you },
   { name: "city", label: "City", type: "select", required: true, options: cities, placeholder: "Choose a city", step: you },
+  cityDetail("city", you),
   { name: "pronouns", label: "Pronouns", type: "select", options: pronouns, placeholder: "Choose pronouns", step: you },
   { name: "yearsAround", label: "Your tie to the city", type: "select", options: yearsAround, placeholder: "How you know Baltimore", step: you },
   { name: "neighborhood", label: "Neighborhood you move through", type: "select", options: neighborhoods, placeholder: "Choose one", step: you },

@@ -17,4 +17,5 @@ export type ApplyField = {
   wide?: boolean;
   minWords?: number;
   minLines?: number;
+  when?: { field: string; is: string[] };
 };

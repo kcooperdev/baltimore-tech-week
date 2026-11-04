@@ -62,6 +62,12 @@ export function ApplyForm({
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [pending, setPending] = useState(false);
   const [done, setDone] = useState(false);
+  const [picks, setPicks] = useState<Record<string, string>>(defaults ?? {});
+
+  function fieldOpen(field: ApplyField, source: Record<string, string> = picks) {
+    if (!field.when) return true;
+    return field.when.is.includes(source[field.when.field] ?? "");
+  }
 
   const current = steps.length ? steps[step] : "";
   const visible = steps.length ? fields.filter((field) => field.step === current) : fields;
@@ -81,9 +87,21 @@ export function ApplyForm({
     return payload;
   }
 
+  function placeDetail(payload: Record<string, unknown>) {
+    for (const field of fields) {
+      if (!field.when) continue;
+      const watched = String(payload[field.when.field] ?? "");
+      const detail = String(payload[field.name] ?? "").trim();
+      if (field.when.is.includes(watched) && detail) payload[field.when.field] = detail;
+      if (!field.when.is.includes(watched)) payload[field.name] = "";
+    }
+  }
+
   function validate(payload: Record<string, unknown>, only?: ApplyField[]) {
     const next: Record<string, string> = {};
     for (const field of only ?? fields) {
+      const watched = field.when ? String(payload[field.when.field] ?? "") : "";
+      if (field.when && !field.when.is.includes(watched)) continue;
       const value = payload[field.name];
       const raw = Array.isArray(value) ? "" : String(value ?? "").trim();
       const textValue = field.type === "url" && bareUrl(raw) ? "" : raw;
@@ -103,6 +121,9 @@ export function ApplyForm({
       }
       if (field.minLines && lineCount(textValue) < field.minLines) {
         next[field.name] = `Add ${field.minLines}, one per line`;
+      }
+      if (field.name === "cityDetail" && textValue && !/^[A-Za-z .'-]+,\s*[A-Za-z]{2}$/.test(textValue)) {
+        next[field.name] = "Use city and state, like Frederick, MD";
       }
     }
     return next;
@@ -124,6 +145,7 @@ export function ApplyForm({
       setStep((value) => value + 1);
       return;
     }
+    placeDetail(payload);
     setPending(true);
     setError("");
     void fetch(endpoint, {
@@ -194,7 +216,7 @@ export function ApplyForm({
       <div className="apply-grid">
         {fields.map((field) => {
           const problem = fieldErrors[field.name];
-          const shown = !steps.length || field.step === current;
+          const shown = (!steps.length || field.step === current) && fieldOpen(field);
           const choices = choicesFor(field);
           const wide = field.wide || field.type === "textarea" || field.type === "checks" || field.type === "radio";
           const control =
@@ -207,7 +229,12 @@ export function ApplyForm({
                 defaultValue={defaults?.[field.name]}
               />
             ) : field.type === "select" ? (
-              <select name={field.name} className={`apply-input${problem ? " is-invalid" : ""}`} defaultValue={defaults?.[field.name] ?? ""}>
+              <select
+                name={field.name}
+                className={`apply-input${problem ? " is-invalid" : ""}`}
+                defaultValue={defaults?.[field.name] ?? ""}
+                onChange={(event) => setPicks((currentPicks) => ({ ...currentPicks, [field.name]: event.target.value }))}
+              >
                 <option value="">{field.placeholder || "Select"}</option>
                 {choices.map((option) => (
                   <option key={option.value} value={option.value}>
